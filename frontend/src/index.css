@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #ffffff;
+  background: #040d18;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #020b16;
+  color: #edf1f7;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(245, 185, 66, 0.6);
+  border-radius: 9999px;
+}
+
+.glass-panel {
+  background: rgba(18, 39, 61, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+}
+
+.primary-btn {
+  @apply inline-flex items-center justify-center rounded-md bg-gradient-to-r from-brand-gold to-brand-goldDeep px-4 py-2 font-semibold text-slate-900 transition hover:brightness-110;
+}
+
+.secondary-btn {
+  @apply inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 px-4 py-2 font-medium text-white transition hover:bg-white/10;
+}
+
+.form-input {
+  @apply w-full rounded-md border border-white/10 bg-brand-input px-3 py-2.5 text-white placeholder:text-slate-400 focus:border-brand-gold focus:outline-none;
+}
+
+.page-shell {
+  @apply min-h-screen bg-brand-navy text-white;
+}
+
+.mockup-shell {
+  background: radial-gradient(circle at top, rgba(89, 148, 255, 0.18), transparent 24%), #040d18;
+}
+
+.stadium-hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #071b2d;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 18px 40px rgba(5, 11, 20, 0.45);
+}
+
+.stadium-side-panel {
+  position: relative;
+  overflow: hidden;
+  background-color: #071827;
+}
+
+.bet-table td,
+.bet-table th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
