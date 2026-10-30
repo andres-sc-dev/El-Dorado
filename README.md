@@ -46,4 +46,4 @@ Proyecto con fines **académicos y de portafolio**. No maneja dinero real: los p
 ## Autor
 
 **Andrés** · [@andres-sc-dev](https://github.com/andres-sc-dev)
-Estudiante de Ingeniería de Software en el Tecnológico de Antioquia UI, Medellín, Colombia.
+Estudiante de Ingeniería de Software en el Tecnológico de Antioquia IU, Medellín, Colombia.
