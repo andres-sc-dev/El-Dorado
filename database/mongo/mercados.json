@@ -1,0 +1,74 @@
+[
+  {
+    "sport": "FUT",
+    "market_code": "1X2",
+    "name": "Resultado del partido",
+    "description": "Gana el local, empate o gana el visitante al final del tiempo reglamentario.",
+    "selection_type": "FIXED",
+    "settlement": { "basis": "FULL_TIME_RESULT" },
+    "outcomes": [
+      { "outcome_code": "HOME", "name": "Local", "sort_order": 1 },
+      { "outcome_code": "DRAW", "name": "Empate", "sort_order": 2 },
+      { "outcome_code": "AWAY", "name": "Visitante", "sort_order": 3 }
+    ]
+  },
+  {
+    "sport": "FUT",
+    "market_code": "TOTAL_GOALS",
+    "name": "Total de goles",
+    "description": "Más o menos goles que la línea, sumando los de ambos equipos.",
+    "selection_type": "LINE",
+    "line": { "allowed": [0.5, 1.5, 2.5, 3.5, 4.5], "default": 2.5, "applies_to": "TOTAL" },
+    "settlement": { "basis": "TOTAL_GOALS_VS_LINE" },
+    "outcomes": [
+      { "outcome_code": "OVER", "name": "Más de", "sort_order": 1 },
+      { "outcome_code": "UNDER", "name": "Menos de", "sort_order": 2 }
+    ]
+  },
+  {
+    "sport": "FUT",
+    "market_code": "EXACT_SCORE",
+    "name": "Marcador exacto",
+    "description": "El marcador final exacto. OTHER cubre cualquier marcador no listado.",
+    "selection_type": "SCORE",
+    "score": { "max_goals_per_team": 3, "pattern": "^[0-9]-[0-9]$", "includes_other": true },
+    "settlement": { "basis": "FULL_TIME_SCORE" },
+    "outcomes": [
+      { "outcome_code": "0-0", "name": "0-0", "sort_order": 1, "home_goals": 0, "away_goals": 0 },
+      { "outcome_code": "1-0", "name": "1-0", "sort_order": 2, "home_goals": 1, "away_goals": 0 },
+      { "outcome_code": "0-1", "name": "0-1", "sort_order": 3, "home_goals": 0, "away_goals": 1 },
+      { "outcome_code": "1-1", "name": "1-1", "sort_order": 4, "home_goals": 1, "away_goals": 1 },
+      { "outcome_code": "2-0", "name": "2-0", "sort_order": 5, "home_goals": 2, "away_goals": 0 },
+      { "outcome_code": "0-2", "name": "0-2", "sort_order": 6, "home_goals": 0, "away_goals": 2 },
+      { "outcome_code": "2-1", "name": "2-1", "sort_order": 7, "home_goals": 2, "away_goals": 1 },
+      { "outcome_code": "1-2", "name": "1-2", "sort_order": 8, "home_goals": 1, "away_goals": 2 },
+      { "outcome_code": "2-2", "name": "2-2", "sort_order": 9, "home_goals": 2, "away_goals": 2 },
+      { "outcome_code": "OTHER", "name": "Otro marcador", "sort_order": 10 }
+    ]
+  },
+  {
+    "sport": "FUT",
+    "market_code": "BTTS",
+    "name": "Ambos equipos anotan",
+    "description": "Sí: los dos equipos marcan al menos un gol. No: al menos uno se queda en cero.",
+    "selection_type": "YES_NO",
+    "settlement": { "basis": "BOTH_TEAMS_SCORE" },
+    "outcomes": [
+      { "outcome_code": "YES", "name": "Sí", "sort_order": 1 },
+      { "outcome_code": "NO", "name": "No", "sort_order": 2 }
+    ]
+  },
+  {
+    "sport": "FUT",
+    "market_code": "HANDICAP",
+    "name": "Hándicap",
+    "description": "Se suma la línea a los goles del local. La línea siempre se expresa desde el local.",
+    "selection_type": "LINE",
+    "line": { "allowed": [-2.0, -1.5, -1.0, -0.5, 0.5, 1.0, 1.5, 2.0], "default": -1.0, "applies_to": "HOME" },
+    "settlement": { "basis": "HANDICAP_HOME", "push_on_tie": true },
+    "outcomes": [
+      { "outcome_code": "HOME", "name": "Local con hándicap", "sort_order": 1 },
+      { "outcome_code": "AWAY", "name": "Visitante con hándicap", "sort_order": 2 }
+    ]
+  }
+]

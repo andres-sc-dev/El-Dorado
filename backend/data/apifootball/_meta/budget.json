@@ -1,0 +1,411 @@
+{
+  "days": {
+    "2026-11-12": {
+      "used": 67,
+      "log": [
+        {
+          "at": "2026-11-12T22:58:21.543Z",
+          "endpoint": "/leagues?country=Colombia",
+          "status": 200,
+          "daily_remaining": 98
+        },
+        {
+          "at": "2026-11-12T22:58:28.536Z",
+          "endpoint": "/teams?league=239&season=2024",
+          "status": 200,
+          "daily_remaining": 97
+        },
+        {
+          "at": "2026-11-12T22:58:35.585Z",
+          "endpoint": "/fixtures?league=239&season=2024",
+          "status": 200,
+          "daily_remaining": 96
+        },
+        {
+          "at": "2026-11-12T22:58:42.771Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1125",
+          "status": 200,
+          "daily_remaining": 95
+        },
+        {
+          "at": "2026-11-12T22:58:49.619Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1126",
+          "status": 200,
+          "daily_remaining": 94
+        },
+        {
+          "at": "2026-11-12T22:58:57.166Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1127",
+          "status": 200,
+          "daily_remaining": 93
+        },
+        {
+          "at": "2026-11-12T22:59:03.831Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1128",
+          "status": 200,
+          "daily_remaining": 99
+        },
+        {
+          "at": "2026-11-12T22:59:10.606Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1129",
+          "status": 200,
+          "daily_remaining": 98
+        },
+        {
+          "at": "2026-11-12T22:59:17.656Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1131",
+          "status": 200,
+          "daily_remaining": 97
+        },
+        {
+          "at": "2026-11-12T22:59:24.613Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1132",
+          "status": 200,
+          "daily_remaining": 96
+        },
+        {
+          "at": "2026-11-12T22:59:31.612Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1133",
+          "status": 200,
+          "daily_remaining": 95
+        },
+        {
+          "at": "2026-11-12T22:59:38.677Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1134",
+          "status": 200,
+          "daily_remaining": 94
+        },
+        {
+          "at": "2026-11-12T22:59:45.615Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1135",
+          "status": 200,
+          "daily_remaining": 93
+        },
+        {
+          "at": "2026-11-12T22:59:52.639Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1136",
+          "status": 200,
+          "daily_remaining": 92
+        },
+        {
+          "at": "2026-11-12T22:59:59.694Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1137",
+          "status": 200,
+          "daily_remaining": 91
+        },
+        {
+          "at": "2026-11-12T23:01:07.659Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1138",
+          "status": 200,
+          "daily_remaining": 84
+        },
+        {
+          "at": "2026-11-12T23:01:14.714Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1139",
+          "status": 200,
+          "daily_remaining": 83
+        },
+        {
+          "at": "2026-11-12T23:01:21.740Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1140",
+          "status": 200,
+          "daily_remaining": 82
+        },
+        {
+          "at": "2026-11-12T23:01:28.686Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1141",
+          "status": 200,
+          "daily_remaining": 81
+        },
+        {
+          "at": "2026-11-12T23:01:35.689Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1142",
+          "status": 200,
+          "daily_remaining": 80
+        },
+        {
+          "at": "2026-11-12T23:01:43.085Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1144",
+          "status": 200,
+          "daily_remaining": 79
+        },
+        {
+          "at": "2026-11-12T23:01:49.769Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1147",
+          "status": 200,
+          "daily_remaining": 78
+        },
+        {
+          "at": "2026-11-12T23:01:56.723Z",
+          "endpoint": "/teams/statistics?league=239&season=2024&team=1462",
+          "status": 200,
+          "daily_remaining": 77
+        },
+        {
+          "at": "2026-11-12T23:02:03.946Z",
+          "endpoint": "/players/squads?team=1125",
+          "status": 200,
+          "daily_remaining": 84
+        },
+        {
+          "at": "2026-11-12T23:02:10.773Z",
+          "endpoint": "/players/squads?team=1126",
+          "status": 200,
+          "daily_remaining": 83
+        },
+        {
+          "at": "2026-11-12T23:02:17.771Z",
+          "endpoint": "/players/squads?team=1127",
+          "status": 200,
+          "daily_remaining": 82
+        },
+        {
+          "at": "2026-11-12T23:02:24.750Z",
+          "endpoint": "/players/squads?team=1128",
+          "status": 200,
+          "daily_remaining": 81
+        },
+        {
+          "at": "2026-11-12T23:02:31.799Z",
+          "endpoint": "/players/squads?team=1129",
+          "status": 200,
+          "daily_remaining": 80
+        },
+        {
+          "at": "2026-11-12T23:02:38.778Z",
+          "endpoint": "/players/squads?team=1131",
+          "status": 200,
+          "daily_remaining": 79
+        },
+        {
+          "at": "2026-11-12T23:02:45.792Z",
+          "endpoint": "/players/squads?team=1132",
+          "status": 200,
+          "daily_remaining": 78
+        },
+        {
+          "at": "2026-11-12T23:02:52.786Z",
+          "endpoint": "/players/squads?team=1133",
+          "status": 200,
+          "daily_remaining": 77
+        },
+        {
+          "at": "2026-11-12T23:02:59.741Z",
+          "endpoint": "/players/squads?team=1134",
+          "status": 200,
+          "daily_remaining": 76
+        },
+        {
+          "at": "2026-11-12T23:04:08.108Z",
+          "endpoint": "/players/squads?team=1135",
+          "status": 200,
+          "daily_remaining": 67
+        },
+        {
+          "at": "2026-11-12T23:04:14.825Z",
+          "endpoint": "/players/squads?team=1136",
+          "status": 200,
+          "daily_remaining": 66
+        },
+        {
+          "at": "2026-11-12T23:04:21.799Z",
+          "endpoint": "/players/squads?team=1137",
+          "status": 200,
+          "daily_remaining": 65
+        },
+        {
+          "at": "2026-11-12T23:04:29.064Z",
+          "endpoint": "/players/squads?team=1138",
+          "status": 200,
+          "daily_remaining": 64
+        },
+        {
+          "at": "2026-11-12T23:04:35.900Z",
+          "endpoint": "/players/squads?team=1139",
+          "status": 200,
+          "daily_remaining": 63
+        },
+        {
+          "at": "2026-11-12T23:04:42.818Z",
+          "endpoint": "/players/squads?team=1140",
+          "status": 200,
+          "daily_remaining": 62
+        },
+        {
+          "at": "2026-11-12T23:04:49.818Z",
+          "endpoint": "/players/squads?team=1141",
+          "status": 200,
+          "daily_remaining": 61
+        },
+        {
+          "at": "2026-11-12T23:04:56.882Z",
+          "endpoint": "/players/squads?team=1142",
+          "status": 200,
+          "daily_remaining": 60
+        },
+        {
+          "at": "2026-11-12T23:05:03.836Z",
+          "endpoint": "/players/squads?team=1144",
+          "status": 200,
+          "daily_remaining": 67
+        },
+        {
+          "at": "2026-11-12T23:05:10.863Z",
+          "endpoint": "/players/squads?team=1147",
+          "status": 200,
+          "daily_remaining": 66
+        },
+        {
+          "at": "2026-11-12T23:05:17.893Z",
+          "endpoint": "/players/squads?team=1462",
+          "status": 200,
+          "daily_remaining": 65
+        },
+        {
+          "at": "2026-11-12T23:21:46.986Z",
+          "endpoint": "/players?league=239&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 55
+        },
+        {
+          "at": "2026-11-12T23:21:53.997Z",
+          "endpoint": "/players?league=239&season=2024&page=2",
+          "status": 200,
+          "daily_remaining": 54
+        },
+        {
+          "at": "2026-11-12T23:22:00.993Z",
+          "endpoint": "/players?league=239&season=2024&page=3",
+          "status": 200,
+          "daily_remaining": 53
+        },
+        {
+          "at": "2026-11-12T23:22:08.260Z",
+          "endpoint": "/players?league=239&season=2024&page=4",
+          "status": 200,
+          "daily_remaining": null
+        },
+        {
+          "at": "2026-11-12T23:22:27.548Z",
+          "endpoint": "/players?team=1125&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 55
+        },
+        {
+          "at": "2026-11-12T23:22:34.467Z",
+          "endpoint": "/players?team=1126&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 54
+        },
+        {
+          "at": "2026-11-12T23:22:41.457Z",
+          "endpoint": "/players?team=1127&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 50
+        },
+        {
+          "at": "2026-11-12T23:22:48.452Z",
+          "endpoint": "/players?team=1128&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 49
+        },
+        {
+          "at": "2026-11-12T23:22:55.464Z",
+          "endpoint": "/players?team=1129&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 48
+        },
+        {
+          "at": "2026-11-12T23:23:02.463Z",
+          "endpoint": "/players?team=1131&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 53
+        },
+        {
+          "at": "2026-11-12T23:23:09.473Z",
+          "endpoint": "/players?team=1132&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 52
+        },
+        {
+          "at": "2026-11-12T23:23:16.508Z",
+          "endpoint": "/players?team=1133&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 51
+        },
+        {
+          "at": "2026-11-12T23:23:23.453Z",
+          "endpoint": "/players?team=1134&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 50
+        },
+        {
+          "at": "2026-11-12T23:23:30.555Z",
+          "endpoint": "/players?team=1135&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 49
+        },
+        {
+          "at": "2026-11-12T23:23:37.465Z",
+          "endpoint": "/players?team=1136&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 48
+        },
+        {
+          "at": "2026-11-12T23:23:44.542Z",
+          "endpoint": "/players?team=1137&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 42
+        },
+        {
+          "at": "2026-11-12T23:23:51.468Z",
+          "endpoint": "/players?team=1138&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 41
+        },
+        {
+          "at": "2026-11-12T23:23:58.540Z",
+          "endpoint": "/players?team=1139&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 40
+        },
+        {
+          "at": "2026-11-12T23:25:06.747Z",
+          "endpoint": "/players?team=1140&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 39
+        },
+        {
+          "at": "2026-11-12T23:25:13.569Z",
+          "endpoint": "/players?team=1141&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 38
+        },
+        {
+          "at": "2026-11-12T23:25:20.752Z",
+          "endpoint": "/players?team=1142&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 37
+        },
+        {
+          "at": "2026-11-12T23:25:27.531Z",
+          "endpoint": "/players?team=1144&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 36
+        },
+        {
+          "at": "2026-11-12T23:25:34.579Z",
+          "endpoint": "/players?team=1147&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 35
+        },
+        {
+          "at": "2026-11-12T23:25:41.641Z",
+          "endpoint": "/players?team=1462&season=2024&page=1",
+          "status": 200,
+          "daily_remaining": 34
+        }
+      ]
+    }
+  }
+}

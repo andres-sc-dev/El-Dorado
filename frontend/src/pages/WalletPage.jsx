@@ -1,128 +1,71 @@
-import { useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Button from '../components/ui/Button';
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
-import { useAuth } from '../context/AuthContext';
-import { createBalanceMovement } from '../services/authService';
+import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusStates';
+import RechargePanel from '../components/wallet/RechargePanel';
+import { useApiData } from '../hooks/useApiData';
+import { getWallet } from '../services/walletService';
+import { formatCOP, formatDateTime } from '../utils/format';
 
+// Billetera: saldo y movimientos de PostgreSQL (GET /api/wallet/me) y recargas con Wompi Sandbox.
+// Los retiros siguen deshabilitados.
 function WalletPage() {
   const location = useLocation();
-  const { user, updateUser } = useAuth();
-  const [depositAmount, setDepositAmount] = useState('');
-  const [withdrawAmount, setWithdrawAmount] = useState('');
-  const [feedback, setFeedback] = useState({ type: '', message: '' });
-
-  const hasDepositTab = useMemo(
-    () => new URLSearchParams(location.search).get('tab') === 'deposit',
-    [location.search],
-  );
-  const availableBalance = Number(user?.balance ?? 0) + Number(user?.bonusBalance ?? 0);
-
-  const handleDeposit = async (event) => {
-    event.preventDefault();
-
-    const amount = Number(depositAmount);
-
-    if (!user) {
-      setFeedback({ type: 'error', message: 'Debes iniciar sesión para depositar.' });
-      return;
-    }
-
-    if (!Number.isFinite(amount) || amount <= 0) {
-      setFeedback({ type: 'error', message: 'Ingresa un monto válido para depositar.' });
-      return;
-    }
-
-    try {
-      const nextBalance = await createBalanceMovement('deposit', amount);
-      updateUser({ balance: nextBalance });
-      setFeedback({ type: 'success', message: `Depósito exitoso: $ ${amount.toLocaleString('es-CO')} agregado a tu saldo disponible.` });
-      setDepositAmount('');
-    } catch (error) {
-      setFeedback({ type: 'error', message: error.message });
-    }
-  };
-
-  const handleWithdraw = async (event) => {
-    event.preventDefault();
-
-    const amount = Number(withdrawAmount);
-
-    if (!user) {
-      setFeedback({ type: 'error', message: 'Debes iniciar sesión para retirar.' });
-      return;
-    }
-
-    if (!Number.isFinite(amount) || amount <= 0) {
-      setFeedback({ type: 'error', message: 'Ingresa un monto válido para retirar.' });
-      return;
-    }
-
-    if (amount > availableBalance) {
-      setFeedback({ type: 'error', message: 'No puedes retirar más de lo disponible en tu saldo y bono.' });
-      return;
-    }
-
-    try {
-      const nextBalance = await createBalanceMovement('withdraw', amount);
-      updateUser({ balance: nextBalance });
-      setFeedback({ type: 'success', message: `Retiro solicitado: $ ${amount.toLocaleString('es-CO')} se descontó del saldo disponible.` });
-      setWithdrawAmount('');
-    } catch (error) {
-      setFeedback({ type: 'error', message: error.message });
-    }
-  };
+  const hasDepositTab = new URLSearchParams(location.search).get('tab') === 'deposit';
+  const { data: wallet, error, isLoading, reload } = useApiData(getWallet);
 
   return (
     <div className="page-shell">
       <Navbar />
       <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6">
-        <h1 className="mb-8 text-3xl font-black text-white">Depósitos y retiros</h1>
+        <h1 className="mb-8 text-3xl font-black text-white">Billetera</h1>
 
-        {feedback.message && (
-          <div
-            className={`mb-6 rounded-xl border px-4 py-3 text-sm ${
-              feedback.type === 'success'
-                ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
-                : 'border-red-500/40 bg-red-500/10 text-red-200'
-            }`}
-          >
-            {feedback.message}
+        {isLoading ? <LoadingState message="Cargando tu billetera…" /> : null}
+        {error ? <ErrorState message={error.message} onRetry={reload} /> : null}
+
+        {wallet ? (
+          <div className="glass-panel mb-6 rounded-2xl p-5">
+            <p className="text-sm text-slate-300">Saldo disponible · cuenta {wallet.account_number}</p>
+            <p className="mt-1 text-3xl font-black text-white">{formatCOP(wallet.balance)}</p>
           </div>
-        )}
+        ) : null}
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <form onSubmit={handleDeposit} className={`glass-panel rounded-2xl p-5 ${hasDepositTab ? 'ring-2 ring-brand-gold/60' : ''}`}>
-            <h2 className="text-xl font-bold text-white">Depositar</h2>
-            <div className="mt-4 space-y-4">
-              <input
-                className="form-input"
-                type="number"
-                min="1"
-                value={depositAmount}
-                onChange={(event) => setDepositAmount(event.target.value)}
-                placeholder="Monto"
-              />
-              <Button type="submit" className="w-full">Confirmar depósito</Button>
-            </div>
-          </form>
+        <div className="mb-6 grid items-start gap-6 md:grid-cols-2">
+          <RechargePanel highlighted={hasDepositTab} onCredited={reload} />
 
-          <form onSubmit={handleWithdraw} className="glass-panel rounded-2xl p-5">
-            <h2 className="text-xl font-bold text-white">Retirar</h2>
-            <div className="mt-4 space-y-4">
-              <input
-                className="form-input"
-                type="number"
-                min="1"
-                value={withdrawAmount}
-                onChange={(event) => setWithdrawAmount(event.target.value)}
-                placeholder="Monto"
-              />
-              <Button type="submit" variant="secondary" className="w-full">Solicitar retiro</Button>
-            </div>
-          </form>
+          <section aria-labelledby="withdraw-title" className="glass-panel rounded-2xl p-5">
+            <h2 id="withdraw-title" className="text-xl font-bold text-white">Retirar</h2>
+            <p role="status" className="mt-4 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-slate-200">
+              Retiros próximamente.
+            </p>
+          </section>
         </div>
+
+        {wallet ? (
+          <section aria-labelledby="movements-title">
+            <h2 id="movements-title" className="mb-3 text-xl font-bold text-white">Movimientos</h2>
+            {wallet.movements.length === 0 ? (
+              <EmptyState title="Sin movimientos" message="Aquí verás apuestas, premios y recargas." />
+            ) : (
+              <ul className="glass-panel divide-y divide-white/10 rounded-2xl">
+                {wallet.movements.map((movement) => (
+                  <li key={movement.reference} className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm">
+                    <div>
+                      <p className="font-semibold text-white">{movement.type_name}</p>
+                      <p className="text-xs text-slate-400">{formatDateTime(movement.created_at)}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className={movement.direction > 0 ? 'font-bold text-emerald-300' : 'font-bold text-red-300'}>
+                        {movement.direction > 0 ? '+' : '−'} {formatCOP(movement.amount)}
+                      </p>
+                      <p className="text-xs text-slate-400">Saldo {formatCOP(movement.resulting_balance)}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+        ) : null}
       </div>
       <Footer />
     </div>

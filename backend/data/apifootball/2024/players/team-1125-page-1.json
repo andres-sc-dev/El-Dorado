@@ -1,0 +1,3692 @@
+{
+  "get": "players",
+  "parameters": {
+    "team": "1125",
+    "season": "2024",
+    "page": 1
+  },
+  "errors": [],
+  "results": 20,
+  "paging": {
+    "current": 1,
+    "total": 4
+  },
+  "response": [
+    {
+      "player": {
+        "id": 119,
+        "name": "R. Falcao",
+        "firstname": "Radamel Falcao",
+        "lastname": "García Zárate",
+        "age": 40,
+        "birth": {
+          "date": "1986-02-10",
+          "place": "Santa Marta",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "177",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/119.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 8,
+            "minutes": 571,
+            "number": null,
+            "position": "Forward",
+            "rating": "6.954545",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 21,
+            "on": 10
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 117,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 58,
+            "won": 25
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 18,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2480,
+        "name": "I. Arboleda",
+        "firstname": "Iván Mauricio",
+        "lastname": "Arboleda",
+        "age": 29,
+        "birth": {
+          "date": "1996-04-21",
+          "place": "Tumáco",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2480.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 8,
+            "minutes": 379,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.400000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 4,
+            "assists": 0,
+            "saves": 16
+          },
+          "passes": {
+            "total": 77,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 1,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2481,
+        "name": "Á. Montero",
+        "firstname": "Álvaro David",
+        "lastname": "Montero Perales",
+        "age": 30,
+        "birth": {
+          "date": "1995-03-29",
+          "place": "El Molino",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "197",
+        "weight": "98",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2481.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 38,
+            "lineups": 38,
+            "minutes": 3415,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "7.032258",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": 2,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 25,
+            "assists": 1,
+            "saves": 71
+          },
+          "passes": {
+            "total": 715,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 21,
+            "won": 17
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 8,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 6,
+            "minutes": 540,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.666666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 12,
+            "assists": 0,
+            "saves": 19
+          },
+          "passes": {
+            "total": 131,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 2,
+            "won": 1
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2836,
+        "name": "J. Vargas",
+        "firstname": "Juan Pablo",
+        "lastname": "Vargas Campos",
+        "age": 30,
+        "birth": {
+          "date": "1995-06-06",
+          "place": "Valverde Vega",
+          "country": "Costa Rica"
+        },
+        "nationality": "Costa Rica",
+        "height": "192",
+        "weight": "88",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2836.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 28,
+            "lineups": 28,
+            "minutes": 2451,
+            "number": null,
+            "position": "Defender",
+            "rating": "7.157142",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 17,
+            "on": 9
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 1217,
+            "key": 9,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 37,
+            "blocks": 17,
+            "interceptions": 29
+          },
+          "duels": {
+            "total": 175,
+            "won": 117
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 9,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 5,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 6,
+            "minutes": 540,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.816666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": 2,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 249,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 2,
+            "interceptions": 12
+          },
+          "duels": {
+            "total": 42,
+            "won": 30
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5557,
+        "name": "S. Giordana",
+        "firstname": "Santiago",
+        "lastname": "Giordana",
+        "age": 30,
+        "birth": {
+          "date": "1995-05-03",
+          "place": null,
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "181",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5557.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 31,
+            "lineups": 21,
+            "minutes": 1323,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.857142",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 10,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 28,
+            "on": 13
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 222,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 3,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 161,
+            "won": 63
+          },
+          "dribbles": {
+            "attempts": 18,
+            "success": 7,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 25,
+            "committed": 37
+          },
+          "cards": {
+            "yellow": 7,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 31,
+            "lineups": 21,
+            "minutes": 1323,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.857142",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 10,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 28,
+            "on": 13
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 222,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 3,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 161,
+            "won": 63
+          },
+          "dribbles": {
+            "attempts": 18,
+            "success": 7,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 25,
+            "committed": 37
+          },
+          "cards": {
+            "yellow": 7,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 136,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 1,
+            "minutes": 186,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.825000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 1,
+            "bench": 4
+          },
+          "shots": {
+            "total": 9,
+            "on": 4
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 24,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 24,
+            "won": 9
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 3
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 10182,
+        "name": "F. Uribe",
+        "firstname": "Fernando",
+        "lastname": "Uribe Hincapié",
+        "age": 36,
+        "birth": {
+          "date": "1988-01-01",
+          "place": "Pereira",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "182 cm",
+        "weight": "77 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/10182.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13251,
+        "name": "J. Córdoba",
+        "firstname": "Jhon Emerson",
+        "lastname": "Córdoba Mosquera",
+        "age": 25,
+        "birth": {
+          "date": "2000-07-15",
+          "place": "Risaralda",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": null,
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13251.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 25,
+            "lineups": 18,
+            "minutes": 1616,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.672000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 7,
+            "out": 12,
+            "bench": 7
+          },
+          "shots": {
+            "total": 25,
+            "on": 12
+          },
+          "goals": {
+            "total": 5,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 270,
+            "key": 14,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": null,
+            "interceptions": 5
+          },
+          "duels": {
+            "total": 177,
+            "won": 62
+          },
+          "dribbles": {
+            "attempts": 37,
+            "success": 15,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 18,
+            "committed": 19
+          },
+          "cards": {
+            "yellow": 4,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 107,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13294,
+        "name": "F. Charrupí",
+        "firstname": "Felix Eduardo",
+        "lastname": "Charrupí Mina",
+        "age": 24,
+        "birth": {
+          "date": "2001-05-13",
+          "place": "Villavicencio",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "182",
+        "weight": "74",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13294.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 13,
+            "lineups": 11,
+            "minutes": 873,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.120000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 7,
+            "bench": 4
+          },
+          "shots": {
+            "total": 10,
+            "on": 4
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 311,
+            "key": 15,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 3,
+            "interceptions": 7
+          },
+          "duels": {
+            "total": 95,
+            "won": 46
+          },
+          "dribbles": {
+            "attempts": 19,
+            "success": 14,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 10,
+            "committed": 15
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 107,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13359,
+        "name": "S. Mosquera",
+        "firstname": "Sergio Andrés",
+        "lastname": "Mosquera Zapata",
+        "age": 31,
+        "birth": {
+          "date": "1994-02-09",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13359.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 9,
+            "minutes": 549,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.742857",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 4,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 240,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 12,
+            "blocks": 4,
+            "interceptions": 4
+          },
+          "duels": {
+            "total": 40,
+            "won": 24
+          },
+          "dribbles": {
+            "attempts": 1,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 5
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 1,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13362,
+        "name": "D. Banguero",
+        "firstname": "Danovis",
+        "lastname": "Banguero Lerma",
+        "age": 36,
+        "birth": {
+          "date": "1989-10-27",
+          "place": "Villavicencio",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "178",
+        "weight": "81",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13362.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 21,
+            "lineups": 19,
+            "minutes": 1577,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.890476",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 10,
+            "on": 6
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 683,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 22,
+            "blocks": 4,
+            "interceptions": 18
+          },
+          "duels": {
+            "total": 133,
+            "won": 60
+          },
+          "dribbles": {
+            "attempts": 9,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 7,
+            "committed": 29
+          },
+          "cards": {
+            "yellow": 5,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 21,
+            "lineups": 19,
+            "minutes": 1577,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.890476",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 10,
+            "on": 6
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 683,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 22,
+            "blocks": 4,
+            "interceptions": 18
+          },
+          "duels": {
+            "total": 133,
+            "won": 60
+          },
+          "dribbles": {
+            "attempts": 9,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 7,
+            "committed": 29
+          },
+          "cards": {
+            "yellow": 5,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 1,
+            "minutes": 152,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.600000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 0,
+            "bench": 3
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 80,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 2,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 28,
+            "won": 17
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13365,
+        "name": "Á. Castro",
+        "firstname": "Álex Stik",
+        "lastname": "Castro Giraldo",
+        "age": 31,
+        "birth": {
+          "date": "1994-03-08",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "170",
+        "weight": "67",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13365.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 31,
+            "lineups": 25,
+            "minutes": 2022,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.883870",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 31,
+            "on": 17
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 855,
+            "key": 42,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 35,
+            "blocks": null,
+            "interceptions": 13
+          },
+          "duels": {
+            "total": 241,
+            "won": 98
+          },
+          "dribbles": {
+            "attempts": 82,
+            "success": 28,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 31,
+            "committed": 28
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13366,
+        "name": "D. Cataño",
+        "firstname": "Daniel Felipe",
+        "lastname": "Cataño Torres",
+        "age": 33,
+        "birth": {
+          "date": "1992-01-17",
+          "place": "Bello",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "174",
+        "weight": "75",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13366.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 16,
+            "lineups": 15,
+            "minutes": 968,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.131250",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 22,
+            "on": 11
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 4,
+            "saves": null
+          },
+          "passes": {
+            "total": 450,
+            "key": 19,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 12,
+            "blocks": 2,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 136,
+            "won": 66
+          },
+          "dribbles": {
+            "attempts": 27,
+            "success": 14,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 40,
+            "committed": 22
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 3,
+            "minutes": 204,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.100000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": 4,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 100,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 6,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 35,
+            "won": 19
+          },
+          "dribbles": {
+            "attempts": 14,
+            "success": 7,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 3
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13373,
+        "name": "L. Vásquez",
+        "firstname": "Larry",
+        "lastname": "Vásquez Ortega",
+        "age": 34,
+        "birth": {
+          "date": "1991-09-19",
+          "place": "El Zulia",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185",
+        "weight": "85",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13373.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 17,
+            "lineups": 11,
+            "minutes": 1029,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.127272",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": 6,
+            "bench": 7
+          },
+          "shots": {
+            "total": 1,
+            "on": 1
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 306,
+            "key": 5,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 7,
+            "interceptions": 9
+          },
+          "duels": {
+            "total": 65,
+            "won": 39
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 7,
+            "committed": 5
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 13,
+            "lineups": 10,
+            "minutes": 711,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.127272",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 1,
+            "on": 1
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 306,
+            "key": 5,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 7,
+            "interceptions": 9
+          },
+          "duels": {
+            "total": 65,
+            "won": 39
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 7,
+            "committed": 5
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 1,
+            "minutes": 85,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.233333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 0,
+            "bench": 4
+          },
+          "shots": {
+            "total": 1,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 72,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 6,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 13,
+            "won": 7
+          },
+          "dribbles": {
+            "attempts": 1,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13436,
+        "name": "D. Giraldo",
+        "firstname": "Daniel Eduardo",
+        "lastname": "Giraldo Cárdenas",
+        "age": 33,
+        "birth": {
+          "date": "1992-07-01",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "178",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13436.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 36,
+            "lineups": 25,
+            "minutes": 2123,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.779310",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 11,
+            "out": 12,
+            "bench": 18
+          },
+          "shots": {
+            "total": 10,
+            "on": 4
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 901,
+            "key": 19,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 23,
+            "blocks": 9,
+            "interceptions": 14
+          },
+          "duels": {
+            "total": 126,
+            "won": 54
+          },
+          "dribbles": {
+            "attempts": 10,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 15,
+            "committed": 27
+          },
+          "cards": {
+            "yellow": 13,
+            "yellowred": 1,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 97,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 5,
+            "minutes": 426,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.550000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 4,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 215,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 8,
+            "blocks": 1,
+            "interceptions": 4
+          },
+          "duels": {
+            "total": 38,
+            "won": 14
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 11
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13472,
+        "name": "N. Giraldo",
+        "firstname": "Nicolás Andrés",
+        "lastname": "Giraldo Urueta",
+        "age": 32,
+        "birth": {
+          "date": "1993-03-29",
+          "place": "El Carmen de Viboral",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "171",
+        "weight": "70",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13472.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 29,
+            "lineups": 24,
+            "minutes": 1788,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.723076",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 12,
+            "on": 3
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 696,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 29,
+            "blocks": 5,
+            "interceptions": 15
+          },
+          "duels": {
+            "total": 157,
+            "won": 88
+          },
+          "dribbles": {
+            "attempts": 25,
+            "success": 12,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 26,
+            "committed": 14
+          },
+          "cards": {
+            "yellow": 5,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13504,
+        "name": "E. Perlaza",
+        "firstname": "Elvis Yohan",
+        "lastname": "Perlaza Lara",
+        "age": 36,
+        "birth": {
+          "date": "1989-03-07",
+          "place": "Cartagena",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "172",
+        "weight": "75",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13504.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13525,
+        "name": "L. Castro",
+        "firstname": "Leonardo Fabio",
+        "lastname": "Castro Loaiza",
+        "age": 33,
+        "birth": {
+          "date": "1992-06-14",
+          "place": "El Tambo",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "174",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13525.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 27,
+            "lineups": 27,
+            "minutes": 2100,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.296296",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 62,
+            "on": 39
+          },
+          "goals": {
+            "total": 16,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 465,
+            "key": 26,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 14,
+            "blocks": 4,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 190,
+            "won": 97
+          },
+          "dribbles": {
+            "attempts": 38,
+            "success": 16,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 44,
+            "committed": 28
+          },
+          "cards": {
+            "yellow": 7,
+            "yellowred": null,
+            "red": 2
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 27,
+            "lineups": 27,
+            "minutes": 2100,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.296296",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 62,
+            "on": 39
+          },
+          "goals": {
+            "total": 16,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 465,
+            "key": 26,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 14,
+            "blocks": 4,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 190,
+            "won": 97
+          },
+          "dribbles": {
+            "attempts": 38,
+            "success": 16,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 44,
+            "committed": 28
+          },
+          "cards": {
+            "yellow": 7,
+            "yellowred": null,
+            "red": 2
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 0,
+            "minutes": 57,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 0,
+            "bench": 2
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 310,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.200000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": 19,
+            "on": 7
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 46,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 3,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 37,
+            "won": 20
+          },
+          "dribbles": {
+            "attempts": 9,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 6,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 1,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13598,
+        "name": "D. Novoa",
+        "firstname": "Diego Alejandro",
+        "lastname": "Novoa Urrego",
+        "age": 36,
+        "birth": {
+          "date": "1989-05-31",
+          "place": "Bogotá",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "186",
+        "weight": "80",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13598.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 33,
+            "lineups": 19,
+            "minutes": 527,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.842857",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 14,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 7,
+            "assists": 0,
+            "saves": 17
+          },
+          "passes": {
+            "total": 128,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 4,
+            "won": 3
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 6
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13606,
+        "name": "A. Murillo",
+        "firstname": "Andrés Felipe",
+        "lastname": "Murillo Segura",
+        "age": 29,
+        "birth": {
+          "date": "1996-04-01",
+          "place": "Zarzal",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183 cm",
+        "weight": "82 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13606.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13631,
+        "name": "J. Moreno",
+        "firstname": "Juan Esteban",
+        "lastname": "Moreno Córdoba",
+        "age": 26,
+        "birth": {
+          "date": "1999-07-09",
+          "place": "Apartadó",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "194 cm",
+        "weight": "84 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13631.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}

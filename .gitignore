@@ -5,3 +5,9 @@ dist/
 !.env.example
 npm-debug.log*
 backend/smoke-cookies.txt
+
+# Credenciales de Firebase y cuentas de servicio: jamás en Git.
+*-firebase-adminsdk-*.json
+serviceAccount*.json
+*.pem
+backend/test/integration/report*.md

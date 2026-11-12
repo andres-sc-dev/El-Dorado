@@ -1,29 +1,18 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { formatCOP } from '../../utils/format';
 import BrandMark from '../ui/BrandMark';
 import Button from '../ui/Button';
+import { visibleNavItems } from './navItems';
 
-const navItems = [
-  { label: 'Inicio', to: '/' },
-  { label: 'Partidos', to: '/matches' },
-  { label: 'Primera A', to: '/matches' },
-  { label: 'Mis Apuestas', to: '/my-bets' },
-  { label: 'Promociones', to: '/promotions' },
-  { label: 'Saldo', to: '/wallet' },
-  { label: 'Perfil', to: '/profile' },
-];
 
 function Navbar() {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user, isAdmin, logout } = useAuth();
 
-  const handleDeposit = () => {
-    if (!user) {
-      navigate('/login');
-      return;
-    }
-
-    navigate('/wallet?tab=deposit');
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
   };
 
   return (
@@ -34,13 +23,11 @@ function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-5 text-sm text-slate-300 lg:flex">
-          {navItems.map((item) => (
+          {visibleNavItems(user).map((item) => (
             <NavLink
               key={item.label}
               to={item.to}
-              className={({ isActive }) =>
-                `transition ${isActive ? 'text-brand-gold' : 'hover:text-white'}`
-              }
+              className={({ isActive }) => `transition ${isActive ? 'text-brand-gold' : 'hover:text-white'}`}
             >
               {item.label}
             </NavLink>
@@ -52,18 +39,20 @@ function Navbar() {
             <>
               <div className="hidden rounded-full border border-white/10 bg-white/5 px-3 py-2 text-right text-sm text-slate-300 md:block">
                 <div className="font-semibold text-white">{user.username}</div>
-                <div className="text-brand-gold">$ {(Number(user.balance ?? 0) + Number(user.bonusBalance ?? 0)).toLocaleString('es-CO')}</div>
+                <div className="text-brand-gold">{isAdmin ? 'Administrador' : formatCOP(user.balance)}</div>
               </div>
-              <Button type="button" onClick={logout} className="px-3 py-2 text-sm">
-                Salir
-              </Button>
+              <Button type="button" onClick={handleLogout} className="px-3 py-2 text-sm">Salir</Button>
             </>
           ) : (
             <Link to="/login">
               <Button type="button" className="px-4 py-2 text-sm">Iniciar sesión</Button>
             </Link>
           )}
-          <Button type="button" onClick={handleDeposit} className="px-4 py-2 text-sm">Depositar</Button>
+          {!isAdmin ? (
+            <Button type="button" onClick={() => navigate(user ? '/wallet?tab=deposit' : '/login')} className="px-4 py-2 text-sm">
+              Depositar
+            </Button>
+          ) : null}
         </div>
       </div>
     </header>

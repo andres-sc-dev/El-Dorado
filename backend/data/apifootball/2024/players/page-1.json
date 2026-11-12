@@ -1,0 +1,1990 @@
+{
+  "get": "players",
+  "parameters": {
+    "league": "239",
+    "season": "2024",
+    "page": 1
+  },
+  "errors": [],
+  "results": 20,
+  "paging": {
+    "current": 1,
+    "total": 53
+  },
+  "response": [
+    {
+      "player": {
+        "id": 119,
+        "name": "R. Falcao",
+        "firstname": "Radamel Falcao",
+        "lastname": "García Zárate",
+        "age": 40,
+        "birth": {
+          "date": "1986-02-10",
+          "place": "Santa Marta",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "177",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/119.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 8,
+            "minutes": 571,
+            "number": null,
+            "position": "Forward",
+            "rating": "6.954545",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 21,
+            "on": 10
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 117,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 58,
+            "won": 25
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 18,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 313,
+        "name": "D. Ospina",
+        "firstname": "David",
+        "lastname": "Ospina Ramírez",
+        "age": 37,
+        "birth": {
+          "date": "1988-08-31",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/313.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1137,
+            "name": "Atletico Nacional",
+            "logo": "https://media.api-sports.io/football/teams/1137.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 12,
+            "lineups": 12,
+            "minutes": 1006,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "7.100000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 4,
+            "assists": 0,
+            "saves": 13
+          },
+          "passes": {
+            "total": 130,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 4,
+            "won": 4
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 1634,
+        "name": "C. Zapata",
+        "firstname": "Cristián Eduardo",
+        "lastname": "Zapata Valencia",
+        "age": 39,
+        "birth": {
+          "date": "1986-09-30",
+          "place": "Padilla",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "187",
+        "weight": "82",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1634.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1137,
+            "name": "Atletico Nacional",
+            "logo": "https://media.api-sports.io/football/teams/1137.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1131,
+            "name": "Bucaramanga",
+            "logo": "https://media.api-sports.io/football/teams/1131.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 5,
+            "lineups": 5,
+            "minutes": 308,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.860000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 2,
+            "on": 1
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 83,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 4,
+            "blocks": 1,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 22,
+            "won": 15
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 3
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 1706,
+        "name": "C. Bacca",
+        "firstname": "Carlos Arturo",
+        "lastname": "Bacca Ahumada",
+        "age": 39,
+        "birth": {
+          "date": "1986-09-08",
+          "place": "Puerto Colombia",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "181",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1706.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 45,
+            "lineups": 40,
+            "minutes": 3227,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.050000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": 29,
+            "bench": 5
+          },
+          "shots": {
+            "total": 64,
+            "on": 39
+          },
+          "goals": {
+            "total": 20,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 381,
+            "key": 23,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 7,
+            "blocks": 3,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 108,
+            "won": 44
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 6,
+            "missed": 1,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 1761,
+        "name": "A. Morelos",
+        "firstname": "Alfredo José",
+        "lastname": "Morelos Aviléz",
+        "age": 29,
+        "birth": {
+          "date": "1996-06-21",
+          "place": "Cereté",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "177",
+        "weight": "79",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1761.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1137,
+            "name": "Atletico Nacional",
+            "logo": "https://media.api-sports.io/football/teams/1137.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 13,
+            "lineups": 12,
+            "minutes": 894,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.308333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 26,
+            "on": 17
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 237,
+            "key": 16,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 4,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 75,
+            "won": 42
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 20,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 4,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2392,
+        "name": "L. Haquín",
+        "firstname": "Luis Fernando",
+        "lastname": "Haquín Lopez",
+        "age": 28,
+        "birth": {
+          "date": "1997-11-15",
+          "place": "Santa Cruz de la Sierra",
+          "country": "Bolivia"
+        },
+        "nationality": "Bolivia",
+        "height": "190",
+        "weight": "83",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2392.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2480,
+        "name": "I. Arboleda",
+        "firstname": "Iván Mauricio",
+        "lastname": "Arboleda",
+        "age": 29,
+        "birth": {
+          "date": "1996-04-21",
+          "place": "Tumáco",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2480.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 8,
+            "minutes": 379,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.400000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 4,
+            "assists": 0,
+            "saves": 16
+          },
+          "passes": {
+            "total": 77,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 1,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2481,
+        "name": "Á. Montero",
+        "firstname": "Álvaro David",
+        "lastname": "Montero Perales",
+        "age": 30,
+        "birth": {
+          "date": "1995-03-29",
+          "place": "El Molino",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "197",
+        "weight": "98",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2481.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 38,
+            "lineups": 38,
+            "minutes": 3415,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "7.032258",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": 2,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 25,
+            "assists": 1,
+            "saves": 71
+          },
+          "passes": {
+            "total": 715,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 21,
+            "won": 17
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 8,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2485,
+        "name": "L. Orejuela",
+        "firstname": "Luis Manuel",
+        "lastname": "Orejuela García",
+        "age": 30,
+        "birth": {
+          "date": "1995-08-20",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "180",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2485.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1128,
+            "name": "Independiente Medellin",
+            "logo": "https://media.api-sports.io/football/teams/1128.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 15,
+            "lineups": 9,
+            "minutes": 789,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.693333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": 4,
+            "bench": 6
+          },
+          "shots": {
+            "total": 4,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 375,
+            "key": 11,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 2,
+            "interceptions": 9
+          },
+          "duels": {
+            "total": 77,
+            "won": 35
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 11,
+            "committed": 13
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2487,
+        "name": "W. Tesillo",
+        "firstname": "William José",
+        "lastname": "Tesillo Gutiérrez",
+        "age": 35,
+        "birth": {
+          "date": "1990-02-02",
+          "place": "Barranquilla",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2487.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1137,
+            "name": "Atletico Nacional",
+            "logo": "https://media.api-sports.io/football/teams/1137.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 15,
+            "lineups": 15,
+            "minutes": 1350,
+            "number": null,
+            "position": "Defender",
+            "rating": "7.006666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 7,
+            "on": 4
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 735,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 10,
+            "blocks": 10,
+            "interceptions": 14
+          },
+          "duels": {
+            "total": 88,
+            "won": 52
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 8,
+            "committed": 15
+          },
+          "cards": {
+            "yellow": 7,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2492,
+        "name": "Y. Chará",
+        "firstname": "Yimmi Javier",
+        "lastname": "Chará Zamora",
+        "age": 34,
+        "birth": {
+          "date": "1991-04-02",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "168",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2492.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 43,
+            "lineups": 40,
+            "minutes": 3246,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.153125",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 28,
+            "bench": 3
+          },
+          "shots": {
+            "total": 24,
+            "on": 15
+          },
+          "goals": {
+            "total": 6,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 1082,
+            "key": 53,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 20,
+            "blocks": 3,
+            "interceptions": 12
+          },
+          "duels": {
+            "total": 197,
+            "won": 112
+          },
+          "dribbles": {
+            "attempts": 54,
+            "success": 36,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 43,
+            "committed": 15
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2498,
+        "name": "A. Silva",
+        "firstname": "Antony Domingo",
+        "lastname": "Silva Cano",
+        "age": 40,
+        "birth": {
+          "date": "1984-02-27",
+          "place": "Asunción",
+          "country": "Paraguay"
+        },
+        "nationality": "Paraguay",
+        "height": "190 cm",
+        "weight": "92 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2498.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1139,
+            "name": "Santa Fe",
+            "logo": "https://media.api-sports.io/football/teams/1139.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2836,
+        "name": "J. Vargas",
+        "firstname": "Juan Pablo",
+        "lastname": "Vargas Campos",
+        "age": 30,
+        "birth": {
+          "date": "1995-06-06",
+          "place": "Valverde Vega",
+          "country": "Costa Rica"
+        },
+        "nationality": "Costa Rica",
+        "height": "192",
+        "weight": "88",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2836.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 28,
+            "lineups": 28,
+            "minutes": 2451,
+            "number": null,
+            "position": "Defender",
+            "rating": "7.157142",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 17,
+            "on": 9
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 1217,
+            "key": 9,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 37,
+            "blocks": 17,
+            "interceptions": 29
+          },
+          "duels": {
+            "total": 175,
+            "won": 117
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 9,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 5,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5179,
+        "name": "F. Leys",
+        "firstname": "Franco Ezequiel",
+        "lastname": "Leys",
+        "age": 32,
+        "birth": {
+          "date": "1993-10-18",
+          "place": "San Lorenzo",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": null,
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5179.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1138,
+            "name": "America de Cali",
+            "logo": "https://media.api-sports.io/football/teams/1138.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 18,
+            "lineups": 14,
+            "minutes": 1096,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.773333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 4,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 8,
+            "on": 3
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 414,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 24,
+            "blocks": 2,
+            "interceptions": 19
+          },
+          "duels": {
+            "total": 89,
+            "won": 49
+          },
+          "dribbles": {
+            "attempts": 10,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 10,
+            "committed": 17
+          },
+          "cards": {
+            "yellow": 4,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5557,
+        "name": "S. Giordana",
+        "firstname": "Santiago",
+        "lastname": "Giordana",
+        "age": 30,
+        "birth": {
+          "date": "1995-05-03",
+          "place": null,
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "181",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5557.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1125,
+            "name": "Millonarios",
+            "logo": "https://media.api-sports.io/football/teams/1125.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 31,
+            "lineups": 21,
+            "minutes": 1323,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.857142",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 10,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 28,
+            "on": 13
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 222,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 3,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 161,
+            "won": 63
+          },
+          "dribbles": {
+            "attempts": 18,
+            "success": 7,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 25,
+            "committed": 37
+          },
+          "cards": {
+            "yellow": 7,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5632,
+        "name": "N. Zalazar",
+        "firstname": "Nicolás Mauricio",
+        "lastname": "Zalazar",
+        "age": 28,
+        "birth": {
+          "date": "1997-01-29",
+          "place": "Buenos Aires",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "182",
+        "weight": "83",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5632.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 10,
+            "minutes": 645,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.888888",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 6,
+            "on": 3
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 376,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 4,
+            "interceptions": 9
+          },
+          "duels": {
+            "total": 56,
+            "won": 34
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 6,
+            "committed": 11
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5636,
+        "name": "J. Esquivel",
+        "firstname": "Juan Cruz",
+        "lastname": "Esquivel",
+        "age": 25,
+        "birth": {
+          "date": "2000-08-22",
+          "place": null,
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "173",
+        "weight": "80",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5636.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1139,
+            "name": "Santa Fe",
+            "logo": "https://media.api-sports.io/football/teams/1139.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5779,
+        "name": "F. Aguero",
+        "firstname": "Facundo",
+        "lastname": "Aguero",
+        "age": 29,
+        "birth": {
+          "date": "1995-01-21",
+          "place": "General Pico",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "189 cm",
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5779.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1139,
+            "name": "Santa Fe",
+            "logo": "https://media.api-sports.io/football/teams/1139.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 21,
+            "lineups": 18,
+            "minutes": 1522,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.873684",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 5,
+            "bench": 5
+          },
+          "shots": {
+            "total": 6,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 489,
+            "key": 5,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 24,
+            "blocks": 15,
+            "interceptions": 23
+          },
+          "duels": {
+            "total": 108,
+            "won": 64
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 8
+          },
+          "cards": {
+            "yellow": 4,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5972,
+        "name": "J. Campuzano",
+        "firstname": "Jorman David",
+        "lastname": "Campuzano Puentes",
+        "age": 29,
+        "birth": {
+          "date": "1996-04-30",
+          "place": "Tamalameque",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "175",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5972.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1137,
+            "name": "Atletico Nacional",
+            "logo": "https://media.api-sports.io/football/teams/1137.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 13,
+            "lineups": 11,
+            "minutes": 856,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.992307",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 4,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 485,
+            "key": 13,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 21,
+            "blocks": 1,
+            "interceptions": 8
+          },
+          "duels": {
+            "total": 91,
+            "won": 52
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 16,
+            "committed": 18
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6101,
+        "name": "J. Papaleo",
+        "firstname": "Joaquín Matías",
+        "lastname": "Papaleo",
+        "age": 31,
+        "birth": {
+          "date": "1994-03-23",
+          "place": "Santa Fe",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "188",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6101.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 360,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.575000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 15
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 6,
+            "assists": null,
+            "saves": 7
+          },
+          "passes": {
+            "total": 93,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 4,
+            "won": 4
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    }
+  ]
+}

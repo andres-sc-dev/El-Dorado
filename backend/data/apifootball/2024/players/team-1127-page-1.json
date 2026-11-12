@@ -1,0 +1,2508 @@
+{
+  "get": "players",
+  "parameters": {
+    "team": "1127",
+    "season": "2024",
+    "page": 1
+  },
+  "errors": [],
+  "results": 20,
+  "paging": {
+    "current": 1,
+    "total": 5
+  },
+  "response": [
+    {
+      "player": {
+        "id": 2392,
+        "name": "L. Haquín",
+        "firstname": "Luis Fernando",
+        "lastname": "Haquín Lopez",
+        "age": 28,
+        "birth": {
+          "date": "1997-11-15",
+          "place": "Santa Cruz de la Sierra",
+          "country": "Bolivia"
+        },
+        "nationality": "Bolivia",
+        "height": "190",
+        "weight": "83",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2392.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6101,
+        "name": "J. Papaleo",
+        "firstname": "Joaquín Matías",
+        "lastname": "Papaleo",
+        "age": 31,
+        "birth": {
+          "date": "1994-03-23",
+          "place": "Santa Fe",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "188",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6101.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 360,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.575000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 15
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 6,
+            "assists": null,
+            "saves": 7
+          },
+          "passes": {
+            "total": 93,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 4,
+            "won": 4
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6133,
+        "name": "G. Guruceaga",
+        "firstname": "Gastón",
+        "lastname": "Guruceaga Fagúndez",
+        "age": 30,
+        "birth": {
+          "date": "1995-03-15",
+          "place": "Artigas",
+          "country": "Uruguay"
+        },
+        "nationality": "Uruguay",
+        "height": "194",
+        "weight": "82",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6133.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 12,
+            "lineups": 12,
+            "minutes": 810,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.511111",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 13,
+            "assists": 0,
+            "saves": 20
+          },
+          "passes": {
+            "total": 214,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": 1,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 4,
+            "won": 4
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 3
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6509,
+        "name": "J. Barrera",
+        "firstname": "Jarlan Junior",
+        "lastname": "Barrera Escalona",
+        "age": 30,
+        "birth": {
+          "date": "1995-09-16",
+          "place": "Santa Marta",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "172",
+        "weight": "68",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6509.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 28,
+            "lineups": 19,
+            "minutes": 1188,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.892307",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 9,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 15,
+            "on": 5
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 3,
+            "saves": null
+          },
+          "passes": {
+            "total": 593,
+            "key": 32,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 1,
+            "interceptions": 5
+          },
+          "duels": {
+            "total": 119,
+            "won": 59
+          },
+          "dribbles": {
+            "attempts": 31,
+            "success": 16,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 28,
+            "committed": 8
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 3,
+            "minutes": 265,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 4,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 8930,
+        "name": "G. Mera",
+        "firstname": "Germán",
+        "lastname": "Mera Cáceres",
+        "age": 34,
+        "birth": {
+          "date": "1990-03-05",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "188 cm",
+        "weight": "87 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/8930.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 9873,
+        "name": "M. Rea",
+        "firstname": "Martín",
+        "lastname": "Rea Zuccotti",
+        "age": 28,
+        "birth": {
+          "date": "1997-11-13",
+          "place": "Montevideo",
+          "country": "Uruguay"
+        },
+        "nationality": "Uruguay",
+        "height": "184 cm",
+        "weight": "80 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/9873.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 7,
+            "lineups": 6,
+            "minutes": 496,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.540000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 1,
+            "bench": 2
+          },
+          "shots": {
+            "total": 1,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 168,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 5,
+            "blocks": 4,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 32,
+            "won": 16
+          },
+          "dribbles": {
+            "attempts": 1,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 180,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 10148,
+        "name": "Á. Plata",
+        "firstname": "Ánderson Daniel",
+        "lastname": "Plata Guillén",
+        "age": 35,
+        "birth": {
+          "date": "1990-11-08",
+          "place": "Villanueva",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "172",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/10148.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 15,
+            "lineups": 10,
+            "minutes": 810,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.600000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": 6,
+            "bench": 5
+          },
+          "shots": {
+            "total": 5,
+            "on": 2
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 89,
+            "key": 11,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 8,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 58,
+            "won": 19
+          },
+          "dribbles": {
+            "attempts": 12,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 1,
+            "minutes": 133,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 1,
+            "bench": 3
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 10285,
+        "name": "J. Reina",
+        "firstname": "Javier Arley",
+        "lastname": "Reina Calvo",
+        "age": 36,
+        "birth": {
+          "date": "1989-01-04",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "173",
+        "weight": "69",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/10285.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 28,
+            "lineups": 24,
+            "minutes": 1755,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.903571",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 4,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 19,
+            "on": 14
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 736,
+            "key": 36,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 22,
+            "blocks": 3,
+            "interceptions": 10
+          },
+          "duels": {
+            "total": 186,
+            "won": 80
+          },
+          "dribbles": {
+            "attempts": 38,
+            "success": 23,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 34,
+            "committed": 23
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 1,
+            "minutes": 50,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 1,
+            "bench": 2
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 10420,
+        "name": "J. Quintero",
+        "firstname": "Juan Sebastián",
+        "lastname": "Quintero Fletcher",
+        "age": 30,
+        "birth": {
+          "date": "1995-03-23",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183",
+        "weight": "79",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/10420.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13157,
+        "name": "J. Vásquez",
+        "firstname": "Jhon Freduar",
+        "lastname": "Vásquez Anaya",
+        "age": 30,
+        "birth": {
+          "date": "1995-02-12",
+          "place": "Cartagena",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "176",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13157.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13361,
+        "name": "J. Quiñónes",
+        "firstname": "Julián Alveiro",
+        "lastname": "Quiñónes García",
+        "age": 36,
+        "birth": {
+          "date": "1989-11-05",
+          "place": "Tumáco",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "195",
+        "weight": "84",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13361.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 14,
+            "lineups": 9,
+            "minutes": 566,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.812500",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 7,
+            "on": 2
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 235,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 5,
+            "blocks": 6,
+            "interceptions": 8
+          },
+          "duels": {
+            "total": 49,
+            "won": 32
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 5,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13382,
+        "name": "J. Wallens",
+        "firstname": "Johan",
+        "lastname": "Wallens Otálvaro",
+        "age": 33,
+        "birth": {
+          "date": "1992-08-03",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "190",
+        "weight": "75",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13382.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13386,
+        "name": "E. Caicedo",
+        "firstname": "Eduar Hernán",
+        "lastname": "Caicedo Solís",
+        "age": 30,
+        "birth": {
+          "date": "1995-04-23",
+          "place": "Puerto Concordia",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "188 cm",
+        "weight": "74 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13386.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13389,
+        "name": "K. Moreno",
+        "firstname": "Kevin Joacid",
+        "lastname": "Moreno Sinisterra",
+        "age": 25,
+        "birth": {
+          "date": "2000-07-23",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "187",
+        "weight": "87",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13389.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13393,
+        "name": "A. Arroyo",
+        "firstname": "Andrés Juan",
+        "lastname": "Arroyo Romero",
+        "age": 23,
+        "birth": {
+          "date": "2002-01-20",
+          "place": "Montería",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "175",
+        "weight": "68",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13393.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.483333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": 1,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 61,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 12,
+            "won": 1
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 5
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13429,
+        "name": "F. Viáfara",
+        "firstname": "Fabián Alexis",
+        "lastname": "Viáfara Alarcón",
+        "age": 33,
+        "birth": {
+          "date": "1992-03-16",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "167",
+        "weight": "65",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13429.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 8,
+            "lineups": 6,
+            "minutes": 599,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.662500",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 1,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 137,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 19,
+            "blocks": 1,
+            "interceptions": 6
+          },
+          "duels": {
+            "total": 56,
+            "won": 30
+          },
+          "dribbles": {
+            "attempts": 6,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 12
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 3,
+            "minutes": 270,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13435,
+        "name": "A. Estupiñán",
+        "firstname": "Andrey",
+        "lastname": "Estupiñán Quiñonez",
+        "age": 31,
+        "birth": {
+          "date": "1994-07-05",
+          "place": "El Charco",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "177",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13435.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 16,
+            "lineups": 12,
+            "minutes": 895,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.968750",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 4,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 14,
+            "on": 6
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 255,
+            "key": 9,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 12,
+            "blocks": null,
+            "interceptions": 6
+          },
+          "duels": {
+            "total": 147,
+            "won": 76
+          },
+          "dribbles": {
+            "attempts": 9,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 45,
+            "committed": 24
+          },
+          "cards": {
+            "yellow": 4,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 1,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 1,
+            "minutes": 140,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 1,
+            "bench": 2
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 1,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13498,
+        "name": "J. Marulanda",
+        "firstname": "Jonathan",
+        "lastname": "Marulanda Vásquez",
+        "age": 30,
+        "birth": {
+          "date": "1995-11-21",
+          "place": "Caldas",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "178",
+        "weight": "70",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13498.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 29,
+            "lineups": 26,
+            "minutes": 2346,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.818518",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 4,
+            "bench": 5
+          },
+          "shots": {
+            "total": 11,
+            "on": 3
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 904,
+            "key": 18,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 39,
+            "blocks": 9,
+            "interceptions": 24
+          },
+          "duels": {
+            "total": 179,
+            "won": 106
+          },
+          "dribbles": {
+            "attempts": 13,
+            "success": 8,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 21,
+            "committed": 23
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13592,
+        "name": "T. Gutiérrez",
+        "firstname": "Teófilo Antonio",
+        "lastname": "Gutiérrez Roncancio",
+        "age": 41,
+        "birth": {
+          "date": "1985-05-17",
+          "place": "Barranquilla",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "181",
+        "weight": "73",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13592.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Forward",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13604,
+        "name": "A. Correa",
+        "firstname": "Andrés",
+        "lastname": "Correa Valencia",
+        "age": 31,
+        "birth": {
+          "date": "1994-01-29",
+          "place": "Envigado",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "178",
+        "weight": "73",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13604.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1127,
+            "name": "Deportivo Cali",
+            "logo": "https://media.api-sports.io/football/teams/1127.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 40,
+            "lineups": 40,
+            "minutes": 3522,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.897500",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 29,
+            "on": 11
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 2,
+            "saves": 1
+          },
+          "passes": {
+            "total": 1160,
+            "key": 36,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 54,
+            "blocks": 17,
+            "interceptions": 35
+          },
+          "duels": {
+            "total": 269,
+            "won": 141
+          },
+          "dribbles": {
+            "attempts": 31,
+            "success": 17,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 25,
+            "committed": 48
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}

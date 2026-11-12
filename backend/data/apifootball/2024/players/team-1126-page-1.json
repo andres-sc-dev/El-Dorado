@@ -1,0 +1,2508 @@
+{
+  "get": "players",
+  "parameters": {
+    "team": "1126",
+    "season": "2024",
+    "page": 1
+  },
+  "errors": [],
+  "results": 20,
+  "paging": {
+    "current": 1,
+    "total": 4
+  },
+  "response": [
+    {
+      "player": {
+        "id": 6417,
+        "name": "E. López",
+        "firstname": "Edwar Manuel",
+        "lastname": "López Gomez",
+        "age": 30,
+        "birth": {
+          "date": "1995-03-09",
+          "place": "Apartadó",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "179",
+        "weight": "79",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6417.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6626,
+        "name": "G. Torres",
+        "firstname": "Gustavo Adolfo",
+        "lastname": "Torres Grueso",
+        "age": 29,
+        "birth": {
+          "date": "1996-06-15",
+          "place": "La Cumbre",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "181",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6626.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 18,
+            "lineups": 13,
+            "minutes": 596,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.660000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 20,
+            "on": 8
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 163,
+            "key": 5,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 9,
+            "blocks": 1,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 80,
+            "won": 28
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 14
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 129,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 10291,
+        "name": "J. Cardona",
+        "firstname": "Jown Anderson",
+        "lastname": "Cardona Agudelo",
+        "age": 30,
+        "birth": {
+          "date": "1995-01-09",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "170 cm",
+        "weight": "64 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/10291.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 10407,
+        "name": "S. Tréllez",
+        "firstname": "Santiago",
+        "lastname": "Tréllez Viveros",
+        "age": 35,
+        "birth": {
+          "date": "1990-01-17",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185 cm",
+        "weight": "76 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/10407.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 28,
+            "lineups": 14,
+            "minutes": 1392,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.675000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 14,
+            "out": 11,
+            "bench": 18
+          },
+          "shots": {
+            "total": 26,
+            "on": 13
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 237,
+            "key": 13,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": 1,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 122,
+            "won": 43
+          },
+          "dribbles": {
+            "attempts": 12,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 6,
+            "committed": 12
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 0,
+            "minutes": 43,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 0,
+            "bench": 3
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13184,
+        "name": "J. Nieva",
+        "firstname": "Juan Diego",
+        "lastname": "Nieva Guzmán",
+        "age": 26,
+        "birth": {
+          "date": "1999-02-13",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "175 cm",
+        "weight": "71 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13184.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 9,
+            "lineups": 4,
+            "minutes": 519,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.922222",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": 3,
+            "bench": 7
+          },
+          "shots": {
+            "total": 5,
+            "on": 2
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 303,
+            "key": 7,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 16,
+            "blocks": 1,
+            "interceptions": 4
+          },
+          "duels": {
+            "total": 50,
+            "won": 30
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 8
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13247,
+        "name": "A. Amaya",
+        "firstname": "Andrés Felipe",
+        "lastname": "Amaya Rivera",
+        "age": 24,
+        "birth": {
+          "date": "2001-04-25",
+          "place": "Barrancabermeja",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "168",
+        "weight": "65",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13247.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 22,
+            "lineups": 16,
+            "minutes": 714,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.655555",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 15,
+            "on": 8
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 150,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 15,
+            "blocks": 3,
+            "interceptions": 5
+          },
+          "duels": {
+            "total": 108,
+            "won": 54
+          },
+          "dribbles": {
+            "attempts": 22,
+            "success": 10,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 20,
+            "committed": 9
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 46,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13284,
+        "name": "G. García",
+        "firstname": "Gilberto",
+        "lastname": "García Olarte",
+        "age": 37,
+        "birth": {
+          "date": "1987-01-27",
+          "place": "Santa Marta",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "180 cm",
+        "weight": "73 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13284.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13287,
+        "name": "C. Mafla",
+        "firstname": "Christian Camilo",
+        "lastname": "Mafla Rebellón",
+        "age": 32,
+        "birth": {
+          "date": "1993-01-15",
+          "place": "Palmira",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "175",
+        "weight": "74",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13287.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 24,
+            "lineups": 24,
+            "minutes": 2071,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.954166",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 13,
+            "on": 6
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 509,
+            "key": 21,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 31,
+            "blocks": 9,
+            "interceptions": 22
+          },
+          "duels": {
+            "total": 152,
+            "won": 91
+          },
+          "dribbles": {
+            "attempts": 24,
+            "success": 10,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 30,
+            "committed": 21
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 345,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13386,
+        "name": "E. Caicedo",
+        "firstname": "Eduar Hernán",
+        "lastname": "Caicedo Solís",
+        "age": 30,
+        "birth": {
+          "date": "1995-04-23",
+          "place": "Puerto Concordia",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "188 cm",
+        "weight": "74 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13386.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13415,
+        "name": "E. Cabezas",
+        "firstname": "Ederson Ancízar",
+        "lastname": "Cabezas Quiñónez",
+        "age": 25,
+        "birth": {
+          "date": "2000-07-04",
+          "place": "Roberto Payán",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "193 cm",
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13415.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13416,
+        "name": "V. Cabezas",
+        "firstname": "Víctor Andrés",
+        "lastname": "Cabezas Vergel",
+        "age": 28,
+        "birth": {
+          "date": "1997-11-02",
+          "place": "Pasto",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "190",
+        "weight": "85",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13416.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13431,
+        "name": "C. Ayala",
+        "firstname": "Camilo Andrés",
+        "lastname": "Ayala Quintero",
+        "age": 39,
+        "birth": {
+          "date": "1986-06-23",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "179 cm",
+        "weight": "74 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13431.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 12,
+            "lineups": 6,
+            "minutes": 402,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.490000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": 5,
+            "bench": 13
+          },
+          "shots": {
+            "total": 3,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 170,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 1,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 55,
+            "won": 28
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 8,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13432,
+        "name": "G. Britos",
+        "firstname": "Gustavo Ezequiel",
+        "lastname": "Britos",
+        "age": 34,
+        "birth": {
+          "date": "1990-02-20",
+          "place": "Pontevedra",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "177 cm",
+        "weight": "74 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13432.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 2,
+            "minutes": 158,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.683333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 4,
+            "out": 2,
+            "bench": 5
+          },
+          "shots": {
+            "total": 5,
+            "on": 1
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 26,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 20,
+            "won": 8
+          },
+          "dribbles": {
+            "attempts": 3,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 1,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13440,
+        "name": "K. Rendón",
+        "firstname": "Kévin Camilo",
+        "lastname": "Rendón Guerrero",
+        "age": 32,
+        "birth": {
+          "date": "1993-01-08",
+          "place": "Tumáco",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183",
+        "weight": "74",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13440.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 0,
+            "minutes": 100,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.780000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": 0,
+            "bench": 10
+          },
+          "shots": {
+            "total": 3,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 54,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": 2,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 10,
+            "won": 6
+          },
+          "dribbles": {
+            "attempts": 1,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13450,
+        "name": "J. Campaña",
+        "firstname": "Johan Camilo",
+        "lastname": "Campaña Barrera",
+        "age": 23,
+        "birth": {
+          "date": "2002-09-09",
+          "place": "Pasto",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "170",
+        "weight": "66",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13450.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 9,
+            "lineups": 2,
+            "minutes": 202,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.725000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 7,
+            "out": 2,
+            "bench": 10
+          },
+          "shots": {
+            "total": 5,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 79,
+            "key": 6,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 5,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 50,
+            "won": 23
+          },
+          "dribbles": {
+            "attempts": 9,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 12,
+            "committed": 6
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13454,
+        "name": "R. Vanegas",
+        "firstname": "Ray Andrés",
+        "lastname": "Vanegas Zúñiga",
+        "age": 32,
+        "birth": {
+          "date": "1993-03-12",
+          "place": "Sincelejo",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "178",
+        "weight": "80",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13454.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 15,
+            "lineups": 4,
+            "minutes": 396,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.675000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 11,
+            "out": 6,
+            "bench": 14
+          },
+          "shots": {
+            "total": 3,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 46,
+            "key": 7,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 2,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 18,
+            "won": 11
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 3
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 0,
+            "minutes": 49,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 0,
+            "bench": 2
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13455,
+        "name": "H. Vergara",
+        "firstname": "Hassan Leandro",
+        "lastname": "Vergara Ramos",
+        "age": 26,
+        "birth": {
+          "date": "1999-04-03",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "186",
+        "weight": "79",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13455.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13460,
+        "name": "C. Arrieta",
+        "firstname": "Cristian Camilo",
+        "lastname": "Arrieta Medina",
+        "age": 29,
+        "birth": {
+          "date": "1996-01-03",
+          "place": "Cartagena",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "172",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13460.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 32,
+            "lineups": 29,
+            "minutes": 2239,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.921875",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 7,
+            "on": 3
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 1037,
+            "key": 23,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 34,
+            "blocks": 3,
+            "interceptions": 39
+          },
+          "duels": {
+            "total": 210,
+            "won": 129
+          },
+          "dribbles": {
+            "attempts": 43,
+            "success": 23,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 38,
+            "committed": 29
+          },
+          "cards": {
+            "yellow": 11,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 307,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13462,
+        "name": "S. Jiménez",
+        "firstname": "Santiago",
+        "lastname": "Jiménez Mejía",
+        "age": 27,
+        "birth": {
+          "date": "1998-03-23",
+          "place": "San Antonio de Prado",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "180",
+        "weight": "70",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13462.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 35,
+            "lineups": 23,
+            "minutes": 1447,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.748275",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 12,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 6,
+            "on": 3
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 520,
+            "key": 6,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 40,
+            "blocks": 3,
+            "interceptions": 18
+          },
+          "duels": {
+            "total": 160,
+            "won": 84
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 16,
+            "committed": 31
+          },
+          "cards": {
+            "yellow": 5,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13497,
+        "name": "B. Carabalí",
+        "firstname": "Brayan Stiven",
+        "lastname": "Carabalí Bonilla",
+        "age": 26,
+        "birth": {
+          "date": "1999-02-25",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "188",
+        "weight": "93",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13497.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 34,
+            "lineups": 33,
+            "minutes": 2862,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.951515",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 17,
+            "on": 3
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 1187,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 28,
+            "blocks": 17,
+            "interceptions": 36
+          },
+          "duels": {
+            "total": 245,
+            "won": 150
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 24,
+            "committed": 34
+          },
+          "cards": {
+            "yellow": 12,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1126,
+            "name": "Deportivo Pasto",
+            "logo": "https://media.api-sports.io/football/teams/1126.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 360,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}

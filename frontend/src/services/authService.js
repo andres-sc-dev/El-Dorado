@@ -18,8 +18,3 @@ export async function getCurrentUser() {
 export async function logoutUser() {
   await apiClient.post('/api/auth/logout', {});
 }
-
-export async function createBalanceMovement(type, amount) {
-  const response = await apiClient.post(`/api/auth/balance/${type}`, { amount });
-  return response.balance;
-}

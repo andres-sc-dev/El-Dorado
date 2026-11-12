@@ -1,112 +1,64 @@
 # El Dorado API
 
-**Apuestas del Fútbol Colombiano**  
-*Vuelve la época dorada*
+API en Node.js + Express. Cada motor tiene su propia conexión en `src/config/`:
 
-API Express sin TypeScript para SQL Server. Las consultas de dominio usan una
-lista blanca de tablas/columnas y parámetros `mssql`; nunca se concatenan datos
-del cliente en los valores SQL.
+| Motor | Archivo | Qué guarda |
+|---|---|---|
+| SQL Server | `sqlserver.js` | Identidad: users, customer, login_history, role, document_type |
+| MySQL | `mysql.js` | Competición: ligas, partidos, cuotas |
+| PostgreSQL | `postgres.js` | Dinero (cuentas, apuestas, movimientos) y equipos |
+| MongoDB | `mongo.js` | Mercados, resultados, reglas de juego y auditoría |
 
-## Puesta en marcha (orden de dependencias)
+Si un motor está caído, el servidor arranca igual y solo las rutas que lo usan responden 503 (middleware `requireDb`).
 
-1. Crea la base de datos `el_dorado` en SQL Server y ejecuta el script de
-   esquema y catálogos iniciales del proyecto.
-2. Copia `.env.example` a `.env`, completa `DB_*` y define un `JWT_SECRET`
-   largo. En producción usa HTTPS, `COOKIE_SECURE=true` y
-   `COOKIE_SAMESITE=none` si el frontend está en otro sitio.
-3. Desde `backend/`, instala dependencias con `npm ci`.
-4. Inicia con `npm start` (o `npm run dev` durante desarrollo).
-5. Verifica primero `GET /api/auth/health`, después login y finalmente las
-   operaciones de tablas que dependan de sus claves foráneas.
+## Capas
 
-Para iniciar el frontend y el backend en contenedores de desarrollo, copia
-`backend/.env.example` a `backend/.env` y configura sus credenciales. Luego,
-desde la raíz del proyecto, ejecuta `docker compose up`. SQL Server debe estar
-disponible en el equipo anfitrión.
+`routes` → `middleware` → `controllers` (solo req/res) → `services` (reglas) → `repositories` (SQL parametrizado) → `config` (pools).
 
-## Autenticación
+## Comandos
 
-`POST /api/auth/login` recibe `{ "username": "...", "password": "..." }` y
-devuelve el usuario sin `password_hash`. La sesión se guarda únicamente en la
-cookie `el_dorado_token` (`HttpOnly`). El navegador debe enviar
-`credentials: "include"`. `GET /api/auth/me` valida la sesión y
-`POST /api/auth/logout` la elimina.
+```bash
+npm run dev         # servidor con recarga automática
+npm run seed:demo   # crea demo (USR) y admin (ADM) y copia BET_MIN_COP/BET_MAX_COP a PostgreSQL
+npm test            # seguridad y reglas de liquidación (no necesitan bases)
+npm run test:integration   # contra las 4 bases; correrlo dentro del contenedor (ver docs/PRUEBAS.md)
+node scripts/simulate-wompi-webhook.js <reference> APPROVED --amount=50000   # webhook firmado sin túnel
+```
 
-El saldo real se calcula desde `balance_movement` asociado a la cuenta activa
-del cliente. Los endpoints autenticados `POST /api/auth/balance/deposit` y
-`POST /api/auth/balance/withdraw` reciben `{ "amount": 50000 }` y registran
-cada operación en esa tabla; por eso el saldo se conserva al cerrar o
-actualizar la página.
+Lo normal es correrlo con `docker compose up -d` desde la raíz (ver el README principal). Para correrlo fuera de Docker, copia `../.env.example` como `backend/.env` y apunta los `*_HOST` y `*_PORT` a los puertos publicados (por defecto 14333, 13306, 15432 y 27027).
 
 ## Endpoints
 
-- `GET /api/catalogs` devuelve todos los catálogos agrupados. También se puede
-  consultar `GET /api/catalogs/:catalogo`. Son de solo lectura.
-- Cada tabla de dominio tiene `GET /api/:tabla` y `POST /api/:tabla`, salvo
-  `login_history`, que solo expone `GET`:
-  `country`, `sport`, `stadium`, `company`, `game_rule`, `league`,
-  `team`, `matchday`, `customer`, `player`, `team_stats`, `account`, `match`,
-  `player_stats`, `odds`, `balance_movement` y `bet`.
-- `GET /api/users` y `GET /api/users/:id` son consultas auxiliares de solo
-  lectura para resolver la relación de `customer`; los usuarios se crean
-  exclusivamente mediante `POST /api/auth/register`.
-- También se puede consultar un registro por id con
-  `GET /api/:tabla/:id`; `GET /api/users/:id/balance` calcula el saldo a
-  partir de los movimientos registrados.
-- `GET /api/bets` devuelve únicamente las apuestas de la sesión autenticada.
-  `POST /api/bets` recibe `{ "stake": 1000, "selections": [{ "matchId": 1,
-  "oddId": 1 }] }` y, en una transacción SQL Server, valida la cuota, inserta
-  la apuesta y registra el débito correspondiente en `balance_movement`.
-  El cliente nunca puede indicar `customer_id` ni reutilizar una cuenta ajena.
+| Método y ruta | Sesión | Motor | Notas |
+|---|---|---|---|
+| `GET /api/health` | No | Todos | Estado de cada motor. 200 siempre; `status` es `ok` o `degraded`. |
+| `POST /api/auth/login` | No | SQL Server | Crea la cookie HttpOnly `el_dorado_token`. |
+| `POST /api/auth/register` | No | SQL Server + PostgreSQL | Si falla la cuenta en PostgreSQL, se borra el usuario creado. |
+| `GET /api/auth/me` | Sí | SQL Server | El saldo llega como `null` si PostgreSQL está caído. |
+| `POST /api/auth/logout` | No | — | |
+| `POST /api/auth/google` | No (idToken de Firebase) | SQL Server | 200 con cookie si la cuenta existe; 202 `PROFILE_INCOMPLETE` si es nueva; 409 si el correo es de una cuenta LOCAL; 401 si el token no sirve. |
+| `POST /api/auth/google/complete` | No (idToken de Firebase) | SQL Server + PostgreSQL | `{idToken, document_type, document_number, birth_date, accepted_terms}`. 201 con cookie; 400 con `fields`; 409 si hay un duplicado; 503 compensado. |
+| `POST /api/auth/balance/withdraw` | Sí | — | **Deshabilitado (403):** retiros próximamente. El depósito directo se eliminó. |
+| `GET /api/payments/config` | Sí | — | Límites de recarga (`min_cop`, `max_cop`, `currency`) y `sandbox_ready`. |
+| `POST /api/payments/prepare` | Sí, rol **USR** | Firestore | `{amountCop}` entero. Devuelve `reference`, `amountInCents`, `currency`, `signature` y `publicKey`. 503 si las llaves no son de Sandbox. |
+| `GET /api/payments/:reference` | Dueño o **ADM** | Firestore + Wompi + PostgreSQL | `?transaction_id=` opcional. Consulta a Wompi con la llave privada y acredita con `fn_recargar` si está APPROVED. |
+| `POST /api/payments/webhook` | No (checksum) | Firestore + PostgreSQL | Cuerpo crudo. 401 si el checksum no coincide. Idempotente. |
+| `GET /api/matches` | No | MySQL (+ PostgreSQL y MongoDB opcionales) | Partidos con equipos, mercados, cuotas, estado y límites de apuesta. |
+| `POST /api/bets` | Sí, rol **USR** | Los 4 | Header `Idempotency-Key` (UUID). Cuerpo: `match_code`, `market_code`, `selection`, `line`, `stake` y `expected_odds` (opcional). 201 si la crea, 200 si la clave ya tenía apuesta, 409 `ODDS_CHANGED` con `current_odds`. |
+| `GET /api/bets/me` (y `/api/bets/:ticketCode`) | Sí | PostgreSQL + MySQL | Apuestas del usuario con el partido y los nombres del mercado. |
+| `GET /api/wallet/me` | Sí | PostgreSQL | Saldo y últimos movimientos. |
+| `GET /api/customer`, `/api/login_history` | Sí | SQL Server | Solo los datos del dueño de la sesión. |
+| `GET /api/account`, `/api/balance_movement`, `/api/users/:id/balance` | Sí | PostgreSQL | Solo los datos del dueño de la sesión. |
+| `GET /api/admin/matches` | Sí, rol **ADM** | MySQL + PostgreSQL | Partidos con sus apuestas abiertas. |
+| `POST /api/admin/matches/:matchCode/finish` | Sí, rol **ADM** | MySQL + PostgreSQL + MongoDB | Cuerpo `{home_goals, away_goals}`. Marca FINISHED, liquida con `fn_liquidar_partido` y devuelve el resumen. 409 si ya estaba finalizado. |
+| `GET /api/country`, `sport`, `league`, `stadium`, `matchday`, `match`, `odds` (y `/:id`) | No | MySQL | |
+| `GET /api/team`, `player`, `team_stats`, `player_stats` (y `/:id`) | No | PostgreSQL | |
+| `GET /api/game_rule`, `/api/markets` | No | MongoDB | `markets` trae cada mercado con sus resultados. |
+| `GET /api/catalogs` y `/api/catalogs/:name` | No | Varios | Los catálogos de un motor caído salen en `unavailable`. |
+| Cualquier otro `POST`, `PUT`, `PATCH` o `DELETE` | — | — | **403.** |
 
-Ejemplos:
+## Errores
 
-```bash
-curl http://localhost:4000/api/catalogs
-curl -X POST http://localhost:4000/api/sport \
-  -H "Content-Type: application/json" \
-  -H "Cookie: el_dorado_token=<sesion>" \
-  -d '{"name":"Fútbol"}'
-curl http://localhost:4000/api/league
-```
+400 validación, 401 sesión, 403 rol o acción deshabilitada, 404, 409 conflicto, 503 base caída (con `database` en la respuesta), 500 otro.
 
-### Carga inicial de tablas
-
-Cada ejemplo requiere `Content-Type: application/json`. Los campos omitidos son
-opcionales o tienen un valor por defecto en SQL Server.
-
-| Tabla | POST | Body mínimo | Dependencias previas |
-| --- | --- | --- | --- |
-| `country` | `/api/country` | `{"name":"Colombia","code":"COL"}` | Ninguna |
-| `sport` | `/api/sport` | `{"name":"Fútbol"}` | Ninguna |
-| `stadium` | `/api/stadium` | `{"name":"El Campín","city":"Bogotá","capacity":36000}` | Ninguna |
-| `company` | `/api/company` | `{"name":"El Dorado","tax_id":"900123456","license":"LIC-1","address":"Calle 1","phone":"3000000000","email":"admin@eldorado.example"}` | Ninguna |
-| `game_rule` | `/api/game_rule` | `{"sport_id":1,"description":"Reglas de fútbol"}` | `sport` |
-| `league` | `/api/league` | `{"country_id":1,"sport_id":1,"name":"Liga Colombia","season":"2026"}` | `country`, `sport` |
-| `team` | `/api/team` | `{"league_id":1,"stadium_id":1,"name":"Equipo Dorado","crest_url":"https://example.test/crest.png"}` | `league`, `stadium` |
-| `matchday` | `/api/matchday` | `{"league_id":1,"number":1,"date":"2026-09-01"}` | `league` |
-| `customer` | `/api/customer` | `{"user_id":1,"full_name":"Ana Pérez","document_number":"100000001","birth_date":"1995-01-15","phone":"3000000000","address":"Calle 1"}` | Usuario creado por `/api/auth/register` |
-| `player` | `/api/player` | `{"team_id":1,"name":"Luis Díaz","position":4,"jersey_number":7,"nationality_id":1,"birth_date":"1997-01-13"}` | `team`, `country` y `player_position` |
-| `team_stats` | `/api/team_stats` | `{"team_id":1,"points":3,"matches_played":1,"wins":1,"draws":0,"losses":0,"goals_for":2,"goals_against":0}` | `team` |
-| `account` | `/api/account` | `{"customer_id":1,"account_number":"ACC-0001","status":1}` | `customer` y `account_status` |
-| `match` | `/api/match` | `{"league_id":1,"matchday_id":1,"home_team_id":1,"away_team_id":2,"stadium_id":1,"match_date":"2026-09-01T20:00:00Z","status":0,"home_goals":0,"away_goals":0}` | `league`, `matchday`, dos `team`, `stadium` y `match_status` |
-| `player_stats` | `/api/player_stats` | `{"player_id":1,"goals":1,"assists":0,"yellow_cards":0,"red_cards":0,"matches_played":1}` | `player` |
-| `odds` | `/api/odds` | `{"match_id":1,"player_id":1,"market":1,"outcome":1,"odd_value":1.85}` | `match`, opcionalmente `player`, `odds_market` y `odds_outcome` |
-| `balance_movement` | `/api/balance_movement` | `{"account_id":1,"type":1,"amount":50000,"resulting_balance":50000}` | `account` y `movement_type` |
-| `bet` | `/api/bet` | `{"customer_id":1,"match_id":1,"odd_id":1,"amount":1000,"odd_value_at_bet":1.85,"potential_payout":1850,"status":0}` | `customer`, `match`, `odds` y `bet_status` |
-
-Después de cada POST, usa `GET /api/<tabla>` (o
-`GET /api/<tabla>/<id>`) para confirmar el registro. `GET /api/login_history`
-es únicamente de lectura y se llena automáticamente durante login; no existe
-POST manual. Los ocho catálogos se consultan con
-`GET /api/catalogs/<catalogo>` o todos juntos con `GET /api/catalogs`.
-
-El orden recomendado desde una base vacía es: `country`, `sport`, `stadium`,
-`company`, `game_rule`, `league`, `team`, `matchday`, registrar usuarios,
-`customer`, `player`, `team_stats`, `account`, `match`, `player_stats`, `odds`,
-`balance_movement` y finalmente `bet`.
-
-Los campos obligatorios se validan antes de insertar. Las respuestas
-identifican errores de clave foránea (`400`) y de unicidad (`409`) sin revelar
-detalles internos. Las contraseñas se almacenan con bcrypt y nunca se envían
-en respuestas.
+Las respuestas de error traen `error` (texto para la persona) y, cuando aplica, `code` (por ejemplo `INSUFFICIENT_FUNDS`, `ODDS_CHANGED` o `MATCH_STARTED`).

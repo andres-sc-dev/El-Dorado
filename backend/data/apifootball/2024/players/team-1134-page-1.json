@@ -1,0 +1,2582 @@
+{
+  "get": "players",
+  "parameters": {
+    "team": "1134",
+    "season": "2024",
+    "page": 1
+  },
+  "errors": [],
+  "results": 20,
+  "paging": {
+    "current": 1,
+    "total": 3
+  },
+  "response": [
+    {
+      "player": {
+        "id": 13198,
+        "name": "K. Viveros",
+        "firstname": "Kevin Stiben",
+        "lastname": "Viveros Rodallega",
+        "age": 25,
+        "birth": {
+          "date": "2000-04-26",
+          "place": "Buenaventura",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "180",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13198.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 21,
+            "lineups": 19,
+            "minutes": 1640,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.807692",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 8,
+            "bench": 2
+          },
+          "shots": {
+            "total": 13,
+            "on": 8
+          },
+          "goals": {
+            "total": 8,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 72,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 2,
+            "blocks": 1,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 56,
+            "won": 26
+          },
+          "dribbles": {
+            "attempts": 10,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 17,
+            "committed": 11
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 2
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13250,
+        "name": "J. Caicedo",
+        "firstname": "Jhonathan",
+        "lastname": "Caicedo Vergara",
+        "age": 30,
+        "birth": {
+          "date": "1995-11-15",
+          "place": "Caloto",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "181",
+        "weight": "76",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13250.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 66,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.900000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": 2,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 23,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 2,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 14,
+            "won": 7
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13379,
+        "name": "J. Ramos",
+        "firstname": "Jorge Luis",
+        "lastname": "Ramos Sánchez",
+        "age": 33,
+        "birth": {
+          "date": "1992-10-02",
+          "place": "Talaigua Nuevo",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "184",
+        "weight": "80",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13379.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13429,
+        "name": "F. Viáfara",
+        "firstname": "Fabián Alexis",
+        "lastname": "Viáfara Alarcón",
+        "age": 33,
+        "birth": {
+          "date": "1992-03-16",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "167",
+        "weight": "65",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13429.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 20,
+            "lineups": 20,
+            "minutes": 1684,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.662500",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 5,
+            "bench": 0
+          },
+          "shots": {
+            "total": 1,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 137,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 19,
+            "blocks": 1,
+            "interceptions": 6
+          },
+          "duels": {
+            "total": 56,
+            "won": 30
+          },
+          "dribbles": {
+            "attempts": 6,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 12
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13515,
+        "name": "Y. Díaz",
+        "firstname": "Yesid Alberto",
+        "lastname": "Díaz Montero",
+        "age": 28,
+        "birth": {
+          "date": "1997-07-24",
+          "place": "Arroyohondo",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "188",
+        "weight": "75",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13515.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13581,
+        "name": "L. Escalante",
+        "firstname": "Léiner de Jesús",
+        "lastname": "Escalante Escorcia",
+        "age": 34,
+        "birth": {
+          "date": "1991-12-18",
+          "place": "Soledad",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "170 cm",
+        "weight": "74 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13581.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 21,
+            "lineups": 8,
+            "minutes": 829,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.794736",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 13,
+            "out": 8,
+            "bench": 21
+          },
+          "shots": {
+            "total": 15,
+            "on": 7
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 155,
+            "key": 7,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 8,
+            "blocks": null,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 92,
+            "won": 46
+          },
+          "dribbles": {
+            "attempts": 9,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 27,
+            "committed": 11
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": 0,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 46,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13599,
+        "name": "A. Pérez",
+        "firstname": "Andrés Felipe",
+        "lastname": "Pérez Mendoza",
+        "age": 26,
+        "birth": {
+          "date": "1999-05-07",
+          "place": null,
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "180",
+        "weight": "70",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13599.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 43,
+            "lineups": 25,
+            "minutes": 504,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.566666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 18,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 8,
+            "assists": 0,
+            "saves": 11
+          },
+          "passes": {
+            "total": 172,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 5,
+            "won": 3
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 1
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13604,
+        "name": "A. Correa",
+        "firstname": "Andrés",
+        "lastname": "Correa Valencia",
+        "age": 31,
+        "birth": {
+          "date": "1994-01-29",
+          "place": "Envigado",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "178",
+        "weight": "73",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13604.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 41,
+            "lineups": 41,
+            "minutes": 3613,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.897500",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 3,
+            "bench": 0
+          },
+          "shots": {
+            "total": 29,
+            "on": 11
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 2,
+            "saves": 1
+          },
+          "passes": {
+            "total": 1160,
+            "key": 36,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 54,
+            "blocks": 17,
+            "interceptions": 35
+          },
+          "duels": {
+            "total": 269,
+            "won": 141
+          },
+          "dribbles": {
+            "attempts": 31,
+            "success": 17,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 25,
+            "committed": 48
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 134,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13606,
+        "name": "A. Murillo",
+        "firstname": "Andrés Felipe",
+        "lastname": "Murillo Segura",
+        "age": 29,
+        "birth": {
+          "date": "1996-04-01",
+          "place": "Zarzal",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183 cm",
+        "weight": "82 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13606.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13609,
+        "name": "A. Torralvo",
+        "firstname": "Amaury",
+        "lastname": "Torralvo Polo",
+        "age": 31,
+        "birth": {
+          "date": "1994-01-12",
+          "place": "Cartagena",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "173",
+        "weight": "70",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13609.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 26,
+            "lineups": 17,
+            "minutes": 1378,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.636000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 9,
+            "out": 11,
+            "bench": 18
+          },
+          "shots": {
+            "total": 9,
+            "on": 3
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 459,
+            "key": 22,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 9,
+            "blocks": 1,
+            "interceptions": 5
+          },
+          "duels": {
+            "total": 87,
+            "won": 34
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 13,
+            "committed": 13
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 148,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13611,
+        "name": "D. Camacho",
+        "firstname": "David Andrés",
+        "lastname": "Camacho Valencia",
+        "age": 28,
+        "birth": {
+          "date": "1997-06-12",
+          "place": "Bogotá",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "188",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13611.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 26,
+            "lineups": 14,
+            "minutes": 1385,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.816000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 12,
+            "out": 12,
+            "bench": 13
+          },
+          "shots": {
+            "total": 23,
+            "on": 10
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 420,
+            "key": 23,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 23,
+            "blocks": 2,
+            "interceptions": 4
+          },
+          "duels": {
+            "total": 145,
+            "won": 60
+          },
+          "dribbles": {
+            "attempts": 27,
+            "success": 14,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 13,
+            "committed": 24
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 57,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13618,
+        "name": "J. Mahecha",
+        "firstname": "Juan Alejandro",
+        "lastname": "Mahecha Molina",
+        "age": 38,
+        "birth": {
+          "date": "1987-07-22",
+          "place": "Tunja",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "176 cm",
+        "weight": "70 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13618.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 25,
+            "lineups": 13,
+            "minutes": 1162,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.708333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 12,
+            "out": 8,
+            "bench": 18
+          },
+          "shots": {
+            "total": 8,
+            "on": 2
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 517,
+            "key": 10,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 22,
+            "blocks": 4,
+            "interceptions": 12
+          },
+          "duels": {
+            "total": 106,
+            "won": 51
+          },
+          "dribbles": {
+            "attempts": 8,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 15,
+            "committed": 26
+          },
+          "cards": {
+            "yellow": 11,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 1,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 106,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13723,
+        "name": "B. Fernández",
+        "firstname": "Brayan Alexis",
+        "lastname": "Fernández Garcés",
+        "age": 33,
+        "birth": {
+          "date": "1992-01-25",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "180",
+        "weight": "84",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13723.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 8,
+            "lineups": 2,
+            "minutes": 350,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.750000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 6,
+            "out": 2,
+            "bench": 6
+          },
+          "shots": {
+            "total": 14,
+            "on": 4
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 82,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 4,
+            "blocks": 2,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 59,
+            "won": 24
+          },
+          "dribbles": {
+            "attempts": 5,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": 12
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13746,
+        "name": "K. Salazar",
+        "firstname": "Kevin David",
+        "lastname": "Salazar Chiquiza",
+        "age": 29,
+        "birth": {
+          "date": "1996-02-09",
+          "place": "Bogotá",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "171",
+        "weight": "66",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13746.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 12,
+            "lineups": 7,
+            "minutes": 563,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.880000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": 7,
+            "bench": 7
+          },
+          "shots": {
+            "total": 3,
+            "on": 2
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 76,
+            "key": 3,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 3,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 34,
+            "won": 16
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 8,
+            "committed": 4
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13768,
+        "name": "M. Payares",
+        "firstname": "Martín Enrique",
+        "lastname": "Payares Campo",
+        "age": 30,
+        "birth": {
+          "date": "1995-03-27",
+          "place": "Majagual",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183",
+        "weight": "78",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13768.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 31,
+            "lineups": 31,
+            "minutes": 2681,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.830000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 2,
+            "bench": 1
+          },
+          "shots": {
+            "total": 13,
+            "on": 3
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 1032,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 27,
+            "blocks": 18,
+            "interceptions": 26
+          },
+          "duels": {
+            "total": 201,
+            "won": 121
+          },
+          "dribbles": {
+            "attempts": 1,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 6,
+            "committed": 32
+          },
+          "cards": {
+            "yellow": 10,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 101,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 16711,
+        "name": "A. Prieto",
+        "firstname": "Alejandro Fabián",
+        "lastname": "Prieto Romero",
+        "age": 32,
+        "birth": {
+          "date": "1991-04-20",
+          "place": "Montevideo",
+          "country": "Uruguay"
+        },
+        "nationality": "Uruguay",
+        "height": "187 cm",
+        "weight": "80 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/16711.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 35986,
+        "name": "A. Del Valle",
+        "firstname": "Ayron",
+        "lastname": "Del Valle Rodríguez",
+        "age": 36,
+        "birth": {
+          "date": "1989-01-27",
+          "place": "Magangué",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "175",
+        "weight": "75",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/35986.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 9,
+            "lineups": 8,
+            "minutes": 618,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.688888",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 5,
+            "on": 4
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 93,
+            "key": 7,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 5,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 53,
+            "won": 20
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 11,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 32,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 41455,
+        "name": "P. Sabbag",
+        "firstname": "Pablo David",
+        "lastname": "Sabbag Daccarett",
+        "age": 28,
+        "birth": {
+          "date": "1997-06-11",
+          "place": "Barranquilla",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "190",
+        "weight": "88",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/41455.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Forward",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 52060,
+        "name": "W. Ortega",
+        "firstname": "Washington Jesús",
+        "lastname": "Ortega Olivera",
+        "age": 31,
+        "birth": {
+          "date": "1994-11-13",
+          "place": "Tranqueras",
+          "country": "Uruguay"
+        },
+        "nationality": "Uruguay",
+        "height": "187",
+        "weight": "78 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/52060.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 41,
+            "lineups": 39,
+            "minutes": 3366,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "7.044736",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 1,
+            "on": 1
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 44,
+            "assists": 0,
+            "saves": 108
+          },
+          "passes": {
+            "total": 890,
+            "key": 5,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 7,
+            "won": 6
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 4,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 1,
+            "missed": 0,
+            "saved": 1
+          }
+        },
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 52995,
+        "name": "J. Hernández",
+        "firstname": "José Manuel",
+        "lastname": "Hernández Chávez",
+        "age": 29,
+        "birth": {
+          "date": "1996-08-02",
+          "place": "Tucani",
+          "country": "Venezuela"
+        },
+        "nationality": "Venezuela",
+        "height": "179 cm",
+        "weight": "73 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/52995.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1134,
+            "name": "Internacional de Bogota",
+            "logo": "https://media.api-sports.io/football/teams/1134.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}

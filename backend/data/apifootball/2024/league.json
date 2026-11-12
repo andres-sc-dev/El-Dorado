@@ -1,0 +1,35 @@
+{
+  "league": {
+    "id": 239,
+    "name": "Primera A",
+    "type": "League",
+    "logo": "https://media.api-sports.io/football/leagues/239.png"
+  },
+  "country": {
+    "name": "Colombia",
+    "code": "CO",
+    "flag": "https://media.api-sports.io/flags/co.svg"
+  },
+  "season": {
+    "year": 2024,
+    "start": "2024-01-19",
+    "end": "2024-12-22",
+    "current": false,
+    "coverage": {
+      "fixtures": {
+        "events": true,
+        "lineups": true,
+        "statistics_fixtures": true,
+        "statistics_players": true
+      },
+      "standings": true,
+      "players": true,
+      "top_scorers": true,
+      "top_assists": true,
+      "top_cards": true,
+      "injuries": false,
+      "predictions": true,
+      "odds": false
+    }
+  }
+}

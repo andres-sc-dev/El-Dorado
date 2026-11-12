@@ -1,0 +1,3914 @@
+{
+  "get": "players",
+  "parameters": {
+    "team": "1135",
+    "season": "2024",
+    "page": 1
+  },
+  "errors": [],
+  "results": 20,
+  "paging": {
+    "current": 1,
+    "total": 4
+  },
+  "response": [
+    {
+      "player": {
+        "id": 1706,
+        "name": "C. Bacca",
+        "firstname": "Carlos Arturo",
+        "lastname": "Bacca Ahumada",
+        "age": 39,
+        "birth": {
+          "date": "1986-09-08",
+          "place": "Puerto Colombia",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "181",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/1706.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 45,
+            "lineups": 40,
+            "minutes": 3227,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.050000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": 29,
+            "bench": 5
+          },
+          "shots": {
+            "total": 64,
+            "on": 39
+          },
+          "goals": {
+            "total": 20,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 381,
+            "key": 23,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 7,
+            "blocks": 3,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 108,
+            "won": 44
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 6,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 6,
+            "missed": 1,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 80,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 8,
+            "lineups": 8,
+            "minutes": 617,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.112500",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 7,
+            "bench": 0
+          },
+          "shots": {
+            "total": 10,
+            "on": 5
+          },
+          "goals": {
+            "total": 4,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 88,
+            "key": 8,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 36,
+            "won": 15
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 4,
+            "committed": 5
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 2492,
+        "name": "Y. Chará",
+        "firstname": "Yimmi Javier",
+        "lastname": "Chará Zamora",
+        "age": 34,
+        "birth": {
+          "date": "1991-04-02",
+          "place": "Cali",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "168",
+        "weight": "77",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/2492.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 43,
+            "lineups": 40,
+            "minutes": 3246,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "7.153125",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 28,
+            "bench": 3
+          },
+          "shots": {
+            "total": 24,
+            "on": 15
+          },
+          "goals": {
+            "total": 6,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 1082,
+            "key": 53,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 20,
+            "blocks": 3,
+            "interceptions": 12
+          },
+          "duels": {
+            "total": 197,
+            "won": 112
+          },
+          "dribbles": {
+            "attempts": 54,
+            "success": 36,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 43,
+            "committed": 15
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 152,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 7,
+            "lineups": 6,
+            "minutes": 456,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.871428",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 6,
+            "bench": 2
+          },
+          "shots": {
+            "total": 4,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 169,
+            "key": 7,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 8,
+            "blocks": 1,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 38,
+            "won": 21
+          },
+          "dribbles": {
+            "attempts": 10,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 7,
+            "committed": 3
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 5632,
+        "name": "N. Zalazar",
+        "firstname": "Nicolás Mauricio",
+        "lastname": "Zalazar",
+        "age": 28,
+        "birth": {
+          "date": "1997-01-29",
+          "place": "Buenos Aires",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "182",
+        "weight": "83",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/5632.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 10,
+            "minutes": 645,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.888888",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 6,
+            "on": 3
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 376,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 4,
+            "interceptions": 9
+          },
+          "duels": {
+            "total": 56,
+            "won": 34
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 6,
+            "committed": 11
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 180,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 2
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6591,
+        "name": "G. Lencina",
+        "firstname": "Gonzalo",
+        "lastname": "Lencina",
+        "age": 28,
+        "birth": {
+          "date": "1997-10-18",
+          "place": "Alta Gracia",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": null,
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6591.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.066666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": 21,
+            "on": 10
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 77,
+            "key": 4,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 4,
+            "blocks": null,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 73,
+            "won": 35
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 6,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 9
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 1,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 6639,
+        "name": "E. Olivera",
+        "firstname": "Emmanuel",
+        "lastname": "Olivera",
+        "age": 35,
+        "birth": {
+          "date": "1990-04-02",
+          "place": "Buenos Aires",
+          "country": "Argentina"
+        },
+        "nationality": "Argentina",
+        "height": "180",
+        "weight": "73",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/6639.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 29,
+            "lineups": 28,
+            "minutes": 2486,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.996551",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 8,
+            "on": 2
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 1402,
+            "key": 4,
+            "accuracy": 41
+          },
+          "tackles": {
+            "total": 38,
+            "blocks": 17,
+            "interceptions": 42
+          },
+          "duels": {
+            "total": 154,
+            "won": 95
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 8,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 24
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 29,
+            "lineups": 28,
+            "minutes": 2486,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.996551",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 8,
+            "on": 2
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 1402,
+            "key": 4,
+            "accuracy": 41
+          },
+          "tackles": {
+            "total": 38,
+            "blocks": 17,
+            "interceptions": 42
+          },
+          "duels": {
+            "total": 154,
+            "won": 95
+          },
+          "dribbles": {
+            "attempts": 11,
+            "success": 8,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 24
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 2,
+            "minutes": 180,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 5,
+            "lineups": 5,
+            "minutes": 450,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.980000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": 3,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 182,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 6,
+            "blocks": 3,
+            "interceptions": 8
+          },
+          "duels": {
+            "total": 26,
+            "won": 17
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13153,
+        "name": "H. Rivera",
+        "firstname": "Harold Andrés",
+        "lastname": "Rivera Chavarro",
+        "age": 32,
+        "birth": {
+          "date": "1993-03-19",
+          "place": "Ibagué",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "174",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13153.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 31,
+            "lineups": 27,
+            "minutes": 2067,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.863333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 4,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 18,
+            "on": 8
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 900,
+            "key": 16,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 22,
+            "blocks": 7,
+            "interceptions": 18
+          },
+          "duels": {
+            "total": 139,
+            "won": 58
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 25,
+            "committed": 42
+          },
+          "cards": {
+            "yellow": 5,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13190,
+        "name": "C. Sierra",
+        "firstname": "Carlos José",
+        "lastname": "Sierra López",
+        "age": 35,
+        "birth": {
+          "date": "1990-10-05",
+          "place": "Barranquilla",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183",
+        "weight": "86",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13190.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13311,
+        "name": "V. Hernández",
+        "firstname": "Vladimir Javier",
+        "lastname": "Hernández Rivero",
+        "age": 36,
+        "birth": {
+          "date": "1989-04-23",
+          "place": "Arauca",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "160",
+        "weight": "59",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13311.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 11,
+            "lineups": 4,
+            "minutes": 423,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.654545",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 7,
+            "out": 3,
+            "bench": 7
+          },
+          "shots": {
+            "total": 4,
+            "on": 2
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 164,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 2,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 50,
+            "won": 26
+          },
+          "dribbles": {
+            "attempts": 7,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 15,
+            "committed": 5
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 0,
+            "minutes": 39,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.433333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 0,
+            "bench": 4
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 34,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 1,
+            "won": 1
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13355,
+        "name": "O. Albornoz",
+        "firstname": "Omar Antonio",
+        "lastname": "Albornoz Contreras",
+        "age": 30,
+        "birth": {
+          "date": "1995-09-28",
+          "place": "Cartagena",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "182",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13355.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 0,
+            "minutes": 36,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.250000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 0,
+            "bench": 4
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": 8,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 5,
+            "won": 2
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 19,
+            "number": null,
+            "position": "Defender",
+            "rating": "6.300000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 3,
+            "won": 1
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13364,
+        "name": "N. Castrillón",
+        "firstname": "Nilson David",
+        "lastname": "Castrillón Burbano",
+        "age": 29,
+        "birth": {
+          "date": "1996-01-28",
+          "place": "Caloto",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "183",
+        "weight": "79",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13364.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Defender",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13377,
+        "name": "L. González",
+        "firstname": "Luis Daniel",
+        "lastname": "González Cova",
+        "age": 35,
+        "birth": {
+          "date": "1990-12-22",
+          "place": "Cariaco",
+          "country": "Venezuela"
+        },
+        "nationality": "Venezuela",
+        "height": "169",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13377.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 29,
+            "lineups": 20,
+            "minutes": 1078,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.727586",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 9,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 15,
+            "on": 9
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 3,
+            "saves": null
+          },
+          "passes": {
+            "total": 444,
+            "key": 27,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 6,
+            "blocks": 1,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 104,
+            "won": 48
+          },
+          "dribbles": {
+            "attempts": 29,
+            "success": 10,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 30,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 29,
+            "lineups": 20,
+            "minutes": 1078,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.727586",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 9,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 15,
+            "on": 9
+          },
+          "goals": {
+            "total": 2,
+            "conceded": 0,
+            "assists": 3,
+            "saves": null
+          },
+          "passes": {
+            "total": 444,
+            "key": 27,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 6,
+            "blocks": 1,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 104,
+            "won": 48
+          },
+          "dribbles": {
+            "attempts": 29,
+            "success": 10,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 30,
+            "committed": 10
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": null,
+            "red": 1
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 28,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 1,
+            "minutes": 168,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.825000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 3,
+            "out": 2,
+            "bench": 5
+          },
+          "shots": {
+            "total": 5,
+            "on": 1
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 94,
+            "key": 4,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 17,
+            "won": 9
+          },
+          "dribbles": {
+            "attempts": 6,
+            "success": 5,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 3
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 1,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13378,
+        "name": "M. Pérez",
+        "firstname": "Marco Jhonnier",
+        "lastname": "Pérez Murillo",
+        "age": 35,
+        "birth": {
+          "date": "1990-09-18",
+          "place": "Quibdó",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "186",
+        "weight": "84",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13378.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 25,
+            "lineups": 13,
+            "minutes": 878,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.741666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 12,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 25,
+            "on": 11
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 160,
+            "key": 11,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 72,
+            "won": 34
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 713,
+            "name": "Superliga",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/713.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 25,
+            "lineups": 13,
+            "minutes": 878,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.741666",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 12,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 25,
+            "on": 11
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 160,
+            "key": 11,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 72,
+            "won": 34
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 3,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 9,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 13,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 6,
+            "lineups": 1,
+            "minutes": 169,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.733333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 5,
+            "out": 0,
+            "bench": 5
+          },
+          "shots": {
+            "total": 2,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 36,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 20,
+            "won": 12
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 2,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13397,
+        "name": "A. Colorado",
+        "firstname": "Andrés Felipe",
+        "lastname": "Colorado Sánchez",
+        "age": 27,
+        "birth": {
+          "date": "1998-12-01",
+          "place": null,
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "182",
+        "weight": "81",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13397.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 8,
+            "lineups": 6,
+            "minutes": 295,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.800000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 3,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 163,
+            "key": 2,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 6,
+            "blocks": 1,
+            "interceptions": 3
+          },
+          "duels": {
+            "total": 31,
+            "won": 20
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 1,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 6,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 3,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 0,
+            "minutes": 33,
+            "number": null,
+            "position": "Midfielder",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 67,
+            "number": null,
+            "position": "Midfielder",
+            "rating": "6.900000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": 1,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 25,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 4,
+            "blocks": 1,
+            "interceptions": 1
+          },
+          "duels": {
+            "total": 11,
+            "won": 8
+          },
+          "dribbles": {
+            "attempts": 2,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13408,
+        "name": "D. Caicedo",
+        "firstname": "Déiber Jair",
+        "lastname": "Caicedo Mideros",
+        "age": 25,
+        "birth": {
+          "date": "2000-03-25",
+          "place": "Barbacoas",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "168",
+        "weight": "66",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13408.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 18,
+            "lineups": 17,
+            "minutes": 1368,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.911764",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 16,
+            "bench": 1
+          },
+          "shots": {
+            "total": 13,
+            "on": 7
+          },
+          "goals": {
+            "total": 3,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 413,
+            "key": 21,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 7,
+            "blocks": null,
+            "interceptions": 5
+          },
+          "duels": {
+            "total": 95,
+            "won": 48
+          },
+          "dribbles": {
+            "attempts": 38,
+            "success": 14,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 22,
+            "committed": 4
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 4,
+            "minutes": 313,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.825000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 4,
+            "bench": 0
+          },
+          "shots": {
+            "total": 7,
+            "on": 4
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 74,
+            "key": 4,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": 2
+          },
+          "duels": {
+            "total": 21,
+            "won": 8
+          },
+          "dribbles": {
+            "attempts": 6,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 3,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13435,
+        "name": "A. Estupiñán",
+        "firstname": "Andrey",
+        "lastname": "Estupiñán Quiñonez",
+        "age": 31,
+        "birth": {
+          "date": "1994-07-05",
+          "place": "El Charco",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "177",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13435.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": null,
+            "lineups": null,
+            "minutes": null,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": null,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": null,
+            "yellowred": null,
+            "red": null
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13457,
+        "name": "J. Martínez",
+        "firstname": "Jefersson Justino",
+        "lastname": "Martínez Valverde",
+        "age": 32,
+        "birth": {
+          "date": "1993-08-16",
+          "place": "Arboletes",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "185",
+        "weight": "72",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13457.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 39,
+            "lineups": 24,
+            "minutes": 810,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": "6.922222",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 15,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": null,
+            "conceded": 10,
+            "assists": 0,
+            "saves": 24
+          },
+          "passes": {
+            "total": 277,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 7,
+            "won": 7
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 1,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 90,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Goalkeeper",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 8
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": 0
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13524,
+        "name": "B. Castrillón",
+        "firstname": "Bryan David",
+        "lastname": "Castrillón Gómez",
+        "age": 26,
+        "birth": {
+          "date": "1999-03-30",
+          "place": "Medellín",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "169",
+        "weight": "57",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13524.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 30,
+            "lineups": 10,
+            "minutes": 998,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.579166",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 20,
+            "out": 10,
+            "bench": 22
+          },
+          "shots": {
+            "total": 9,
+            "on": 3
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 2,
+            "saves": null
+          },
+          "passes": {
+            "total": 258,
+            "key": 6,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 9,
+            "blocks": null,
+            "interceptions": 8
+          },
+          "duels": {
+            "total": 77,
+            "won": 31
+          },
+          "dribbles": {
+            "attempts": 23,
+            "success": 10,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 11,
+            "committed": 6
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 1,
+            "lineups": 1,
+            "minutes": 72,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 1,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 3,
+            "lineups": 1,
+            "minutes": 132,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.633333",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 2,
+            "out": 1,
+            "bench": 7
+          },
+          "shots": {
+            "total": 2,
+            "on": 1
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 29,
+            "key": 1,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 1,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 9,
+            "won": 4
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 1
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13530,
+        "name": "S. Rodríguez",
+        "firstname": "Andrés Steven",
+        "lastname": "Rodríguez Ossa",
+        "age": 27,
+        "birth": {
+          "date": "1998-10-13",
+          "place": "Itagüí",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "177",
+        "weight": "66",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13530.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 26,
+            "lineups": 17,
+            "minutes": 767,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.734615",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 9,
+            "out": null,
+            "bench": null
+          },
+          "shots": {
+            "total": 19,
+            "on": 9
+          },
+          "goals": {
+            "total": 7,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 159,
+            "key": 7,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 4,
+            "blocks": 1,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 84,
+            "won": 34
+          },
+          "dribbles": {
+            "attempts": 16,
+            "success": 7,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 12,
+            "committed": 12
+          },
+          "cards": {
+            "yellow": 5,
+            "yellowred": null,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 2,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 241,
+            "name": "Copa Colombia",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/241.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 2,
+            "lineups": 1,
+            "minutes": 105,
+            "number": null,
+            "position": "Attacker",
+            "rating": null,
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 1,
+            "bench": 1
+          },
+          "shots": {
+            "total": null,
+            "on": null
+          },
+          "goals": {
+            "total": 1,
+            "conceded": null,
+            "assists": null,
+            "saves": null
+          },
+          "passes": {
+            "total": null,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": null,
+            "won": null
+          },
+          "dribbles": {
+            "attempts": null,
+            "success": null,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": null
+          },
+          "cards": {
+            "yellow": 1,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": null,
+            "missed": null,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 4,
+            "lineups": 0,
+            "minutes": 31,
+            "number": null,
+            "position": "Attacker",
+            "rating": "6.550000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 4,
+            "out": 0,
+            "bench": 7
+          },
+          "shots": {
+            "total": 2,
+            "on": null
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 0,
+            "saves": null
+          },
+          "passes": {
+            "total": 8,
+            "key": null,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": null,
+            "blocks": null,
+            "interceptions": null
+          },
+          "duels": {
+            "total": 9,
+            "won": 2
+          },
+          "dribbles": {
+            "attempts": 4,
+            "success": 2,
+            "past": null
+          },
+          "fouls": {
+            "drawn": null,
+            "committed": 2
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13564,
+        "name": "P. Rojas",
+        "firstname": "Pablo José",
+        "lastname": "Rojas Cardales",
+        "age": 34,
+        "birth": {
+          "date": "1991-09-23",
+          "place": "Apartadó",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "167 cm",
+        "weight": "72 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13564.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 0,
+            "lineups": 0,
+            "minutes": 0,
+            "number": null,
+            "position": "Attacker",
+            "rating": "7.030769",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": 27,
+            "on": 9
+          },
+          "goals": {
+            "total": 0,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 666,
+            "key": 39,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 13,
+            "blocks": 4,
+            "interceptions": 9
+          },
+          "duels": {
+            "total": 162,
+            "won": 87
+          },
+          "dribbles": {
+            "attempts": 26,
+            "success": 10,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 45,
+            "committed": 16
+          },
+          "cards": {
+            "yellow": 0,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 1,
+            "saved": null
+          }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 13572,
+        "name": "G. Fuentes",
+        "firstname": "Gabriel Rafael",
+        "lastname": "Fuentes Gómez",
+        "age": 28,
+        "birth": {
+          "date": "1997-02-09",
+          "place": "Santa Marta",
+          "country": "Colombia"
+        },
+        "nationality": "Colombia",
+        "height": "181",
+        "weight": "71",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/13572.png"
+      },
+      "statistics": [
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 239,
+            "name": "Primera A",
+            "country": "Colombia",
+            "logo": "https://media.api-sports.io/football/leagues/239.png",
+            "flag": "https://media.api-sports.io/flags/co.svg",
+            "season": 2024
+          },
+          "games": {
+            "appearences": 28,
+            "lineups": 27,
+            "minutes": 2395,
+            "number": null,
+            "position": "Defender",
+            "rating": "7.107407",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 1,
+            "out": 2,
+            "bench": 1
+          },
+          "shots": {
+            "total": 15,
+            "on": 12
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 3,
+            "saves": null
+          },
+          "passes": {
+            "total": 1030,
+            "key": 26,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 53,
+            "blocks": 4,
+            "interceptions": 31
+          },
+          "duels": {
+            "total": 213,
+            "won": 114
+          },
+          "dribbles": {
+            "attempts": 30,
+            "success": 11,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 30,
+            "committed": 31
+          },
+          "cards": {
+            "yellow": 8,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        },
+        {
+          "team": {
+            "id": 1135,
+            "name": "Junior",
+            "logo": "https://media.api-sports.io/football/teams/1135.png"
+          },
+          "league": {
+            "id": 13,
+            "name": "CONMEBOL Libertadores",
+            "country": "World",
+            "logo": "https://media.api-sports.io/football/leagues/13.png",
+            "flag": null,
+            "season": 2024
+          },
+          "games": {
+            "appearences": 8,
+            "lineups": 8,
+            "minutes": 720,
+            "number": null,
+            "position": "Defender",
+            "rating": "7.075000",
+            "captain": false
+          },
+          "substitutes": {
+            "in": 0,
+            "out": 0,
+            "bench": 0
+          },
+          "shots": {
+            "total": 4,
+            "on": 1
+          },
+          "goals": {
+            "total": 1,
+            "conceded": 0,
+            "assists": 1,
+            "saves": null
+          },
+          "passes": {
+            "total": 331,
+            "key": 4,
+            "accuracy": null
+          },
+          "tackles": {
+            "total": 21,
+            "blocks": 1,
+            "interceptions": 8
+          },
+          "duels": {
+            "total": 75,
+            "won": 43
+          },
+          "dribbles": {
+            "attempts": 6,
+            "success": 4,
+            "past": null
+          },
+          "fouls": {
+            "drawn": 7,
+            "committed": 7
+          },
+          "cards": {
+            "yellow": 2,
+            "yellowred": 0,
+            "red": 0
+          },
+          "penalty": {
+            "won": null,
+            "commited": null,
+            "scored": 0,
+            "missed": 0,
+            "saved": null
+          }
+        }
+      ]
+    }
+  ]
+}
