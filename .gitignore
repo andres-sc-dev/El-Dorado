@@ -10,3 +10,4 @@ backend/smoke-cookies.txt
 *-firebase-adminsdk-*.json
 serviceAccount*.json
 *.pem
+backend/test/integration/report.md

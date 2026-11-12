@@ -54,46 +54,25 @@ async function listMovements(username, limit = 50) {
   `, [username, limit]);
 }
 
-async function listBets(username, limit = 50) {
-  return postgres.query(`
-    SELECT b.id, b.ticket_code, b.stake, b.total_odds, b.potential_payout,
-           s.code AS status, b.placed_at, b.settled_at,
-           l.match_code, l.market_code, l.outcome_code, l.line, l.odd_value,
-           ls.code AS leg_status
-    FROM bet b
-    JOIN account a ON a.id = b.account_id
-    JOIN bet_status s ON s.id_status_bet = b.status
-    JOIN bet_leg l ON l.bet_id = b.id
-    JOIN bet_status ls ON ls.id_status_bet = l.status
-    WHERE a.username = $1
-    ORDER BY b.placed_at DESC, b.id DESC
-    LIMIT $2
-  `, [username, limit]);
+// Recarga con la función PL/pgSQL fn_recargar (idempotente por referencia).
+// Hoy la usa la semilla de demo; en la Fase 3 la usará el webhook de Wompi.
+async function deposit(username, amount, reference) {
+  const rows = await postgres.query(
+    'SELECT fn_recargar($1, $2::numeric, $3) AS result',
+    [username, String(amount), reference],
+  );
+  return rows[0].result;
 }
 
-// Saldo inicial de la semilla de demo. Una sola sentencia atómica: bloquea la cuenta
-// (FOR UPDATE), inserta el movimiento y actualiza el saldo. Si la referencia ya existe,
-// ON CONFLICT no inserta nada y el saldo no cambia, así la semilla se puede repetir.
-// En la Fase 2 esto se reemplaza por la función fn_recargar.
-async function seedDeposit(username, amount, reference) {
-  const rows = await postgres.query(`
-    WITH acc AS (
-      SELECT id, balance FROM account WHERE username = $1 FOR UPDATE
-    ), movement AS (
-      INSERT INTO balance_movement (account_id, movement_type, amount, resulting_balance, reference)
-      SELECT id, 1, $2, balance + $2, $3 FROM acc
-      ON CONFLICT (reference) DO NOTHING
-      RETURNING account_id, resulting_balance
-    )
-    UPDATE account a
-    SET balance = movement.resulting_balance, updated_at = now()
-    FROM movement
-    WHERE a.id = movement.account_id
-    RETURNING a.balance
-  `, [username, amount, reference]);
-  return rows.length > 0;
+// Copia BET_MIN_COP y BET_MAX_COP a la tabla bet_limit, que lee fn_crear_apuesta.
+async function syncBetLimits({ min, max, currency }) {
+  await postgres.query(`
+    INSERT INTO bet_limit (currency, min_stake, max_stake) VALUES ($1, $2, $3)
+    ON CONFLICT (currency) DO UPDATE
+    SET min_stake = EXCLUDED.min_stake, max_stake = EXCLUDED.max_stake, updated_at = now()
+  `, [currency, min, max]);
 }
 
 module.exports = {
-  findByUsername, ensureAccount, deleteEmptyAccount, getBalance, listMovements, listBets, seedDeposit,
+  findByUsername, ensureAccount, deleteEmptyAccount, getBalance, listMovements, deposit, syncBetLimits,
 };

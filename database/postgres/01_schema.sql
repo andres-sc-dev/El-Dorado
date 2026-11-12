@@ -6,7 +6,7 @@
 --   account.username             -> SQL Server users.username
 --   bet_leg.match_code           -> MySQL match.match_code
 --   bet_leg.market_code/outcome  -> MongoDB odds_market / odds_outcome
--- Las funciones PL/pgSQL de dinero se crean en la Fase 2.
+-- Las funciones PL/pgSQL de dinero están en 03_bets.sql.
 
 -- ---------- Catálogos ----------
 

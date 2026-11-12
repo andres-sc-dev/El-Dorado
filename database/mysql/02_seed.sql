@@ -1,6 +1,8 @@
 -- El Dorado · MySQL · semilla pequeña e idempotente.
 -- Las fechas de los partidos se calculan desde el momento de la carga, así siempre
 -- hay partidos futuros jugables. INSERT IGNORE evita duplicados al repetir el script.
+-- El cliente de la imagen oficial lee los scripts como latin1: sin esto las tildes se dañan.
+SET NAMES utf8mb4;
 USE el_dorado;
 
 INSERT IGNORE INTO match_status (id_status_match, code, name) VALUES

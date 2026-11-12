@@ -1,41 +1,48 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 
-async function request(endpoint, options = {}) {
-  const url = `${API_BASE_URL}${endpoint}`;
-  const response = await fetch(url, {
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
+// Error de la API con el código HTTP y el cuerpo JSON (code, current_odds, database...).
+export class ApiError extends Error {
+  constructor(message, status, data) {
+    super(message);
+    this.status = status;
+    this.code = data?.code;
+    this.data = data || {};
+  }
+}
+
+async function request(endpoint, { headers, ...options } = {}) {
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      credentials: 'include',
+      ...options,
+      headers: { 'Content-Type': 'application/json', ...(headers || {}) },
+    });
+  } catch {
+    throw new ApiError('No se pudo conectar con el servidor. Revisa tu conexión.', 0);
+  }
+
+  if (response.status === 204) return null;
+
+  let data = null;
+  try {
+    data = await response.json();
+  } catch {
+    // Respuesta sin JSON: se usa el código HTTP.
+  }
 
   if (!response.ok) {
-    let message = `Request failed: ${response.status}`;
-    try {
-      const data = await response.json();
-      message = data.error || message;
-    } catch {
-      // Keep the HTTP status when the server did not return JSON.
-    }
-    const requestError = new Error(message);
-    requestError.status = response.status;
-    throw requestError;
+    const fallback = response.status === 503
+      ? 'Un servicio no está disponible. Intenta de nuevo en unos minutos.'
+      : `Error ${response.status}`;
+    throw new ApiError(data?.error || fallback, response.status, data);
   }
-
-  if (response.status === 204) {
-    return null;
-  }
-
-  return response.json();
+  return data;
 }
 
 export const apiClient = {
   get: (endpoint) => request(endpoint, { method: 'GET' }),
-  post: (endpoint, body) => request(endpoint, { method: 'POST', body: JSON.stringify(body) }),
-  put: (endpoint, body) => request(endpoint, { method: 'PUT', body: JSON.stringify(body) }),
-  delete: (endpoint) => request(endpoint, { method: 'DELETE' }),
+  post: (endpoint, body, headers) => request(endpoint, { method: 'POST', body: JSON.stringify(body ?? {}), headers }),
   baseUrl: API_BASE_URL,
 };
 

@@ -4,6 +4,8 @@
 --   match.home_team_code / away_team_code -> PostgreSQL team.team_code
 --   odds.market_code / outcome_code       -> MongoDB odds_market / odds_outcome
 
+-- El cliente de la imagen oficial lee los scripts como latin1: sin esto las tildes se dañan.
+SET NAMES utf8mb4;
 CREATE DATABASE IF NOT EXISTS el_dorado CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE el_dorado;
 

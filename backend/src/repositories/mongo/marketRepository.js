@@ -34,4 +34,18 @@ async function listGameRules() {
     .toArray());
 }
 
-module.exports = { listMarkets, listOutcomes, listGameRules };
+// Un mercado activo con sus resultados posibles, por clave natural (sport, market_code).
+async function findMarket(sport, marketCode) {
+  return withDb(async (db) => {
+    const market = await db.collection('odds_market')
+      .findOne({ sport, market_code: marketCode, is_active: true }, { projection: { _id: 0 } });
+    if (!market) return null;
+    const outcomes = await db.collection('odds_outcome')
+      .find({ sport, market_code: marketCode }, { projection: { _id: 0, sport: 0, market_code: 0 } })
+      .sort({ sort_order: 1 })
+      .toArray();
+    return { ...market, outcomes };
+  });
+}
+
+module.exports = { listMarkets, listOutcomes, listGameRules, findMarket };

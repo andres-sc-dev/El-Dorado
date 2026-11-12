@@ -41,6 +41,8 @@ curl http://localhost:4000/api/health
 
 Abre http://localhost:5173 e inicia sesión con `DEMO_USERNAME` y `DEMO_PASSWORD` de tu `.env`. El usuario de demostración se crea solo al arrancar el backend, con 500.000 COP de saldo de prueba.
 
+Para entrar como administrador usa `ADMIN_USERNAME` y `ADMIN_PASSWORD` de tu `.env`. La semilla lo crea con el rol `ADM` y, al iniciar sesión, te lleva al panel `/admin`, donde se finalizan los partidos y se liquidan las apuestas.
+
 Reglas para el `.env`:
 - `MSSQL_SA_PASSWORD` y `SQLSERVER_PASSWORD`: mínimo 8 caracteres con mayúsculas, minúsculas, números y símbolos (política de SQL Server). Sin comillas.
 - `MONGO_INITDB_ROOT_PASSWORD`: solo letras y números (va dentro de una URL).
@@ -63,8 +65,9 @@ Los puertos se cambian en el `.env` (`*_HOST_PORT`). Las bases solo escuchan en 
 
 ```bash
 docker compose logs -f backend        # ver la API
-docker compose exec backend npm test  # pruebas del backend
-docker compose exec backend npm run seed:demo   # recrear el usuario de demostración
+docker compose exec backend npm test  # pruebas sin bases (seguridad y liquidación)
+docker compose exec backend npm run test:integration   # pruebas contra las 4 bases (ver docs/PRUEBAS.md)
+docker compose exec backend npm run seed:demo   # recrear demo y admin, y sincronizar los límites de apuesta
 docker compose stop postgres          # simular una base caída: solo sus rutas responden 503
 docker compose start postgres
 docker compose down                   # detener todo y conservar los datos
@@ -83,10 +86,11 @@ MySQL, PostgreSQL y MongoDB solo ejecutan sus scripts de `database/` cuando el v
 
 ## Estado
 
-Fase 1 (cimientos multi-motor) terminada en la rama `feat/fase-1-multimotor`. Mientras llega la Fase 2:
-- Las apuestas están deshabilitadas (`POST /api/bets` responde 503) hasta que existan las funciones PL/pgSQL.
-- Las recargas y los retiros están deshabilitados. Las recargas llegarán con Wompi Sandbox.
-- La página de partidos y la de carga de datos del administrador no muestran datos: el frontend aún espera el formato anterior.
+Fase 2 (apuestas, roles y liquidación) en la rama `feat/fase-2-apuestas`:
+- Se apuesta desde http://localhost:5173. Solo apuestas simples, entre 1.000 y 500.000 COP (`BET_MIN_COP` y `BET_MAX_COP`).
+- Apostar, recargar, liquidar y anular viven en funciones PL/pgSQL (`database/postgres/03_bets.sql`).
+- El administrador finaliza partidos desde `/admin` y las apuestas se liquidan solas.
+- Pendiente: recargas con Wompi Sandbox, retiros, login con Google y despliegue.
 
 ## Autor
 

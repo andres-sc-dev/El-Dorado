@@ -1,4 +1,5 @@
 const databases = require('../config/databases');
+const { translatePgError } = require('../utils/pgErrors');
 
 // Códigos de red y de driver que significan "la base de datos no responde".
 const CONNECTION_CODES = new Set([
@@ -28,8 +29,19 @@ function errorHandler(error, request, response, next) {
 
   if (error.statusCode) {
     const body = { error: error.message };
+    // code: identificador estable para el frontend (ODDS_CHANGED, INSUFFICIENT_FUNDS...).
+    if (error.errorCode) body.code = error.errorCode;
     if (error.database) body.database = error.database;
+    if (error.details) Object.assign(body, error.details);
+    if (error.statusCode >= 500) console.error(`Error ${error.statusCode}: ${error.message}`);
     response.status(error.statusCode).json(body);
+    return;
+  }
+
+  // Errores de negocio de las funciones PL/pgSQL (fn_crear_apuesta, fn_recargar...).
+  const pgError = translatePgError(error);
+  if (pgError) {
+    response.status(pgError.status).json({ error: pgError.message, code: pgError.code });
     return;
   }
 

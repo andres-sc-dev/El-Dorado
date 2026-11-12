@@ -1,5 +1,6 @@
 const accountRepository = require('../repositories/postgres/accountRepository');
 const userRepository = require('../repositories/sqlserver/userRepository');
+const betService = require('./bet.service');
 const { notFound } = require('../utils/httpError');
 
 // Datos del dueño de la sesión. El usuario siempre sale del JWT (request.user).
@@ -16,36 +17,40 @@ async function getBalance(username) {
   return balance;
 }
 
+function toMovement(row) {
+  return {
+    type: row.type,
+    type_name: row.type_name,
+    direction: Number(row.direction),
+    amount: Number(row.amount),
+    resulting_balance: Number(row.resulting_balance),
+    reference: row.reference,
+    created_at: row.created_at,
+  };
+}
+
 async function listMovements(username) {
-  return accountRepository.listMovements(username);
+  return (await accountRepository.listMovements(username)).map(toMovement);
 }
 
-// Solo apuestas simples: cada fila del repositorio es un tiquete con su única selección.
-// El detalle del partido (equipos, fecha) vive en MySQL y se combinará en la Fase 2.
+// GET /api/wallet/me: saldo y últimos movimientos.
+async function getWallet(username) {
+  const account = await getAccount(username);
+  return {
+    account_number: account.account_number,
+    currency: account.currency,
+    status: account.status,
+    balance: account.balance,
+    movements: await listMovements(username),
+  };
+}
+
 async function listBets(username) {
-  const rows = await accountRepository.listBets(username);
-  return rows.map((row) => ({
-    id: Number(row.id),
-    ticketCode: row.ticket_code,
-    stake: Number(row.stake),
-    totalOdds: Number(row.total_odds),
-    potentialPayout: Number(row.potential_payout),
-    status: row.status,
-    createdAt: row.placed_at,
-    settledAt: row.settled_at,
-    selections: [{
-      matchCode: row.match_code,
-      marketCode: row.market_code,
-      outcomeCode: row.outcome_code,
-      line: Number(row.line),
-      oddValueAtBetTime: Number(row.odd_value),
-      result: row.leg_status,
-    }],
-  }));
+  return betService.listMyBets(username);
 }
 
-async function getBet(username, betId) {
-  const bet = (await listBets(username)).find((item) => item.id === betId);
+async function getBet(username, ticketCode) {
+  const bet = (await listBets(username)).find((item) => item.ticket_code === ticketCode);
   if (!bet) throw notFound('Apuesta no encontrada');
   return bet;
 }
@@ -61,5 +66,5 @@ async function listLoginHistory(userId) {
 }
 
 module.exports = {
-  getAccount, getBalance, listMovements, listBets, getBet, getCustomer, listLoginHistory,
+  getAccount, getBalance, listMovements, getWallet, listBets, getBet, getCustomer, listLoginHistory,
 };

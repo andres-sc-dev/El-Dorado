@@ -8,8 +8,8 @@ import MyBetsPage from '../pages/MyBetsPage';
 import PromotionsPage from '../pages/PromotionsPage';
 import ProfilePage from '../pages/ProfilePage';
 import WalletPage from '../pages/WalletPage';
+import AdminMatchesPage from '../pages/AdminMatchesPage';
 import ProtectedRoute from './ProtectedRoute';
-import AdminDataPage from '../pages/AdminDataPage';
 
 function AppRouter() {
   return (
@@ -22,10 +22,16 @@ function AppRouter() {
       <Route path="/promotions" element={<PromotionsPage />} />
 
       <Route element={<ProtectedRoute />}>
-        <Route path="/my-bets" element={<MyBetsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute roles={['USR']} />}>
+        <Route path="/my-bets" element={<MyBetsPage />} />
         <Route path="/wallet" element={<WalletPage />} />
-        <Route path="/admin/data-entry" element={<AdminDataPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute roles={['ADM']} />}>
+        <Route path="/admin" element={<AdminMatchesPage />} />
       </Route>
     </Routes>
   );

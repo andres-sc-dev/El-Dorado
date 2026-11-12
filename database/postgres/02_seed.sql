@@ -9,10 +9,12 @@ INSERT INTO account_status (id_status_account, code, name) VALUES
 ON CONFLICT (id_status_account) DO UPDATE SET code = EXCLUDED.code, name = EXCLUDED.name;
 
 INSERT INTO bet_status (id_status_bet, code, name) VALUES
-  (0, 'PENDING',   'Pendiente'),
+  (0, 'OPEN',      'Abierta'),
   (1, 'WON',       'Ganada'),
   (2, 'LOST',      'Perdida'),
-  (3, 'CANCELLED', 'Anulada')
+  (3, 'CANCELLED', 'Anulada'),
+  -- Devuelta: empate exacto contra la línea (hándicap o total de goles); se reintegra el monto.
+  (4, 'REFUNDED',  'Devuelta')
 ON CONFLICT (id_status_bet) DO UPDATE SET code = EXCLUDED.code, name = EXCLUDED.name;
 
 INSERT INTO movement_type (id_movement, code, name, direction) VALUES

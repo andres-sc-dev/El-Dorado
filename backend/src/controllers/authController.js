@@ -1,9 +1,7 @@
 const authService = require('../services/authService');
+const auditService = require('../services/auditService');
 const { SESSION_COOKIE } = require('../middleware/authenticate');
-
-function getClientIp(request) {
-  return request.ip ? request.ip.replace('::ffff:', '') : null;
-}
+const { getClientIp } = require('../utils/request');
 
 function sessionCookieOptions() {
   return {
@@ -24,6 +22,7 @@ async function login(request, response, next) {
       ipAddress: getClientIp(request),
     });
     response.cookie(SESSION_COOKIE, token, sessionCookieOptions());
+    auditService.log('LOGIN', user.username, { role: user.role }, getClientIp(request));
     response.status(200).json({ user });
   } catch (error) {
     next(error);
@@ -58,9 +57,9 @@ function depositDisabled(request, response) {
   response.status(403).json({ error: 'Recargas con Wompi próximamente. El depósito directo está deshabilitado.' });
 }
 
-// Los retiros también movían dinero desde Node; vuelven cuando existan las funciones PL/pgSQL.
+// Los retiros siguen deshabilitados: llegarán con su propia función PL/pgSQL.
 function withdrawDisabled(request, response) {
-  response.status(403).json({ error: 'Los retiros están deshabilitados temporalmente.' });
+  response.status(403).json({ error: 'Retiros próximamente. Por ahora están deshabilitados.' });
 }
 
 module.exports = { login, register, currentUser, logout, depositDisabled, withdrawDisabled };

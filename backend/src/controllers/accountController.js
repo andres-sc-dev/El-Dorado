@@ -1,6 +1,6 @@
 const accountService = require('../services/accountService');
 const { parsePositiveInt } = require('../utils/validation');
-const { forbidden } = require('../utils/httpError');
+const { forbidden, notFound } = require('../utils/httpError');
 
 // Todas estas rutas devuelven solo los datos del dueño de la sesión (request.user).
 
@@ -14,10 +14,16 @@ function handle(fn) {
   };
 }
 
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 const getAccount = handle((request) => accountService.getAccount(request.user.username));
+const getWallet = handle((request) => accountService.getWallet(request.user.username));
 const listMovements = handle((request) => accountService.listMovements(request.user.username));
 const listBets = handle((request) => accountService.listBets(request.user.username));
-const getBet = handle((request) => accountService.getBet(request.user.username, parsePositiveInt(request.params.id)));
+const getBet = handle((request) => {
+  if (!UUID_PATTERN.test(request.params.ticketCode)) throw notFound('Apuesta no encontrada');
+  return accountService.getBet(request.user.username, request.params.ticketCode.toLowerCase());
+});
 const getCustomer = handle((request) => accountService.getCustomer(request.user.userId));
 const listLoginHistory = handle((request) => accountService.listLoginHistory(request.user.userId));
 
@@ -28,14 +34,6 @@ const getUserBalance = handle(async (request) => {
   return { userId, balance: await accountService.getBalance(request.user.username) };
 });
 
-// Las apuestas se crearán con la función PL/pgSQL fn_crear_apuesta (Fase 2).
-function placeBetUnavailable(request, response) {
-  response.status(503).json({
-    error: 'Las apuestas están deshabilitadas mientras se migran a PostgreSQL (Fase 2).',
-    database: 'postgres',
-  });
-}
-
 module.exports = {
-  getAccount, listMovements, listBets, getBet, getCustomer, listLoginHistory, getUserBalance, placeBetUnavailable,
+  getAccount, getWallet, listMovements, listBets, getBet, getCustomer, listLoginHistory, getUserBalance,
 };

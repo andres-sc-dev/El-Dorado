@@ -5,6 +5,7 @@ function Footer() {
         <div>
           <p className="font-semibold text-white">El Dorado © 2026</p>
           <p>Vuelve la época dorada</p>
+          <p className="mt-1 text-xs text-slate-500">Proyecto académico sin dinero real · Solo mayores de 18 años · Juega con responsabilidad</p>
         </div>
         <nav className="flex flex-wrap items-center justify-center gap-4 lg:justify-end">
           <a href="#ayuda" className="transition hover:text-white">Ayuda</a>

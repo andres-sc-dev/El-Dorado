@@ -22,6 +22,7 @@ const databases = require('../src/config/databases');
 let server;
 let baseUrl;
 const userCookie = `el_dorado_token=${createToken({ userId: 7, username: 'prueba', role: 'USR' })}`;
+const adminCookie = `el_dorado_token=${createToken({ userId: 8, username: 'jefe', role: 'ADM' })}`;
 
 before(async () => {
   server = app.listen(0);
@@ -82,6 +83,7 @@ const ownerReads = [
   '/api/bet', '/api/bets', '/api/bet/1', '/api/bets/1',
   '/api/login_history', '/api/login-history',
   '/api/users/1/balance', '/api/auth/me',
+  '/api/bets/me', '/api/wallet/me', '/api/admin/matches',
 ];
 
 for (const path of ownerReads) {
@@ -135,11 +137,44 @@ test('POST /api/bets sin sesión responde 401', async () => {
   assert.equal(result.status, 401);
 });
 
-// 4. Base caída: 503 y no 500.
+// 4. Roles: el rol se revisa antes de tocar cualquier base.
+test('USR en GET /api/admin/matches responde 403', async () => {
+  const result = await call('GET', '/api/admin/matches', { cookie: userCookie });
+  assert.equal(result.status, 403);
+});
+
+test('USR en POST /api/admin/matches/:code/finish responde 403', async () => {
+  const result = await call('POST', '/api/admin/matches/BP261801/finish', { cookie: userCookie, body: { home_goals: 1, away_goals: 0 } });
+  assert.equal(result.status, 403);
+});
+
+test('POST /api/admin/matches/:code/finish sin sesión responde 401', async () => {
+  const result = await call('POST', '/api/admin/matches/BP261801/finish', { body: { home_goals: 1, away_goals: 0 } });
+  assert.equal(result.status, 401);
+});
+
+test('ADM en POST /api/bets responde 403 (los administradores no apuestan)', async () => {
+  const result = await call('POST', '/api/bets', { cookie: adminCookie, body: { stake: 1000 } });
+  assert.equal(result.status, 403);
+});
+
+test('un token sin rol válido no entra a /api/admin', async () => {
+  const cookie = `el_dorado_token=${createToken({ userId: 9, username: 'sinrol', role: undefined })}`;
+  const result = await call('GET', '/api/admin/matches', { cookie });
+  assert.equal(result.status, 403);
+});
+
+// 5. Base caída: 503 y no 500.
 test('GET /api/account con sesión y PostgreSQL caído responde 503', async () => {
   const result = await call('GET', '/api/account', { cookie: userCookie });
   assert.equal(result.status, 503);
   assert.equal(result.body.database, 'postgres');
+});
+
+test('GET /api/matches con MySQL caído responde 503', async () => {
+  const result = await call('GET', '/api/matches');
+  assert.equal(result.status, 503);
+  assert.equal(result.body.database, 'mysql');
 });
 
 test('GET /api/match con MySQL caído responde 503', async () => {

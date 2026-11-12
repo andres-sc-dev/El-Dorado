@@ -16,8 +16,8 @@ function LoginForm() {
     setError('');
 
     try {
-      await login(email, password);
-      navigate('/');
+      const loggedUser = await login(email, password);
+      navigate(loggedUser?.role === 'ADM' ? '/admin' : '/');
     } catch (submitError) {
       setError(submitError.message || 'No se pudo iniciar sesión');
     }

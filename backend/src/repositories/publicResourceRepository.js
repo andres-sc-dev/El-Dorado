@@ -34,7 +34,8 @@ const resources = {
     byId: 'SELECT id, league_id, number, start_date FROM matchday WHERE id = ?',
   },
   match: {
-    engine: 'mysql', aliases: ['matches'],
+    // Sin alias "matches": GET /api/matches es la vista combinada (matchService).
+    engine: 'mysql', aliases: [],
     list: `SELECT m.id, m.match_code, m.league_id, m.matchday_id, m.stadium_id, m.home_team_code,
                   m.away_team_code, m.match_date, m.status, s.code AS status_code, m.home_goals, m.away_goals
            FROM \`match\` m JOIN match_status s ON s.id_status_match = m.status
