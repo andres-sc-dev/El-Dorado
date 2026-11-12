@@ -114,7 +114,12 @@ ensureCollection('audit_log', {
   bsonType: 'object',
   required: ['event', 'at'],
   properties: {
-    event: { enum: ['LOGIN', 'LOGIN_FAILED', 'LOGOUT', 'REGISTER', 'BET_PLACED', 'MATCH_FINISHED', 'DEPOSIT'] },
+    // LOGIN, LOGIN_FAILED, REGISTER y DEPOSIT se conservan para los registros ya guardados.
+    event: { enum: [
+      'LOGIN_OK', 'LOGIN_FAIL', 'USER_CREATED', 'LOGOUT', 'BET_PLACED', 'MATCH_FINISHED',
+      'RECHARGE_CREATED', 'RECHARGE_APPROVED', 'RECHARGE_DECLINED',
+      'LOGIN', 'LOGIN_FAILED', 'REGISTER', 'DEPOSIT',
+    ] },
     username: { bsonType: ['string', 'null'], maxLength: 50 },
     at: { bsonType: 'date' },
     ip: { bsonType: ['string', 'null'], maxLength: 45 },

@@ -22,6 +22,7 @@ npm run dev         # servidor con recarga automática
 npm run seed:demo   # crea demo (USR) y admin (ADM) y copia BET_MIN_COP/BET_MAX_COP a PostgreSQL
 npm test            # seguridad y reglas de liquidación (no necesitan bases)
 npm run test:integration   # contra las 4 bases; correrlo dentro del contenedor (ver docs/PRUEBAS.md)
+node scripts/simulate-wompi-webhook.js <reference> APPROVED --amount=50000   # webhook firmado sin túnel
 ```
 
 Lo normal es correrlo con `docker compose up -d` desde la raíz (ver el README principal). Para correrlo fuera de Docker, copia `../.env.example` como `backend/.env` y apunta los `*_HOST` y `*_PORT` a los puertos publicados (por defecto 14333, 13306, 15432 y 27027).
@@ -35,7 +36,11 @@ Lo normal es correrlo con `docker compose up -d` desde la raíz (ver el README p
 | `POST /api/auth/register` | No | SQL Server + PostgreSQL | Si falla la cuenta en PostgreSQL, se borra el usuario creado. |
 | `GET /api/auth/me` | Sí | SQL Server | El saldo llega como `null` si PostgreSQL está caído. |
 | `POST /api/auth/logout` | No | — | |
-| `POST /api/auth/balance/deposit` y `/withdraw` | Sí | — | **Deshabilitados (403):** recargas con Wompi y retiros, próximamente. |
+| `POST /api/auth/balance/withdraw` | Sí | — | **Deshabilitado (403):** retiros próximamente. El depósito directo se eliminó. |
+| `GET /api/payments/config` | Sí | — | Límites de recarga (`min_cop`, `max_cop`, `currency`) y `sandbox_ready`. |
+| `POST /api/payments/prepare` | Sí, rol **USR** | Firestore | `{amountCop}` entero. Devuelve `reference`, `amountInCents`, `currency`, `signature` y `publicKey`. 503 si las llaves no son de Sandbox. |
+| `GET /api/payments/:reference` | Dueño o **ADM** | Firestore + Wompi + PostgreSQL | `?transaction_id=` opcional. Consulta a Wompi con la llave privada y acredita con `fn_recargar` si está APPROVED. |
+| `POST /api/payments/webhook` | No (checksum) | Firestore + PostgreSQL | Cuerpo crudo. 401 si el checksum no coincide. Idempotente. |
 | `GET /api/matches` | No | MySQL (+ PostgreSQL y MongoDB opcionales) | Partidos con equipos, mercados, cuotas, estado y límites de apuesta. |
 | `POST /api/bets` | Sí, rol **USR** | Los 4 | Header `Idempotency-Key` (UUID). Cuerpo: `match_code`, `market_code`, `selection`, `line`, `stake` y `expected_odds` (opcional). 201 si la crea, 200 si la clave ya tenía apuesta, 409 `ODDS_CHANGED` con `current_odds`. |
 | `GET /api/bets/me` (y `/api/bets/:ticketCode`) | Sí | PostgreSQL + MySQL | Apuestas del usuario con el partido y los nombres del mercado. |

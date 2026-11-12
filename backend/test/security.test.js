@@ -115,16 +115,12 @@ test('GET /api/users/:id/balance de otro usuario responde 403', async () => {
   assert.ok([403, 503].includes(result.status), `respondió ${result.status}`);
 });
 
-// 3. Depósito y retiro directos deshabilitados.
-test('POST /api/auth/balance/deposit sin sesión responde 401', async () => {
-  const result = await call('POST', '/api/auth/balance/deposit', { body: { amount: 1000000 } });
-  assert.equal(result.status, 401);
-});
-
-test('POST /api/auth/balance/deposit con sesión responde 403', async () => {
-  const result = await call('POST', '/api/auth/balance/deposit', { body: { amount: 1000000 }, cookie: userCookie });
-  assert.equal(result.status, 403);
-  assert.match(result.body.error, /Wompi/);
+// 3. Depósito directo eliminado y retiro deshabilitado.
+test('POST /api/auth/balance/deposit ya no existe: nunca suma saldo (403 de blockWrites)', async () => {
+  for (const cookie of [undefined, userCookie]) {
+    const result = await call('POST', '/api/auth/balance/deposit', { body: { amount: 1000000 }, cookie });
+    assert.ok([403, 404].includes(result.status), `respondió ${result.status}`);
+  }
 });
 
 test('POST /api/auth/balance/withdraw con sesión responde 403', async () => {

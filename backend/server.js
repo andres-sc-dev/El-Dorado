@@ -6,6 +6,8 @@ const authRoutes = require('./src/routes/authRoutes');
 const domainRoutes = require('./src/routes/domainRoutes');
 const catalogRoutes = require('./src/routes/catalogRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
+const paymentRoutes = require('./src/routes/paymentRoutes');
+const paymentController = require('./src/controllers/paymentController');
 const { health } = require('./src/controllers/healthController');
 const { errorHandler, notFoundHandler } = require('./src/middleware/errorHandler');
 const databases = require('./src/config/databases');
@@ -31,12 +33,16 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Idempotency-Key'],
 }));
+// Webhook de Wompi: sin JWT y con el cuerpo crudo (Buffer). Va antes de express.json()
+// para que nada parsee ni modifique el evento antes de verificar su checksum.
+app.post('/api/payments/webhook', express.raw({ type: '*/*', limit: '100kb' }), paymentController.webhook);
 app.use(express.json({ limit: '100kb' }));
 
 app.get('/api/health', health);
 app.use('/api/auth', authRoutes);
 app.use('/api/catalogs', catalogRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/payments', paymentRoutes);
 app.use('/api', domainRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);

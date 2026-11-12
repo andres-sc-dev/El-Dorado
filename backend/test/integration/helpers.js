@@ -128,8 +128,7 @@ function record(caso, esperado, obtenido) {
   report.push({ caso, esperado, obtenido: String(obtenido) });
 }
 
-function writeReport() {
-  const file = process.env.PRUEBAS_REPORT || path.join(__dirname, 'report.md');
+function writeReport(file = process.env.PRUEBAS_REPORT || path.join(__dirname, 'report.md')) {
   const lines = [
     '| # | Caso | Esperado | Obtenido | ¿Pasa? |',
     '|---|---|---|---|---|',

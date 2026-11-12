@@ -50,6 +50,13 @@ function errorHandler(error, request, response, next) {
     return;
   }
 
+  // Firestore caído o mal configurado: solo las rutas de pagos responden 503.
+  if (error.engine === 'firestore') {
+    console.error(`Firestore no disponible: ${error.code || error.message}`);
+    response.status(503).json({ error: 'El registro de pagos no está disponible. Intenta de nuevo en unos minutos.', database: 'firestore' });
+    return;
+  }
+
   if (isConnectionError(error)) {
     if (error.engine) databases.markDown(error.engine, error);
     console.error(`Base de datos no disponible (${error.engine || 'desconocida'}): ${error.code || error.name}`);

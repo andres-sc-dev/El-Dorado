@@ -2,6 +2,55 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Fase 3 · Recargas con Wompi Sandbox, contraseña y auditoría (12 de noviembre de 2026)
+
+### Lo que dice la documentación oficial de Wompi (consultada hoy)
+
+- **Firma de integridad** (guía "Widget & Checkout Web"): `SHA256(referencia + monto en centavos + moneda + secreto de integridad)`. La fecha de expiración es opcional y no se usa. La prueba compara el resultado con el ejemplo oficial de la página (`37c84077…3bf5`).
+- **Checksum de eventos** (guía "Eventos"): se concatenan los valores de `signature.properties` tomados de `data`, después `timestamp` y después el secreto de eventos, y se aplica SHA256. Wompi espera un `200`; si no lo recibe, reintenta a los 30 minutos, a las 3 horas y a las 24 horas.
+- **Consulta de transacciones:** "Seguimiento de transacciones" y "Transacciones" dicen que `GET /v1/transactions/{id}` **solo funciona con la llave privada** (`Authorization: Bearer prv_…`), desde el backend. Con la llave pública o sin llave responde 404.
+- **Diferencia con lo pedido:** **la consulta por `?reference=` no aparece en las guías oficiales que se leyeron.** Solo la mencionan terceros, que citan la referencia "Buscar transacciones". Por eso:
+  - el frontend envía el id de la transacción que entrega el callback del Widget (`result.transaction.id`) y el backend consulta por id;
+  - `?reference=` queda solo como respaldo, cuando aún no se conoce el id.
+- **Tarjetas de Sandbox** (guía "Datos de prueba"): 4242 4242 4242 4242 aprueba y 4111 1111 1111 1111 declina. Cualquier otra termina en `ERROR`.
+- **Prefijos de las llaves** (guía "Ambientes y llaves"): en Sandbox son `pub_test_`, `prv_test_`, `test_events_` y `test_integrity_`; en producción, `pub_prod_`, `prv_prod_`, `prod_events_` y `prod_integrity_`.
+
+### Solo Sandbox, siempre
+
+- **La API revisa el prefijo de cada llave y la URL** (`config/wompi.js`). Si no son de Sandbox, `prepare`, la consulta y el webhook responden `503 PAYMENTS_NOT_CONFIGURED`. La respuesta dice qué llave está mal, pero nunca muestra su valor. Proyecto académico: no debe existir ningún camino que cobre dinero real.
+- **El `.env` local tenía llaves de producción**, y hoy los pagos quedan bloqueados por esta revisión. Hay que reemplazarlas por las de Sandbox.
+
+### Flujo de una recarga
+
+1. `POST /api/payments/prepare` valida el monto (entero JSON entre `WOMPI_MIN_COP` y `WOMPI_MAX_COP`), crea la referencia `ELD-<uuid>`, la firma y guarda el documento `CREATED` en Firestore (`payments/<reference>`).
+2. El usuario paga en el Widget oficial.
+3. El estado llega por **dos caminos que terminan en la misma función** (`applyTransaction`):
+   - la consulta directa a Wompi, `GET /api/payments/:reference`, que es la que funciona hoy sin URL pública;
+   - el webhook, `POST /api/payments/webhook`, que funcionará cuando haya URL pública.
+4. Si Wompi dice APPROVED, `fn_recargar(username, monto, reference)` acredita y el documento pasa a `CREDITED`.
+
+Decisiones sobre ese flujo:
+
+- **Una sola acreditación.** `fn_recargar` es idempotente por `reference`: si los dos caminos llegan a la vez, o el evento se repite, se acredita una sola vez. Firestore es el registro del pago, no el candado; el candado es PostgreSQL.
+- **Se revisa que la transacción sea la firmada.** Referencia, monto en centavos y moneda deben coincidir con el documento. Si no, la recarga queda `ERROR` y no se acredita.
+- **El webhook verifica el checksum antes de leer nada**, con comparación en tiempo constante, y responde 401 si no coincide. Se monta con `express.raw()` antes de `express.json()`. Un evento auténtico pero ignorado (otro tipo, de producción o con una referencia desconocida) responde 200 para que Wompi no reintente. Si PostgreSQL está caído responde 503, y así Wompi sí reintenta.
+- **`CREDITED` nunca vuelve atrás:** un evento viejo que llega tarde no cambia el estado.
+- **Firestore caído o sin credenciales** responde 503 solo en las rutas de pagos. `FIREBASE_PRIVATE_KEY` acepta saltos de línea reales o `\n` escritos.
+- **Se eliminó la ruta `POST /api/auth/balance/deposit`.** Ya no hay ninguna ruta que sume saldo sin pago. El único otro crédito es la semilla de demo, un script de consola que también pasa por `fn_recargar`. Los retiros siguen deshabilitados.
+- **El script `scripts/simulate-wompi-webhook.js`** arma un evento con la misma estructura de la documentación, lo firma y lo envía, para demostrar el webhook sin túnel.
+
+### Contraseña, cédula y auditoría
+
+- **Política:** mínimo 10 caracteres, mayúscula, minúscula, número y símbolo, sin espacios, y sin contener el usuario ni el correo (tampoco la parte antes de la @). El backend la aplica siempre en el registro y responde `400 WEAK_PASSWORD` con `failed_rules`.
+- **Una copia en el frontend.** La versión del navegador (`frontend/src/utils/passwordPolicy.js`) es una copia porque el contenedor del frontend no ve la carpeta del backend. Una prueba compara que las dos den el mismo resultado.
+- **La barra tiene 4 colores y un checklist** en el que cada regla lleva un ícono ✔ o ✖ y su texto, no solo el color. El nivel 4 (verde) exige cumplir todas las reglas.
+- **`DocumentInput`** muestra la cédula con puntos de miles mientras se escribe y envía solo los dígitos. No se enmascara y nunca va a los logs.
+- **Eventos de auditoría:**
+  - `LOGIN_OK` y `LOGIN_FAIL`, con el motivo: usuario desconocido, contraseña errada o cuenta inactiva. Nunca se guarda la contraseña ni lo que se escribió como usuario.
+  - `USER_CREATED`.
+  - `RECHARGE_CREATED`, `RECHARGE_APPROVED` y `RECHARGE_DECLINED`.
+- **Los eventos viejos siguen siendo válidos.** El validador de `audit_log` en Mongo admite los nuevos y conserva los antiguos (`LOGIN`...) para los registros ya guardados. La auditoría nunca bloquea la operación.
+
 ## Fase 2 · Apuestas, roles y liquidación (12 de noviembre de 2026)
 
 ### El dinero vive en PostgreSQL

@@ -86,11 +86,12 @@ MySQL, PostgreSQL y MongoDB solo ejecutan sus scripts de `database/` cuando el v
 
 ## Estado
 
-Fase 2 (apuestas, roles y liquidación) en la rama `feat/fase-2-apuestas`:
-- Se apuesta desde http://localhost:5173. Solo apuestas simples, entre 1.000 y 500.000 COP (`BET_MIN_COP` y `BET_MAX_COP`).
-- Apostar, recargar, liquidar y anular viven en funciones PL/pgSQL (`database/postgres/03_bets.sql`).
-- El administrador finaliza partidos desde `/admin` y las apuestas se liquidan solas.
-- Pendiente: recargas con Wompi Sandbox, retiros, login con Google y despliegue.
+Fase 3 (recargas con Wompi Sandbox) en la rama `feat/fase-3-wompi`, sobre la Fase 2 (apuestas):
+- Se apuesta desde http://localhost:5173. Solo apuestas simples, entre 1.000 y 500.000 COP.
+- **Recargas con Wompi Sandbox** desde la billetera, entre 10.000 y 3.000.000 COP (`WOMPI_MIN_COP` y `WOMPI_MAX_COP`). Cada pago queda en Firestore (`payments`) y el saldo se acredita con `fn_recargar` en PostgreSQL. **Solo se aceptan llaves de Sandbox** (`pub_test_...`).
+- El webhook se prueba sin URL pública: `docker compose exec backend node scripts/simulate-wompi-webhook.js <reference> APPROVED --amount=<pesos>`.
+- Política de contraseñas con barra de fortaleza, cédula con puntos y auditoría en MongoDB.
+- Pendiente: retiros, login con Google, URL pública para el webhook real y despliegue.
 
 ## Autor
 

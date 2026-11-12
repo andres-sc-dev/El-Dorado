@@ -4,6 +4,8 @@ const { comparePassword, hashPassword } = require('../utils/hash');
 const { createToken } = require('../utils/token');
 const { badRequest, unauthorized, forbidden, conflict } = require('../utils/httpError');
 const { requireText, isAdultBirthDate } = require('../utils/validation');
+const { evaluatePassword } = require('../utils/passwordPolicy');
+const auditService = require('./auditService');
 
 const ACTIVE_STATUS = 1;
 
@@ -35,14 +37,25 @@ async function login({ identifier, password, ipAddress }) {
   requireText(password, 'La contraseña');
 
   const user = await userRepository.findByIdentifier(cleanIdentifier);
-  if (!user) throw unauthorized('Credenciales inválidas');
+  // Auditoría sin bloquear: nunca se guarda la contraseña ni lo que se escribió como usuario.
+  if (!user) {
+    auditService.log('LOGIN_FAIL', null, { reason: 'UNKNOWN_USER' }, ipAddress);
+    throw unauthorized('Credenciales inválidas');
+  }
 
   const passwordMatches = await comparePassword(password, user.password_hash);
   await userRepository.insertLoginHistory(user.id, ipAddress, passwordMatches);
-  if (!passwordMatches) throw unauthorized('Credenciales inválidas');
-  if (user.status !== ACTIVE_STATUS) throw forbidden('La cuenta está inactiva o bloqueada');
+  if (!passwordMatches) {
+    auditService.log('LOGIN_FAIL', user.username, { reason: 'WRONG_PASSWORD' }, ipAddress);
+    throw unauthorized('Credenciales inválidas');
+  }
+  if (user.status !== ACTIVE_STATUS) {
+    auditService.log('LOGIN_FAIL', user.username, { reason: 'INACTIVE' }, ipAddress);
+    throw forbidden('La cuenta está inactiva o bloqueada');
+  }
 
   const token = createToken({ userId: user.id, username: user.username, role: user.role_code });
+  auditService.log('LOGIN_OK', user.username, { role: user.role_code }, ipAddress);
   return { token, user: toPublicUser(user, await safeBalance(user.username)) };
 }
 
@@ -66,11 +79,18 @@ async function register(body) {
   const birthDate = requireText(body.birthDate, 'La fecha de nacimiento');
   const username = requireText(body.username, 'El usuario');
   const email = requireText(body.email, 'El correo');
-  const password = requireText(body.password, 'La contraseña');
+  requireText(body.password, 'La contraseña');
+  const password = body.password;
 
   if (!/^[0-9]{6,10}$/.test(documentNumber)) throw badRequest('La cédula debe tener entre 6 y 10 dígitos');
   if (!/^[A-Za-z0-9_.-]{3,50}$/.test(username)) throw badRequest('El usuario debe tener entre 3 y 50 letras, números, punto, guion o guion bajo');
   if (!isAdultBirthDate(birthDate)) throw badRequest('Debes tener al menos 18 años para registrarte');
+  const passwordCheck = evaluatePassword(password, { username, email });
+  if (!passwordCheck.valid) {
+    throw badRequest(`La contraseña no cumple: ${passwordCheck.failed.map((rule) => rule.label.toLowerCase()).join(', ')}.`, {
+      errorCode: 'WEAK_PASSWORD', details: { failed_rules: passwordCheck.failed },
+    });
+  }
 
   let created;
   try {
@@ -91,6 +111,7 @@ async function register(body) {
     throw error;
   }
 
+  auditService.log('USER_CREATED', username, { role: 'USR' }, body.ipAddress ?? null);
   return toPublicUser(created, 0);
 }
 

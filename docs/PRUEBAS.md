@@ -1,6 +1,6 @@
 # Pruebas
 
-Resultados reales del 12 de noviembre de 2026, rama `feat/fase-2-apuestas`.
+Resultados reales del 12 de noviembre de 2026. Fase 2 (apuestas) en `feat/fase-2-apuestas`; Fase 3 (recargas, contraseña y auditoría) en `feat/fase-3-wompi`.
 
 ## Cómo correrlas
 
@@ -104,3 +104,73 @@ Se hizo con las mismas peticiones que hace el navegador, a través del proxy de 
 | Auditoría en MongoDB | eventos `LOGIN`, `BET_PLACED` y `MATCH_FINISHED` en `audit_log` |
 
 `BP261802` quedó finalizado en tu base local. Quedan 5 partidos abiertos para seguir probando.
+
+## Fase 3 · Recargas con Wompi, contraseña y auditoría
+
+| Suite | Resultado |
+|---|---|
+| `npm test` en tu equipo: seguridad, liquidación, pagos (`payments.test.js`) y contraseña (`passwordPolicy.test.js`) | **123 de 123 pasan** |
+| `npm test` dentro del contenedor | 122 pasan y 1 se omite: la comparación con la copia del frontend, porque allí no está montada la carpeta `frontend/` |
+| `npm run test:integration` (apuestas y pagos) | **62 de 62 pasan** |
+
+Las pruebas de pagos **no escriben en tu Firestore ni llaman a Wompi**: usan dobles en memoria y secretos de prueba con formato Sandbox.
+Las de integración sí usan `fn_recargar` real en PostgreSQL y el registro real en SQL Server.
+
+### Pagos: caso, esperado y obtenido (integración)
+
+| # | Caso | Esperado | Obtenido | ¿Pasa? |
+|---|---|---|---|---|
+| 1 | recarga: monto 0 | 400 INVALID_AMOUNT | 400 INVALID_AMOUNT | Sí |
+| 2 | recarga: monto negativo (-10.000) | 400 INVALID_AMOUNT | 400 INVALID_AMOUNT | Sí |
+| 3 | recarga: monto texto ("50000") | 400 INVALID_AMOUNT | 400 INVALID_AMOUNT | Sí |
+| 4 | recarga: monto con decimales (10.000,5) | 400 INVALID_AMOUNT | 400 INVALID_AMOUNT | Sí |
+| 5 | recarga: menor al mínimo (9.999) | 400 AMOUNT_OUT_OF_RANGE | 400 AMOUNT_OUT_OF_RANGE | Sí |
+| 6 | recarga: mínimo exacto (10.000) | 201 | 201 | Sí |
+| 7 | recarga: máximo exacto (3.000.000) | 201 | 201 | Sí |
+| 8 | recarga: mayor al máximo (3.000.001) | 400 AMOUNT_OUT_OF_RANGE | 400 AMOUNT_OUT_OF_RANGE | Sí |
+| 9 | firma de integridad = SHA256(reference + centavos + COP + secreto) | coincide | coincide | Sí |
+| 10 | webhook con checksum inválido | 401 INVALID_CHECKSUM saldo 0 | 401 INVALID_CHECKSUM saldo 0 | Sí |
+| 11 | evento APPROVED duplicado 4 veces | 200,200,200,200 saldo 50000 1 recarga | 200,200,200,200 saldo 50000 1 recarga | Sí |
+| 12 | pago DECLINED | 200 DECLINED saldo 0 | 200 DECLINED saldo 0 | Sí |
+| 13 | webhook APPROVED con otro monto (3.000.000 vs 50.000 firmado) | ERROR saldo 0 | ERROR saldo 0 | Sí |
+| 14 | registro con contraseña débil (contiene el usuario) | 400 WEAK_PASSWORD UPPERCASE,NO_USERNAME,NO_EMAIL | 400 WEAK_PASSWORD UPPERCASE,NO_USERNAME,NO_EMAIL | Sí |
+
+### Pagos y contraseña: pruebas unitarias (`npm test`)
+
+| Caso | Esperado | Obtenido |
+|---|---|---|
+| Monto 0, negativo, texto, decimales, menor al mínimo, mayor al máximo y ausente | 400 con "Mínimo $10.000 · Máximo $3.000.000" en el mensaje, sin documento en Firestore | Pasa |
+| Mínimo y máximo exactos | 201 | Pasa |
+| Recarga sin sesión o con rol ADM | 401 y 403 | Pasa |
+| Firma de integridad contra el **ejemplo oficial** de docs.wompi.co | `37c84077…3bf5` | Pasa |
+| La respuesta de `prepare` no incluye llave privada, secreto de eventos ni secreto de integridad | Ningún secreto | Pasa |
+| Checksum de eventos contra la cadena de ejemplo oficial | SHA256 igual | Pasa |
+| Webhook con checksum inválido, con un monto alterado después de firmar y con cuerpo que no es JSON | 401 sin tocar datos | Pasa |
+| Mismo evento APPROVED 3 veces a la vez | Se acredita una vez | Pasa |
+| DECLINED y luego APPROVED con la misma referencia | No acredita | Pasa |
+| Evento con `environment: prod` | 200, se ignora y no acredita | Pasa |
+| Consulta directa con APPROVED varias veces, PENDING y consulta por otro usuario o ADM | Una acreditación; CREATED; 403 o se permite | Pasa |
+| Llaves de producción | 503 `PAYMENTS_NOT_CONFIGURED`, sin mostrar las llaves | Pasa |
+| `FIREBASE_PRIVATE_KEY` con `
+` escritos o saltos de línea reales | Misma llave | Pasa |
+| Contraseña: vacía, corta, sin mayúscula, minúscula, número o símbolo, con espacio, con el usuario o con el correo | Lista exacta de reglas incumplidas | Pasa (10 casos) |
+| Niveles de la barra (0 a 4) | 0, 1, 2, 3 y 4 | Pasa |
+| Registro con contraseña débil | 400 `WEAK_PASSWORD` con `failed_rules` | Pasa |
+| La copia del frontend da el mismo resultado que la del backend | Igual | Pasa (en tu equipo) |
+
+### Webhook simulado contra Firestore real y PostgreSQL real
+
+Hoy no hay URL pública. Tus llaves de Wompi son de producción, así que el backend bloquea los pagos (`503 PAYMENTS_NOT_CONFIGURED`).
+Para la demostración se levantó una segunda instancia temporal del backend en el puerto 4100, con secretos de simulación con formato Sandbox, y luego se detuvo. Esa instancia no llama a Wompi: usa tu Firestore real y tu PostgreSQL real.
+
+| Paso | Resultado real |
+|---|---|
+| Login `demo` | saldo 514.250 |
+| `POST /api/payments/prepare {"amountCop": 50000}` | 201, `reference ELD-a899647e-1f68-460b-9e96-72e2465f71c8`, `amountInCents 5000000`, firma y llave pública |
+| `node scripts/simulate-wompi-webhook.js <reference> APPROVED --amount=50000` | `200 {"status":"CREDITED"}` |
+| El mismo script otra vez | `200 CREDITED`, sin segunda acreditación |
+| Con `--bad-signature` | `401 INVALID_CHECKSUM` |
+| Documento en Firestore `payments/ELD-a899647e-…` | `status: CREDITED`, `wompi_status: APPROVED`, `username: demo`, `amount_cop: 50000`, `amount_in_cents: 5000000`, `balance: 564250`, `credited_at` |
+| PostgreSQL `balance_movement` con esa referencia | **una** fila `DEPOSIT 50000.00 -> 564250.00` |
+| MongoDB `audit_log` | `RECHARGE_CREATED` y `RECHARGE_APPROVED` (con `source: WEBHOOK`); también hay `LOGIN_OK`, `LOGIN_FAIL` y `USER_CREATED` |
+| Backend real con tus llaves de producción | `config.sandbox_ready: false` y `prepare` responde 503 sin mostrar ninguna llave |

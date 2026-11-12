@@ -153,6 +153,17 @@ services:
       ADMIN_DOCUMENT: ${ADMIN_DOCUMENT:-}
       BET_MIN_COP: ${BET_MIN_COP:-1000}
       BET_MAX_COP: ${BET_MAX_COP:-500000}
+      # Wompi: SOLO llaves de Sandbox (pub_test_, prv_test_, test_events_, test_integrity_).
+      WOMPI_PUBLIC_KEY: ${WOMPI_PUBLIC_KEY:-}
+      WOMPI_PRIVATE_KEY: ${WOMPI_PRIVATE_KEY:-}
+      WOMPI_EVENTS_SECRET: ${WOMPI_EVENTS_SECRET:-}
+      WOMPI_INTEGRITY_SECRET: ${WOMPI_INTEGRITY_SECRET:-}
+      WOMPI_API_URL: ${WOMPI_API_URL:-https://sandbox.wompi.co/v1}
+      WOMPI_MIN_COP: ${WOMPI_MIN_COP:-10000}
+      WOMPI_MAX_COP: ${WOMPI_MAX_COP:-3000000}
+      FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:-}
+      FIREBASE_CLIENT_EMAIL: ${FIREBASE_CLIENT_EMAIL:-}
+      FIREBASE_PRIVATE_KEY: ${FIREBASE_PRIVATE_KEY:-}
     ports:
       - "${BACKEND_HOST_PORT:-4000}:4000"
     networks: [eldorado]
@@ -182,6 +193,8 @@ services:
       - frontend_node_modules:/app/node_modules
     environment:
       VITE_API_PROXY_TARGET: http://backend:4000
+      # Llave pública de Wompi Sandbox para el Widget (es pública: puede ir al navegador).
+      VITE_WOMPI_PUBLIC_KEY: ${VITE_WOMPI_PUBLIC_KEY:-}
     ports:
       - "${FRONTEND_HOST_PORT:-5173}:5173"
     networks: [eldorado]

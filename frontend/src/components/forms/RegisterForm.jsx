@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Button from '../ui/Button';
+import { evaluatePassword } from '../../utils/passwordPolicy';
+import DocumentInput from './DocumentInput';
+import PasswordStrengthBar from './PasswordStrengthBar';
 
 function getAdultBirthDateLimit() {
   const today = new Date();
@@ -38,6 +41,17 @@ function RegisterForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
+
+    const passwordCheck = evaluatePassword(formData.password, { username: formData.username, email: formData.email });
+    if (!passwordCheck.valid) {
+      setError(`La contraseña no cumple: ${passwordCheck.failed.map((rule) => rule.label.toLowerCase()).join(', ')}.`);
+      return;
+    }
+
+    if (!/^\d{6,10}$/.test(formData.documentNumber)) {
+      setError('La cédula debe tener entre 6 y 10 dígitos');
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError('Las contraseñas no coinciden');
@@ -81,8 +95,13 @@ function RegisterForm() {
         <input name="fullName" value={formData.fullName} onChange={handleChange} className="form-input" placeholder="Tu nombre completo" required />
       </div>
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Número de documento</label>
-        <input name="documentNumber" value={formData.documentNumber} onChange={handleChange} className="form-input" placeholder="Tu número de documento" required />
+        <label htmlFor="documentNumber" className="mb-1 block text-sm text-slate-300">Cédula de ciudadanía</label>
+        <DocumentInput
+          value={formData.documentNumber}
+          onChange={(digits) => setFormData((current) => ({ ...current, documentNumber: digits }))}
+          placeholder="1.234.567.890"
+          required
+        />
       </div>
       <div>
         <label className="mb-1 block text-sm text-slate-300">Fecha de nacimiento</label>
@@ -107,7 +126,8 @@ function RegisterForm() {
       </div>
       <div>
         <label className="mb-1 block text-sm text-slate-300">Contraseña</label>
-        <input name="password" type="password" value={formData.password} onChange={handleChange} className="form-input" placeholder="••••••••" required />
+        <input name="password" type="password" value={formData.password} onChange={handleChange} className="form-input" placeholder="••••••••" autoComplete="new-password" required />
+        <PasswordStrengthBar password={formData.password} username={formData.username} email={formData.email} />
       </div>
       <div>
         <label className="mb-1 block text-sm text-slate-300">Confirmar contraseña</label>

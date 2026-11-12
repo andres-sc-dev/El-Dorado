@@ -2,12 +2,13 @@ import { useLocation } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
 import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusStates';
+import RechargePanel from '../components/wallet/RechargePanel';
 import { useApiData } from '../hooks/useApiData';
 import { getWallet } from '../services/walletService';
 import { formatCOP, formatDateTime } from '../utils/format';
 
-// Billetera: saldo y movimientos de PostgreSQL (GET /api/wallet/me).
-// Las recargas llegarán con Wompi Sandbox y los retiros con su propia función PL/pgSQL.
+// Billetera: saldo y movimientos de PostgreSQL (GET /api/wallet/me) y recargas con Wompi Sandbox.
+// Los retiros siguen deshabilitados.
 function WalletPage() {
   const location = useLocation();
   const hasDepositTab = new URLSearchParams(location.search).get('tab') === 'deposit';
@@ -29,19 +30,8 @@ function WalletPage() {
           </div>
         ) : null}
 
-        <div className="mb-6 grid gap-6 md:grid-cols-2">
-          <section
-            aria-labelledby="deposit-title"
-            className={`glass-panel rounded-2xl p-5 ${hasDepositTab ? 'ring-2 ring-brand-gold/60' : ''}`}
-          >
-            <h2 id="deposit-title" className="text-xl font-bold text-white">Recargar</h2>
-            <p role="status" className="mt-4 rounded-xl border border-brand-gold/40 bg-brand-gold/10 px-4 py-3 text-sm text-amber-100">
-              Recargas con Wompi próximamente.
-            </p>
-            <p className="mt-3 text-sm text-slate-400">
-              Proyecto académico: no se usa dinero real. Tu cuenta tiene saldo de prueba.
-            </p>
-          </section>
+        <div className="mb-6 grid items-start gap-6 md:grid-cols-2">
+          <RechargePanel highlighted={hasDepositTab} onCredited={reload} />
 
           <section aria-labelledby="withdraw-title" className="glass-panel rounded-2xl p-5">
             <h2 id="withdraw-title" className="text-xl font-bold text-white">Retirar</h2>
