@@ -157,10 +157,22 @@ async function loadPostgres(season, data) {
     await client.query('DELETE FROM team_stats WHERE NOT (season = ANY($1::smallint[]))', [downloaded]);
 
     // Estadísticas de jugador (solo si se descargaron las páginas de /players).
+    // Un jugador de 2024 que ya no está en la plantilla actual se agrega con el equipo de esa
+    // temporada; si ya existe (plantilla actual) no se cambia su equipo (DO NOTHING).
     let playerStats = 0;
+    const leagueId = data.teams.length ? readJson(path.join(DATA_DIR, String(season), 'league.json')).league.id : null;
     for (const entry of data.playerPages) {
-      const st = entry.statistics?.find((x) => x.league?.id && x.league.season === season) || entry.statistics?.[0];
+      const st = entry.statistics?.find((x) => x.league?.id === leagueId && x.league.season === season);
       if (!st) continue;
+      const teamId = teamIdByApi.get(st.team?.id);
+      if (teamId) {
+        const birth = /^\d{4}-\d{2}-\d{2}$/.test(entry.player.birth?.date || '') ? entry.player.birth.date : null;
+        await client.query(`
+          INSERT INTO player (api_football_id, team_id, name, position_id, birth_date)
+          VALUES ($1, $2, $3, $4, $5)
+          ON CONFLICT DO NOTHING
+        `, [entry.player.id, teamId, cut(entry.player.name, 140), POSITION_BY_API[st.games?.position] ?? null, birth]);
+      }
       const { rows } = await client.query('SELECT id FROM player WHERE api_football_id = $1', [entry.player.id]);
       if (!rows[0]) continue;
       const n = (v) => (Number.isInteger(v) && v >= 0 ? v : 0);

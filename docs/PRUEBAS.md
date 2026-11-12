@@ -342,3 +342,36 @@ Integración (contenedores reales):
 | 9 | GET /api/teams/XYZ/crest (sin escudo) | 200 generic | 200 generic | Sí |
 | 10 | apuesta 1X2 HOME de 10.000 en CHI-ONC | 201 cuota 4.12 | 201 cuota 4.12 | Sí |
 | 11 | ADM finaliza 2-0: la apuesta HOME gana y se paga | 200 ganadas 1 saldo 81200 | 200 ganadas 1 saldo 81200 | Sí |
+
+### Verificación manual de la Fase 5
+
+**Conteos del loader** (primera corrida sobre la base de la Fase 4, después con jugadores, y una segunda corrida idéntica):
+
+| Tabla | Antes (Fase 4) | Después | Segunda corrida |
+|---|---|---|---|
+| pg.team | 8 | 20 | 20 |
+| pg.player | 10 | 830 | 830 |
+| pg.team_stats | 8 | 20 | 20 |
+| pg.player_stats | 10 | 308 | 308 |
+| pg.bet | 2 | 2 (luego 3, por la apuesta de demo) | 3 |
+| mysql.league | 1 | 4 | 4 |
+| mysql.stadium | 6 | 26 | 26 |
+| mysql.matchday | 3 | 58 | 58 |
+| mysql.match | 7 | 469 | 469 |
+| mysql.odds | 84 | 234 | 234 |
+
+**`docker compose up -d --build`:** el backend quedó `healthy` y el loader corrió solo al arrancar, después de `seed:demo`.
+
+**Apuesta de demo y finalización por el admin sobre la réplica `DM265102`** (Envigado FC vs Internacional de Bogotá), por la API real:
+
+| Paso | Resultado |
+|---|---|
+| Mercados del partido | Resultado del partido (HOME 3,33, DRAW 3,04, AWAY 2,31) y Total de goles 2,5 (OVER 3,04, UNDER 1,36) |
+| Inicio de sesión del usuario demo | 200 |
+| Apuesta 1X2 HOME de 5.000 | 201, cuota 3,33, pago posible 16.650; saldo 564.250 → 559.250 |
+| Panel admin | 37 partidos; `DM265102` con `can_finish=true` y `open_bets=1` |
+| Finalizar 2-1 | 200: liquidadas 1, ganadas 1, pagado 16.650 |
+| Apuesta del demo | WON; saldo 575.900 |
+
+**Interfaz:** en `http://localhost:5173/matches`, una captura con Chrome sin ventana muestra las tarjetas con los escudos reales (Chicó, Once Caldas, Águilas, América, Millonarios, Nacional, Cali, Pereira) y las cuotas del modelo.
+

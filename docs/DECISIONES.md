@@ -21,8 +21,14 @@ Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va 
   - una petición cada 7 segundos (el límite es 10 por minuto);
   - se detiene si a la cuota diaria le quedan 3;
   - sin reintentos agresivos: ante un 429 espera 65 segundos y prueba una sola vez más.
-- **Gasto real hoy: 43 peticiones según el registro propio:** 1 de ligas, 1 de equipos, 1 de partidos, 20 de estadísticas y 20 de plantillas. Al final, el header de la API decía que quedaban entre 60 y 65 de 100. El contador de la API va algo atrasado frente al registro propio, y se usa el más conservador.
-- **No se bajaron las páginas de `/players`** (estadísticas por jugador). Quedan para otro día con `--with-players`, y por eso `player_stats` está vacío.
+- **Primera tanda: 43 peticiones según el registro propio:** 1 de ligas, 1 de equipos, 1 de partidos, 20 de estadísticas y 20 de plantillas. Al final, el header de la API decía que quedaban entre 60 y 65 de 100. El contador de la API va algo atrasado frente al registro propio, y se usa el más conservador.
+- **Estadísticas de jugador (opcional, con el presupuesto sobrante):**
+  - `/players?league=239&season=2024` en el plan gratuito responde, desde la página 4: `"Free plans are limited to a maximum value of 3 for the Page parameter"`. Se bajaron las páginas 1 a 3 (60 jugadores).
+  - Se sumó la página 1 de `/players?team=<id>&season=2024` de cada equipo, con `--players-by-team=1`: son 20 peticiones y salen los 20 jugadores con más minutos de cada equipo.
+  - Las páginas 2 y 3 por equipo (40 peticiones más) quedan para otro día con `--players-by-team=3`: el script salta lo que ya existe.
+  - Resultado: 308 filas de `player_stats` de 2024.
+  - Un jugador de 2024 que ya no está en la plantilla actual se agrega con el equipo de esa temporada. Si está en la plantilla actual, `player.team_id` es su equipo **actual**: las estadísticas son de 2024, pero el equipo no se reescribe.
+- **Gasto total de hoy:** 67 de 70 peticiones en el registro propio. Al terminar, la API decía que quedaban 34 de 100.
 - **Las plantillas (`/players/squads`) son las actuales, no las de 2024:** ese endpoint no recibe temporada.
 - **¿Los escudos cuentan en la cuota?** No se pudo leer la documentación de API-Football: la página respondió 403 al consultarla desde aquí. Por eso se midió: se pidió `/status` antes y después de bajar los escudos de `media.api-sports.io`, y el contador no cambió (32 → 32 con 19 escudos; 40 → 40 con 2). **En la práctica, no cuentan.** Se bajaron los 20.
 - **Se corrigió un choque de códigos.** "Internacional de Bogotá" (antes La Equidad) contiene la palabra "nacional" y tomaba el código `NAC`. Ahora es `EQU`, y la regla de Nacional exige "Atlético Nacional".
@@ -43,7 +49,7 @@ Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va 
 - **Es idempotente:** hace upsert por clave natural, con `ON CONFLICT` en PostgreSQL y su equivalente de MySQL, `ON DUPLICATE KEY UPDATE`. Probado: correrlo dos veces deja los mismos conteos.
 - **Corre en cada arranque del backend**, después de `seed:demo`. Si falla, el servidor arranca igual.
 - **PostgreSQL:**
-  - 20 equipos, 632 jugadores y 20 filas de `team_stats` de 2024. Un jugador aparece en dos plantillas y queda en la última que se carga.
+  - 20 equipos, 830 jugadores (632 de las plantillas actuales y 198 que solo aparecen en las estadísticas de 2024), 20 filas de `team_stats` y 308 de `player_stats` de 2024. Un jugador aparece en dos plantillas y queda en la última que se carga.
   - Se borran los jugadores ficticios de la semilla ("Jugador Millonarios 1"...) y sus estadísticas.
   - Se borran las cifras inventadas de `team_stats` 2026. La regla es: `team_stats` solo guarda temporadas descargadas.
 - **MySQL:**

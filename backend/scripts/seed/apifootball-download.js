@@ -176,8 +176,21 @@ async function main() {
   }
 
   // Jugadores con estadísticas por página: solo si se pide y si sobra presupuesto.
+  // El plan gratuito solo permite page <= 3 ("Free plans are limited to a maximum value of 3 for
+  // the Page parameter"), por eso también se puede pedir por equipo: --players-by-team[=páginas].
+  if (args['players-by-team']) {
+    const maxPages = Math.min(3, Number(args['players-by-team']) || 1);
+    for (let page = 1; page <= maxPages; page += 1) {
+      let stop = false;
+      for (const { team } of teamList) {
+        const r = await cached(path.join(seasonDir, 'players', `team-${team.id}-page-${page}.json`), `/players?team=${team.id}&season=${season}&page=${page}`);
+        if (r.skipped) { stop = true; break; }
+      }
+      if (stop) break;
+    }
+  }
   if (args['with-players']) {
-    for (let page = 1; page <= 40; page += 1) {
+    for (let page = 1; page <= 3; page += 1) {
       const r = await cached(path.join(seasonDir, 'players', `page-${page}.json`), `/players?league=${leagueId}&season=${season}&page=${page}`);
       if (r.skipped || r.error) break;
       if (page >= (r.body.paging?.total || 1)) break;
