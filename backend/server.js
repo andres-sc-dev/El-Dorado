@@ -5,7 +5,9 @@ const express = require('express');
 const authRoutes = require('./src/routes/authRoutes');
 const domainRoutes = require('./src/routes/domainRoutes');
 const catalogRoutes = require('./src/routes/catalogRoutes');
-const errorHandler = require('./src/middlewares/errorHandler');
+const { health } = require('./src/controllers/healthController');
+const { errorHandler, notFoundHandler } = require('./src/middleware/errorHandler');
+const databases = require('./src/config/databases');
 
 const app = express();
 const port = Number(process.env.PORT || 4000);
@@ -16,6 +18,7 @@ const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:5173')
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+app.disable('x-powered-by');
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -26,16 +29,24 @@ app.use(cors({
   },
   credentials: true,
 }));
-app.use(express.json());
+app.use(express.json({ limit: '100kb' }));
 
+app.get('/api/health', health);
 app.use('/api/auth', authRoutes);
 app.use('/api/catalogs', catalogRoutes);
 app.use('/api', domainRoutes);
+app.use(notFoundHandler);
 app.use(errorHandler);
 
 if (require.main === module) {
-  app.listen(port, () => {
+  // Arranque tolerante: el servidor escucha aunque alguna base esté caída.
+  // Solo se informa el estado inicial de cada motor.
+  app.listen(port, async () => {
     console.log(`El Dorado backend escuchando en http://localhost:${port}`);
+    const status = await databases.checkAll({ fresh: true });
+    for (const [name, result] of Object.entries(status)) {
+      console.log(`  ${name.padEnd(9)} ${result.status}${result.error ? ` (${result.error})` : ''}`);
+    }
   });
 }
 

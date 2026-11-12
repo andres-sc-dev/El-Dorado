@@ -1,62 +1,46 @@
 const express = require('express');
-const { domainDefinitions } = require('../domain/domainDefinitions');
-const {
-  createController, userBalance, userBets, userBetById, placeBets,
-} = require('../controllers/domainController');
-const { authenticate } = require('../middlewares/authenticate');
+const { resources } = require('../repositories/publicResourceRepository');
+const { createResourceController } = require('../controllers/resourceController');
+const account = require('../controllers/accountController');
+const { authenticate } = require('../middleware/authenticate');
+const { requireDb } = require('../middleware/requireDb');
+const { blockWrites } = require('../middleware/blockWrites');
 
 const router = express.Router();
 
-for (const name of Object.keys(domainDefinitions)) {
-  if (name === 'bet') continue;
-  const controller = createController(name);
-  const aliases = {
-    country: ['countries'],
-    sport: ['sports'],
-    stadium: ['stadiums'],
-    company: ['companies'],
-    game_rule: ['game-rules'],
-    league: ['leagues'],
-    team: ['teams'],
-    matchday: ['matchdays'],
-    customer: ['customers'],
-    login_history: ['login-history'],
-    player: ['players'],
-    team_stats: ['team-stats'],
-    match: ['matches'],
-    player_stats: ['player-stats'],
-    balance_movement: ['balance-movements'],
-    bet: ['bets'],
-  }[name] || [];
-  const routes = [`/${name}`, ...aliases.map((alias) => `/${alias}`)];
-  // Data-entry endpoints remain open during this testing phase. Authentication
-  // can be added later without changing the route/controller contract.
-  const getMiddleware = name === 'users' ? [authenticate] : [];
-  if (name === 'users') {
-    router.get('/users/:id/balance', authenticate, userBalance);
-  }
-  routes.forEach((route) => {
-    router.get(route, ...getMiddleware, controller.list);
-    router.get(`${route}/:id`, ...getMiddleware, controller.getById);
-    if (!domainDefinitions[name].readOnly) {
-      router.post(route, controller.create);
-    } else {
-      router.post(route, (request, response) => {
-        response.status(405).json({ error: 'Este recurso es de solo lectura' });
-      });
-    }
-  });
+// ---------- Datos del dueño de la sesión ----------
+// Antes estos GET eran públicos y devolvían los datos de todos los clientes.
+// Ahora exigen sesión y devuelven solo los del usuario del JWT.
+// Las rutas /:id se eliminaron (salvo apuestas, filtradas por dueño).
+const ownerRoutes = [
+  { paths: ['/customer', '/customers', '/me/customer'], db: 'sqlserver', handler: account.getCustomer },
+  { paths: ['/login_history', '/login-history'], db: 'sqlserver', handler: account.listLoginHistory },
+  { paths: ['/account', '/me/account'], db: 'pg', handler: account.getAccount },
+  { paths: ['/balance_movement', '/balance-movements'], db: 'pg', handler: account.listMovements },
+  { paths: ['/bet', '/bets'], db: 'pg', handler: account.listBets },
+  { paths: ['/bet/:id', '/bets/:id'], db: 'pg', handler: account.getBet },
+  { paths: ['/users/:id/balance'], db: 'pg', handler: account.getUserBalance },
+];
+for (const { paths, db, handler } of ownerRoutes) {
+  router.get(paths, authenticate, requireDb(db), handler);
 }
 
-// A bet is always owned by the authenticated customer. The generic data-entry
-// route is intentionally not used because it could let a client choose another
-// customer or skip the balance transaction.
-router.get('/bets', authenticate, userBets);
-router.post('/bets', authenticate, placeBets);
-router.get('/bet', authenticate, userBets);
-router.get('/bet/:id', authenticate, userBetById);
-router.post('/bet', authenticate, (request, response) => {
-  response.status(405).json({ error: 'Usa POST /api/bets para registrar una apuesta' });
-});
+// Apostar: con sesión, pero deshabilitado hasta la Fase 2 (funciones PL/pgSQL).
+router.post(['/bets', '/bet'], authenticate, account.placeBetUnavailable);
+
+// ---------- Lecturas públicas por motor ----------
+for (const [name, resource] of Object.entries(resources)) {
+  const controller = createResourceController(name);
+  const paths = [`/${name}`, ...resource.aliases.map((alias) => `/${alias}`)];
+  router.get(paths, requireDb(resource.engine), controller.list);
+  if (resource.byId) {
+    router.get(paths.map((path) => `${path}/:id`), requireDb(resource.engine), controller.getById);
+  }
+}
+
+// ---------- Escrituras genéricas ----------
+// Parche de seguridad: cualquier POST/PUT/PATCH/DELETE que no se haya atendido arriba
+// responde 403, con o sin sesión. Se habilitan para ADM en la Fase 2.
+router.use(blockWrites);
 
 module.exports = router;

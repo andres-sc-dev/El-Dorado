@@ -1,9 +1,14 @@
 const jwt = require('jsonwebtoken');
 
-// El JWT contiene únicamente el identificador necesario para reconocer al
-// usuario. Nunca ponemos la contraseña ni el password_hash dentro del token.
-function createToken(userId) {
-  return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '2h' });
+// El JWT lleva solo lo que la API necesita para autorizar: id, usuario y rol.
+// username es la clave natural con la que PostgreSQL y MongoDB identifican al usuario.
+// Nunca guardamos la contraseña, el hash ni el documento dentro del token.
+function createToken({ userId, username, role }) {
+  return jwt.sign({ userId, username, role }, process.env.JWT_SECRET, { expiresIn: '2h' });
 }
 
-module.exports = { createToken };
+function verifyToken(token) {
+  return jwt.verify(token, process.env.JWT_SECRET);
+}
+
+module.exports = { createToken, verifyToken };
