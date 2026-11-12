@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useBetSlip } from '../../context/BetSlipContext';
 import { formatCOP, formatOdds } from '../../utils/format';
 import Button from '../ui/Button';
+import TeamShield from '../ui/TeamShield';
 
 const DEFAULT_LIMITS = { min_stake: 1000, max_stake: 500000 };
 
@@ -68,6 +69,13 @@ function BetSlip({ limits = DEFAULT_LIMITS }) {
         </div>
       ) : (
         <div className="rounded-xl border border-white/10 bg-slate-900/30 p-3">
+          {selection.homeTeam && selection.awayTeam ? (
+            <div className="mb-2 flex items-center gap-2" aria-hidden="true">
+              <TeamShield team={selection.homeTeam} size="sm" />
+              <span className="text-xs text-slate-500">vs</span>
+              <TeamShield team={selection.awayTeam} size="sm" />
+            </div>
+          ) : null}
           <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{selection.matchLabel} · {selection.matchCode}</p>
           <p className="mt-1 text-sm text-slate-300">{selection.marketName}</p>
           <p className="font-semibold text-white">{selection.outcomeName} · {formatOdds(selection.oddValue)}</p>

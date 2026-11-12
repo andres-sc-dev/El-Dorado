@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useBetSlip } from '../../context/BetSlipContext';
 import { formatDateTime, MATCH_STATUS_LABELS } from '../../utils/format';
+import TeamShield from '../ui/TeamShield';
 import OddButton from './OddButton';
 
 // Un partido de GET /api/matches. El 1X2 se ve siempre; el resto de mercados se despliega.
@@ -21,6 +22,8 @@ function MatchCard({ match, compact = false }) {
   const choose = (market, outcome) => select({
     matchCode: match.match_code,
     matchLabel,
+    homeTeam: match.home_team,
+    awayTeam: match.away_team,
     marketCode: market.market_code,
     marketName: market.name,
     outcomeCode: outcome.outcome_code,
@@ -44,12 +47,22 @@ function MatchCard({ match, compact = false }) {
         </span>
       </div>
 
-      <div className="mb-4 text-center text-sm text-slate-300">
-        {match.score ? (
-          <span className="text-2xl font-black text-white">{match.score.home} - {match.score.away}</span>
-        ) : (
-          formatDateTime(match.match_date)
-        )}
+      <div className="mb-4 grid grid-cols-[1fr_auto_1fr] items-center gap-3 text-sm text-slate-300">
+        <div className="flex items-center justify-end gap-2 text-right">
+          <span className="font-semibold text-white">{match.home_team.short_name}</span>
+          <TeamShield team={match.home_team} size={compact ? 'md' : 'lg'} />
+        </div>
+        <div className="text-center">
+          {match.score ? (
+            <span className="text-2xl font-black text-white">{match.score.home} - {match.score.away}</span>
+          ) : (
+            formatDateTime(match.match_date)
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <TeamShield team={match.away_team} size={compact ? 'md' : 'lg'} />
+          <span className="font-semibold text-white">{match.away_team.short_name}</span>
+        </div>
       </div>
 
       {!match.is_betting_open || match.markets.length === 0 ? (

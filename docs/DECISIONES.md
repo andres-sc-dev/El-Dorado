@@ -2,6 +2,102 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Fase 5 · Datos reales de la Liga BetPlay con API-Football (12 de noviembre de 2026)
+
+### Qué temporada se usó y por qué
+
+- **Se usó la temporada 2024 de la Primera A (id 239), sin plan B.** Respuestas reales de la API (sin la llave):
+  - `GET /status`: plan `Free`, `limit_day: 100`, vigente hasta 2027-11-12.
+  - `GET /leagues?country=Colombia`: 5 ligas; la Primera A (`type: League`, id 239) lista las temporadas 2016 a 2026.
+  - `GET /teams?league=239&season=2024`: `results: 20` y `errors: []`. El plan gratuito sí da acceso a 2024.
+- **Se eligió 2024 porque es la temporada pedida y está completa:** Apertura y Finalización con cuadrangulares y final, 432 partidos jugados.
+
+### Descarga (una sola vez, `backend/scripts/seed/apifootball-download.js`)
+
+- **Se corre a mano en tu equipo**, nunca desde la app ni en Docker. La llave sale de `API_FOOTBALL_KEY` y **no se pasa al contenedor del backend**, así que la app no tiene cómo llamar a la API.
+- **Cada respuesta cruda se guarda en `backend/data/apifootball/2024/`** (`teams.json`, `fixtures.json`, `team-stats/<id>.json` y `squads/<id>.json`). Si el archivo existe, no se vuelve a pedir: se puede reanudar otro día sin gastar cuota.
+- **Presupuesto:**
+  - máximo 70 peticiones por día, contadas en `_meta/budget.json`, y además se leen los headers `x-ratelimit-*`;
+  - una petición cada 7 segundos (el límite es 10 por minuto);
+  - se detiene si a la cuota diaria le quedan 3;
+  - sin reintentos agresivos: ante un 429 espera 65 segundos y prueba una sola vez más.
+- **Gasto real hoy: 43 peticiones según el registro propio:** 1 de ligas, 1 de equipos, 1 de partidos, 20 de estadísticas y 20 de plantillas. Al final, el header de la API decía que quedaban entre 60 y 65 de 100. El contador de la API va algo atrasado frente al registro propio, y se usa el más conservador.
+- **No se bajaron las páginas de `/players`** (estadísticas por jugador). Quedan para otro día con `--with-players`, y por eso `player_stats` está vacío.
+- **Las plantillas (`/players/squads`) son las actuales, no las de 2024:** ese endpoint no recibe temporada.
+- **¿Los escudos cuentan en la cuota?** No se pudo leer la documentación de API-Football: la página respondió 403 al consultarla desde aquí. Por eso se midió: se pidió `/status` antes y después de bajar los escudos de `media.api-sports.io`, y el contador no cambió (32 → 32 con 19 escudos; 40 → 40 con 2). **En la práctica, no cuentan.** Se bajaron los 20.
+- **Se corrigió un choque de códigos.** "Internacional de Bogotá" (antes La Equidad) contiene la palabra "nacional" y tomaba el código `NAC`. Ahora es `EQU`, y la regla de Nacional exige "Atlético Nacional".
+
+### Claves naturales
+
+- **`team_code` sale de `scripts/seed/teamCodes.js`,** que reconoce cada equipo por su nombre, porque el campo `code` de la API viene vacío (Fortaleza) o es distinto (`SAN`, `DEP`, `ITA`).
+  - **Se conservan los 8 códigos de la demo** (MIL, NAC, AME, JUN, CAL, SFE, TOL, MED), así las apuestas existentes siguen apuntando al mismo equipo.
+  - Los nombres se guardan con tildes; la API los trae sin ellas.
+- **`match_code` de los partidos reales: `BP` + `24` + jornada + número.**
+  - El Apertura y la Finalización comparten liga y año en el código, así que **en el código la jornada de la Finalización suma 50**: Apertura 01–26 y Finalización 51–76.
+  - Los cuadrangulares son las jornadas 20–25 y la final, la 26.
+  - En la tabla `matchday` la jornada sigue siendo la real (1–26), y cada torneo es una fila de `league` (2024-I y 2024-II).
+
+### Carga (`backend/scripts/seed/apifootball-load.js`)
+
+- **Solo lee archivos.** Una prueba revisa que no use `fetch` ni ninguna URL.
+- **Es idempotente:** hace upsert por clave natural, con `ON CONFLICT` en PostgreSQL y su equivalente de MySQL, `ON DUPLICATE KEY UPDATE`. Probado: correrlo dos veces deja los mismos conteos.
+- **Corre en cada arranque del backend**, después de `seed:demo`. Si falla, el servidor arranca igual.
+- **PostgreSQL:**
+  - 20 equipos, 632 jugadores y 20 filas de `team_stats` de 2024. Un jugador aparece en dos plantillas y queda en la última que se carga.
+  - Se borran los jugadores ficticios de la semilla ("Jugador Millonarios 1"...) y sus estadísticas.
+  - Se borran las cifras inventadas de `team_stats` 2026. La regla es: `team_stats` solo guarda temporadas descargadas.
+- **MySQL:**
+  - ligas 2024-I, 2024-II y la de demo;
+  - 24 estadios nuevos, tomados de la sede de cada partido, con la capacidad de la sede del equipo;
+  - 58 jornadas;
+  - 432 partidos `FINISHED` con marcador.
+- **Se conservan los datos de demo con apuestas.**
+  - No se borra ningún partido `BP26…`; había 2 apuestas en `BP261802`.
+  - Los que siguen programados y quedaron en el pasado se corren semanas completas hacia el futuro, para que sigan jugables.
+
+### Partidos jugables de demo (claramente marcados)
+
+- **30 réplicas de las jornadas 1 a 3 de la Finalización 2024,** en la liga **`DM` "Liga BetPlay · demo (réplica de 2024-II)"**. El código empieza por `DM` (por ejemplo `DM265101`): **no son partidos reales**.
+- **Llevan los mismos equipos, estadios y horas;** las fechas se corren para que la primera quede mañana, conservando el espaciado real entre jornadas. Quedan `SCHEDULED` y sin resultado.
+- **Si se vuelve a correr el loader:**
+  - una réplica ya finalizada no se toca;
+  - una réplica programada con la fecha vencida se vuelve a correr hacia el futuro.
+
+### Modelo de cuotas (`backend/scripts/seed/oddsModel.js`)
+
+- **Se aplica solo a las réplicas `DM`:** 1X2 y total de goles con línea 2,5.
+- **Cálculo, desde `team_stats`:**
+  1. Ataque = goles a favor por partido ÷ promedio de la liga. Defensa = goles en contra por partido ÷ promedio.
+  2. Se suavizan hacia el promedio, como si cada equipo tuviera 5 partidos promedio extra, para evitar cuotas extremas.
+  3. Goles esperados, con una distribución de Poisson:
+     - local = promedio × ataque local × defensa visitante × 1,12 (ventaja de local);
+     - visitante = promedio × ataque visitante × defensa local ÷ 1,12.
+  4. Con las probabilidades de 0 a 10 goles por lado salen P(local), P(empate), P(visitante) y P(más de 2,5).
+  5. Cuota = 1 ÷ (probabilidad × 1,06), redondeada hacia abajo a 2 decimales y nunca menor a 1,01.
+- **Resultado:** en los 30 partidos el margen real de la casa quedó entre 6,07 % y 6,59 %. Las pruebas exigen entre 5 % y 8 %, y cuotas mayores a 1, en los 380 cruces posibles.
+
+### Escudos (`GET /api/teams/:teamCode/crest`)
+
+- **El escudo se busca en este orden:**
+  1. Google Drive, si hay `GDRIVE_CRESTS_FOLDER_ID` y credenciales de Firebase. Busca `<team_code>.png` en esa carpeta con la misma cuenta de servicio y el scope `drive.readonly`. El token se firma con `jsonwebtoken`, que ya estaba instalado, así que no hay dependencias nuevas.
+  2. El archivo `backend/data/crests/<team_code>.png`.
+  3. Un SVG genérico con el código del equipo.
+- **Nunca responde 500.** Si Drive o el disco fallan, pasa al siguiente paso. Si el código no son 3 letras responde 400, y eso también impide salir de la carpeta.
+- **Caché:**
+  - en memoria, por una hora;
+  - `ETag`: responde 304 si el escudo no cambió;
+  - `Cache-Control` de un día (5 minutos para el genérico).
+- **`crest_url` siempre es `/api/teams/<code>/crest`**, aunque PostgreSQL esté caído.
+- **Frontend:** el componente `TeamShield` (carga diferida y, si la imagen falla, muestra las iniciales) aparece en las tarjetas de partido, el cupón, el panel admin y el histórico.
+
+### API de partidos
+
+- **`GET /api/matches` ya no devuelve los 469 partidos.**
+  - Por defecto (`view=current`) trae los programados o en juego y los de los últimos 30 días.
+  - Con `view=history&team=MIL&limit=20&offset=0` trae el histórico real, paginado.
+  - Un parámetro inválido responde 400.
+- **El panel admin usa la misma vista actual** y finaliza las réplicas `DM` igual que en la Fase 2.
+
 ## Fase 4 · Registro e inicio de sesión con Google (12 de noviembre de 2026)
 
 ### Datos (SQL Server, `database/sqlserver/03_auth_provider.sql`)

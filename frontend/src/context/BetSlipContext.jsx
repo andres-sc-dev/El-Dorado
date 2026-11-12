@@ -9,7 +9,7 @@ function newKey() {
 }
 
 // Cupón de apuesta SIMPLE: una sola selección. Elegir otra cuota reemplaza la anterior.
-// selection = { matchCode, matchLabel, marketCode, marketName, outcomeCode, outcomeName, line, oddValue }
+// selection = { matchCode, matchLabel, homeTeam, awayTeam, marketCode, marketName, outcomeCode, outcomeName, line, oddValue }
 export function BetSlipProvider({ children }) {
   const { user, setBalance } = useAuth();
   const [selection, setSelection] = useState(null);

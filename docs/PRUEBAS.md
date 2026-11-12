@@ -301,3 +301,44 @@ Las pruebas de Google usan SQL Server y PostgreSQL reales y un `verifyIdToken` f
 | `VITE_FIREBASE_PROJECT_ID` igual a `FIREBASE_PROJECT_ID`, y `authDomain` = `<proyecto>.firebaseapp.com` | Sí |
 | `POST /api/auth/google` con un JWT falso, usando el `verifyIdToken` real | `401 GOOGLE_TOKEN_INVALID`, no 503: firebase-admin y las credenciales funcionan |
 | `db-init` dos veces seguidas con `03_auth_provider.sql` | Sin errores; demo, admin y ansaca21 quedan `LOCAL` con contraseña |
+
+## Fase 5 · Datos reales de API-Football, cuotas y escudos (12 de noviembre de 2026)
+
+| Suite | Resultado |
+|---|---|
+| `npm test` en tu equipo (incluye `apifootball.test.js`) | **147 de 147 pasan** |
+| `npm test` dentro del contenedor | 145 pasan y 2 se omiten: `docker-compose.yml` y `frontend/` no están montados allí |
+| `npm run test:integration` (apuestas, Google, pagos y Fase 5) | **91 de 91 pasan** |
+| `frontend`: `npm run lint` y `npm run build` | Sin errores; solo las advertencias que ya existían |
+
+Casos unitarios nuevos (sin bases):
+
+- **Equipos:** los 20 tienen `team_code` único y escudo local, y se conservan los 8 códigos de la demo.
+- **Partidos:** los `match_code` son únicos y válidos, y las réplicas demo quedan en el futuro.
+- **Cuotas:** en los 380 cruces posibles son mayores que 1 y el margen queda entre 5 % y 8 %.
+- **Escudos:**
+  - el PNG lleva ETag y responde 304 cuando no cambió;
+  - si no hay archivo, se sirve el SVG genérico;
+  - un código malformado responde 400;
+  - con Drive roto, cae al archivo local (nunca 500).
+- **Sin llamadas a la API:**
+  - ni `backend/src`, ni `server.js`, ni `frontend/src` mencionan `api-sports.io` ni la llave;
+  - docker-compose no pasa `API_FOOTBALL_KEY` a ningún contenedor;
+  - el loader no usa `fetch`.
+
+Integración (contenedores reales):
+
+
+| # | Caso | Esperado | Obtenido | ¿Pasa? |
+|---|---|---|---|---|
+| 1 | loader dos veces seguidas: tablas que cambian de conteo | ninguna | ninguna | Sí |
+| 2 | loader: equipos / partidos FINISHED / réplicas demo | 20 / 432 / 30 | 20 / 432 / 30 | Sí |
+| 3 | cuotas <= 1 en la tabla odds | 0 | 0 | Sí |
+| 4 | partidos SCHEDULED con fecha pasada | 0 | 0 | Sí |
+| 5 | réplicas demo abiertas con 1X2 y total de goles | sí | sí | Sí |
+| 6 | histórico de Millonarios (5 más recientes, FINISHED con marcador) | 200 5 FINISHED | 200 5 FINISHED | Sí |
+| 7 | GET /api/matches?limit=abc | 400 INVALID_QUERY | 400 INVALID_QUERY | Sí |
+| 8 | GET /api/teams/NAC/crest | 200 image/png | 200 image/png | Sí |
+| 9 | GET /api/teams/XYZ/crest (sin escudo) | 200 generic | 200 generic | Sí |
+| 10 | apuesta 1X2 HOME de 10.000 en CHI-ONC | 201 cuota 4.12 | 201 cuota 4.12 | Sí |
+| 11 | ADM finaliza 2-0: la apuesta HOME gana y se paga | 200 ganadas 1 saldo 81200 | 200 ganadas 1 saldo 81200 | Sí |

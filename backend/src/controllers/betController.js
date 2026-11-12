@@ -28,7 +28,7 @@ async function listMyBets(request, response, next) {
 // GET /api/matches: vista combinada con equipos, cuotas y estado.
 async function listMatches(request, response, next) {
   try {
-    response.json(await matchService.listMatches());
+    response.json(await matchService.listMatches(request.query));
   } catch (error) {
     next(error);
   }

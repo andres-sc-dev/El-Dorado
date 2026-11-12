@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
 import Button from '../components/ui/Button';
+import TeamShield from '../components/ui/TeamShield';
 import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusStates';
 import { useApiData } from '../hooks/useApiData';
 import { finishMatch, getAdminMatches } from '../services/adminService';
@@ -47,7 +48,11 @@ function MatchRow({ match, onFinish }) {
   return (
     <tr className="border-t border-white/10">
       <td className="px-3 py-3">
-        <p className="font-semibold text-white">{match.home_team.short_name} vs {match.away_team.short_name}</p>
+        <p className="flex items-center gap-2 font-semibold text-white">
+          <TeamShield team={match.home_team} size="sm" />
+          {match.home_team.short_name} vs {match.away_team.short_name}
+          <TeamShield team={match.away_team} size="sm" />
+        </p>
         <p className="text-xs text-slate-400">{match.match_code} · {formatDateTime(match.match_date)}</p>
       </td>
       <td className="px-3 py-3 text-sm">{MATCH_STATUS_LABELS[match.status] ?? match.status}</td>

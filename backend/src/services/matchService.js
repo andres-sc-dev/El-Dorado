@@ -2,6 +2,7 @@ const matchRepository = require('../repositories/mysql/matchRepository');
 const teamRepository = require('../repositories/postgres/teamRepository');
 const marketRepository = require('../repositories/mongo/marketRepository');
 const { getBetLimits } = require('../config/betLimits');
+const { badRequest } = require('../utils/httpError');
 
 // Vista combinada de partidos: MySQL (partido, estado, cuotas) + PostgreSQL (nombres de equipos)
 // + MongoDB (nombres de mercados y resultados). Se une en JavaScript por claves naturales:
@@ -40,7 +41,8 @@ function toTeam(code, teams) {
     team_code: code,
     name: team?.name ?? code,
     short_name: team?.short_name ?? code,
-    crest_url: team?.crest_url ?? null,
+    // El endpoint de escudos siempre responde (Drive, archivo o genérico), aunque PostgreSQL esté caído.
+    crest_url: `/api/teams/${code}/crest`,
   };
 }
 
@@ -115,9 +117,28 @@ function groupOdds(oddsRows, markets) {
     });
 }
 
-// GET /api/matches
-async function listMatches() {
-  const rows = await matchRepository.listMatches();
+// Valida ?view=current|history&team=MIL&limit=50&offset=0 (400 si algo no cuadra).
+function parseListQuery(query = {}) {
+  const view = query.view ?? 'current';
+  if (!['current', 'history'].includes(view)) {
+    throw badRequest('view debe ser current o history.', { errorCode: 'INVALID_QUERY' });
+  }
+  const teamCode = query.team ? String(query.team).toUpperCase() : null;
+  if (teamCode && !/^[A-Z]{3}$/.test(teamCode)) throw badRequest('team debe ser un team_code de 3 letras.', { errorCode: 'INVALID_QUERY' });
+  const toInt = (value, fallback, max) => {
+    if (value === undefined) return fallback;
+    if (!/^\d{1,4}$/.test(String(value)) || Number(value) > max) {
+      throw badRequest(`limit y offset deben ser enteros entre 0 y ${max}.`, { errorCode: 'INVALID_QUERY' });
+    }
+    return Number(value);
+  };
+  return { view, teamCode, limit: Math.max(1, toInt(query.limit, 50, 100)), offset: toInt(query.offset, 0, 5000) };
+}
+
+// GET /api/matches (por defecto view=current; view=history trae el histórico real)
+async function listMatches(query) {
+  const options = parseListQuery(query);
+  const rows = await matchRepository.listMatches(options);
   const [teams, markets, odds] = await Promise.all([
     loadTeams(rows.flatMap((row) => [row.home_team_code, row.away_team_code])),
     loadMarkets(),
@@ -137,6 +158,7 @@ async function listMatches() {
       markets: isBettingOpen(row) ? groupOdds(oddsByMatch.get(row.id) || [], markets) : [],
     })),
     limits: { min_stake: min, max_stake: max, currency },
+    view: options.view,
     // Avisa al frontend si los nombres llegan como códigos porque un motor está caído.
     degraded: [...(teams ? [] : ['postgres']), ...(markets.size ? [] : ['mongo'])],
   };
@@ -149,8 +171,9 @@ async function describeMatches(matchCodes) {
   return new Map(rows.map((row) => [row.match_code, toMatch(row, teams)]));
 }
 
+// Panel admin: los partidos actuales (los que se pueden finalizar y los recientes).
 async function listAllWithTeams() {
-  const rows = await matchRepository.listMatches();
+  const rows = await matchRepository.listMatches({ view: 'current' });
   const teams = await loadTeams(rows.flatMap((row) => [row.home_team_code, row.away_team_code]));
   return rows.map((row) => toMatch(row, teams));
 }

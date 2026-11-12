@@ -15,8 +15,29 @@ const MATCH_SELECT = `
   JOIN stadium st     ON st.id = m.stadium_id
 `;
 
-async function listMatches() {
-  return mysql.query(`${MATCH_SELECT} ORDER BY m.match_date, m.match_code`);
+// Días hacia atrás que cuentan como "actuales" (resultados recientes junto a los programados).
+const RECENT_DAYS = 30;
+
+// view 'current': programados o en juego, y cualquier partido de los últimos RECENT_DAYS días.
+// view 'history': finalizados más viejos (el histórico real de API-Football), del más reciente al
+// más antiguo, paginados y opcionalmente de un solo equipo.
+async function listMatches({ view = 'current', teamCode = null, limit = 50, offset = 0 } = {}) {
+  if (view === 'history') {
+    const params = [RECENT_DAYS];
+    let teamFilter = '';
+    if (teamCode) {
+      teamFilter = 'AND (m.home_team_code = ? OR m.away_team_code = ?)';
+      params.push(teamCode, teamCode);
+    }
+    // mysql2 con execute exige LIMIT/OFFSET como texto; ya vienen validados como enteros.
+    params.push(String(limit), String(offset));
+    return mysql.query(`${MATCH_SELECT}
+      WHERE s.code = 'FINISHED' AND m.match_date < UTC_TIMESTAMP() - INTERVAL ? DAY ${teamFilter}
+      ORDER BY m.match_date DESC, m.match_code LIMIT ? OFFSET ?`, params);
+  }
+  return mysql.query(`${MATCH_SELECT}
+    WHERE s.code IN ('SCHEDULED', 'LIVE') OR m.match_date >= UTC_TIMESTAMP() - INTERVAL ? DAY
+    ORDER BY m.match_date, m.match_code`, [RECENT_DAYS]);
 }
 
 async function findByCode(matchCode) {

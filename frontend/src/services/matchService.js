@@ -5,3 +5,10 @@ import apiClient from './apiClient';
 export async function getMatches() {
   return apiClient.get('/api/matches');
 }
+
+// Histórico real (API-Football): partidos finalizados, del más reciente al más antiguo.
+export async function getMatchHistory({ team = '', limit = 20, offset = 0 } = {}) {
+  const params = new URLSearchParams({ view: 'history', limit: String(limit), offset: String(offset) });
+  if (team) params.set('team', team);
+  return apiClient.get(`/api/matches?${params}`);
+}

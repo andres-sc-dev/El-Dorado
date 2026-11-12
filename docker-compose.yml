@@ -112,8 +112,9 @@ services:
     image: node:22-alpine
     container_name: eldorado-backend
     working_dir: /app
-    # La semilla de demo corre en cada arranque (es idempotente). Si falla, el servidor arranca igual.
-    command: sh -c "npm ci && (npm run seed:demo || echo 'seed:demo falló; el servidor arranca igual') && npm run dev"
+    # Las semillas corren en cada arranque (son idempotentes). Si fallan, el servidor arranca igual.
+    # seed:apifootball solo lee backend/data/apifootball: nunca llama a la API.
+    command: sh -c "npm ci && (npm run seed:demo || echo 'seed:demo falló; el servidor arranca igual') && (npm run seed:apifootball -- --quiet || echo 'seed:apifootball falló; el servidor arranca igual') && npm run dev"
     volumes:
       - ./backend:/app
       - backend_node_modules:/app/node_modules
@@ -164,6 +165,9 @@ services:
       FIREBASE_PROJECT_ID: ${FIREBASE_PROJECT_ID:-}
       FIREBASE_CLIENT_EMAIL: ${FIREBASE_CLIENT_EMAIL:-}
       FIREBASE_PRIVATE_KEY: ${FIREBASE_PRIVATE_KEY:-}
+      # Opcional: carpeta de Google Drive con los escudos <team_code>.png (si no, se usan backend/data/crests).
+      GDRIVE_CRESTS_FOLDER_ID: ${GDRIVE_CRESTS_FOLDER_ID:-}
+      # API_FOOTBALL_KEY NO se pasa al contenedor a propósito: la app jamás llama a API-Football.
     ports:
       - "${BACKEND_HOST_PORT:-4000}:4000"
     networks: [eldorado]
