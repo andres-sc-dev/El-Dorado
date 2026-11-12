@@ -10,7 +10,6 @@ function normalizeUser(user) {
   return {
     ...user,
     balance: user.balance === null || user.balance === undefined ? null : Number(user.balance),
-    claimedBonuses: user.claimedBonuses ?? [],
   };
 }
 
@@ -59,14 +58,6 @@ export function AuthProvider({ children }) {
     setUser((current) => (current ? { ...current, balance: Number(balance) } : current));
   }, []);
 
-  // Las promociones son solo visuales (no hay tabla de bonos): no tocan el saldo.
-  const claimBonus = useCallback((bonusId) => {
-    setUser((current) => {
-      if (!current || current.claimedBonuses.includes(bonusId)) return current;
-      return { ...current, claimedBonuses: [...current.claimedBonuses, bonusId] };
-    });
-  }, []);
-
   const value = useMemo(() => ({
     user,
     isLoading,
@@ -77,8 +68,7 @@ export function AuthProvider({ children }) {
     refreshUser,
     setSessionUser,
     setBalance,
-    claimBonus,
-  }), [user, isLoading, login, logout, register, refreshUser, setSessionUser, setBalance, claimBonus]);
+  }), [user, isLoading, login, logout, register, refreshUser, setSessionUser, setBalance]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

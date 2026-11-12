@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useBetSlip } from '../../context/BetSlipContext';
@@ -22,26 +22,39 @@ function validateStake(stake, limits, balance) {
 }
 
 // Cupón de apuesta simple: una selección y un monto.
-function BetSlip({ limits = DEFAULT_LIMITS }) {
+// limits llega desde la página (GET /api/matches); se comparte por el contexto para que la hoja
+// móvil use los mismos límites.
+function BetSlip({ limits: limitsProp, idPrefix = 'slip' }) {
   const { user, isAdmin } = useAuth();
   const {
     selection, stake, setStake, potentialPayout, isSubmitting, clear, acceptOdds, submitBet,
+    limits: sharedLimits, setLimits,
   } = useBetSlip();
-  const [feedback, setFeedback] = useState(null);
+  const [rawFeedback, setFeedback] = useState(null);
+  const limits = limitsProp ?? sharedLimits ?? DEFAULT_LIMITS;
+
+  useEffect(() => {
+    if (limitsProp) setLimits(limitsProp);
+  }, [limitsProp, setLimits]);
+
+  // Si cambia la selección (otra cuota o se quitó), el aviso de cuota cambiada ya no aplica.
+  const selectionKey = selection ? `${selection.matchCode}|${selection.marketCode}|${selection.outcomeCode}|${selection.line}` : '';
+  const feedback = rawFeedback?.type === 'odds' && rawFeedback.selectionKey !== selectionKey ? null : rawFeedback;
 
   const stakeError = selection ? validateStake(stake, limits, user?.balance) : null;
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (overrides) => {
     setFeedback(null);
     try {
-      const result = await submitBet();
+      const result = await submitBet(overrides);
       setFeedback({
         type: 'success',
         message: `Apuesta registrada. Tiquete ${result.bet.ticket_code.slice(0, 8).toUpperCase()} · pago posible ${formatCOP(result.bet.potential_payout)}.`,
       });
     } catch (error) {
       if (error.code === 'ODDS_CHANGED') {
-        setFeedback({ type: 'odds', message: error.message, currentOdds: error.data.current_odds });
+        setFeedback({ type: 'odds', selectionKey, previousOdds: selection?.oddValue, currentOdds: Number(error.data.current_odds) });
+        acceptOdds(error.data.current_odds);
         return;
       }
       setFeedback({ type: 'error', message: error.message || 'No se pudo registrar la apuesta.' });
@@ -78,15 +91,23 @@ function BetSlip({ limits = DEFAULT_LIMITS }) {
           ) : null}
           <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{selection.matchLabel} · {selection.matchCode}</p>
           <p className="mt-1 text-sm text-slate-300">{selection.marketName}</p>
-          <p className="font-semibold text-white">{selection.outcomeName} · {formatOdds(selection.oddValue)}</p>
+          <p className="font-semibold text-white">
+            {selection.outcomeName} ·{' '}
+            <span
+              data-testid="slip-odds"
+              className={feedback?.type === 'odds' ? 'rounded bg-amber-400/25 px-1.5 text-amber-200 ring-1 ring-amber-300' : ''}
+            >
+              {formatOdds(selection.oddValue)}
+            </span>
+          </p>
         </div>
       )}
 
       <div className="mt-5 space-y-3">
         <div>
-          <label htmlFor="stake" className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-400">Monto a apostar (COP)</label>
+          <label htmlFor={`${idPrefix}-stake`} className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-400">Monto a apostar (COP)</label>
           <input
-            id="stake"
+            id={`${idPrefix}-stake`}
             type="number"
             inputMode="decimal"
             value={stake}
@@ -114,8 +135,8 @@ function BetSlip({ limits = DEFAULT_LIMITS }) {
           <Button
             type="button"
             className="w-full disabled:cursor-not-allowed disabled:opacity-50"
-            onClick={handleSubmit}
-            disabled={!selection || Boolean(stakeError) || isSubmitting}
+            onClick={() => handleSubmit()}
+            disabled={!selection || Boolean(stakeError) || isSubmitting || feedback?.type === 'odds'}
           >
             {isSubmitting ? 'Registrando…' : 'Realizar apuesta'}
           </Button>
@@ -127,14 +148,25 @@ function BetSlip({ limits = DEFAULT_LIMITS }) {
 
         {feedback?.type === 'odds' ? (
           <div role="alert" className="rounded-lg border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-sm text-amber-100">
-            <p>{feedback.message} Revisa la nueva cuota antes de confirmar.</p>
-            <button
-              type="button"
-              className="mt-2 font-semibold text-brand-gold"
-              onClick={() => { acceptOdds(feedback.currentOdds); setFeedback(null); }}
-            >
-              Aceptar cuota {formatOdds(feedback.currentOdds)}
-            </button>
+            <p className="font-bold">Las cuotas cambiaron</p>
+            <p>
+              {feedback.previousOdds ? <>Antes {formatOdds(feedback.previousOdds)}, </> : null}
+              ahora <span className="font-bold text-amber-200">{formatOdds(feedback.currentOdds)}</span>.
+              Pago posible {formatCOP(potentialPayout)}.
+            </p>
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <Button
+                type="button"
+                className="disabled:opacity-50"
+                disabled={isSubmitting || Boolean(stakeError)}
+                onClick={() => handleSubmit({ oddValue: feedback.currentOdds })}
+              >
+                {isSubmitting ? 'Registrando…' : 'Aceptar y apostar'}
+              </Button>
+              <button type="button" className="text-sm text-slate-300 underline" onClick={() => { clear(); setFeedback(null); }}>
+                Cancelar
+              </button>
+            </div>
           </div>
         ) : null}
 

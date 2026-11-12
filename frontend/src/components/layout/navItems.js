@@ -3,7 +3,6 @@ const NAV_ITEMS = [
   { label: 'Inicio', to: '/' },
   { label: 'Partidos', to: '/matches' },
   { label: 'Mis apuestas', to: '/my-bets', roles: ['USR'] },
-  { label: 'Promociones', to: '/promotions' },
   { label: 'Billetera', to: '/wallet', roles: ['USR'] },
   { label: 'Perfil', to: '/profile', roles: ['USR', 'ADM'] },
   { label: 'Administración', to: '/admin', roles: ['ADM'] },

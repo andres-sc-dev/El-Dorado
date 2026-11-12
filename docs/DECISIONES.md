@@ -2,6 +2,44 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Fase 6 · Cierre: experiencia mínima, auditoría y documentación (12 de noviembre de 2026)
+
+### Cupón
+
+- **El cupón se guarda en `sessionStorage`** (`frontend/src/utils/slipStore.js`): sobrevive a recargar la página y a cambiar de ruta, y se borra al cerrar la pestaña. Se eligió `sessionStorage` y no `localStorage` para que una apuesta a medias no reaparezca días después con una cuota vieja. Solo se guarda lo que se ve en el cupón (partido, mercado, cuota y monto); nada de la sesión. Si lo guardado está incompleto, se descarta.
+- **En móvil hay una barra fija abajo** con el número de selecciones (0 o 1, porque solo hay apuestas simples) y la cuota. Al tocarla se abre el cupón como hoja deslizable. En pantallas grandes el cupón sigue al lado de los partidos.
+- **Los límites de monto se comparten por el contexto**, para que la hoja móvil use los mismos que trae `GET /api/matches`.
+- **Cuando la API responde 409 ODDS_CHANGED**, el cupón toma la cuota nueva, la resalta, muestra "Las cuotas cambiaron" con la cuota de antes y la de ahora, y ofrece "Aceptar y apostar". Ese botón envía la apuesta ya con la cuota nueva. Nunca se apuesta con una cuota distinta sin que la persona la vea.
+
+### Pantallas que no se quedan cargando
+
+- **Toda petición a la API tiene un tope de 15 segundos** (`frontend/src/services/apiClient.js`). Al vencerse se muestra el error con "Reintentar". Antes, si el servidor no respondía, una pantalla podía quedarse en "Cargando…" para siempre.
+- **El Widget de Wompi también tiene tope de 15 segundos** para cargar. Antes el botón podía quedarse en "Preparando…".
+- La recarga ya terminaba siempre en "Pago aprobado", "Pago rechazado" o "Todavía no recibimos la confirmación de Wompi" con "Verificar de nuevo" (arreglo anterior). Se comprobó de nuevo con sus pruebas.
+
+### Registros del flujo de pagos
+
+- **Cada paso deja una línea JSON** con `"scope":"payments"`: preparar, consultar a Wompi, aplicar, acreditar, rechazar, webhook recibido o ignorado, y errores de conexión con Wompi.
+- **Solo pasan campos de una lista permitida** (`backend/src/utils/paymentLog.js`): referencia, id de transacción, monto, estados, origen y tiempos. Usuario, correo, cédula, firmas y llaves no pueden salir aunque alguien los pase por error; una prueba lo comprueba. La referencia es un UUID aleatorio y no identifica a nadie.
+- Durante `npm test` no se escribe nada, para no ensuciar la salida.
+
+### Datos de prueba fuera de la interfaz
+
+- **Se eliminó la página de Promociones** y su sección en la portada. Usaba datos inventados y un botón "Canjear bono" que no tocaba ninguna base: parecía real sin serlo.
+- Se borró la carpeta `frontend/src/data/` (datos inventados de la primera versión) y `frontend/test/run_tests.mjs`, que los probaba y ya no corría.
+
+### Otros
+
+- **Logo en WebP:** de 801 KB (PNG de 2172x724) a 61 KB (WebP de 840x280), con `width` y `height` fijos para que la página no salte al cargar. Se convirtió con `sharp` fuera del repositorio; no se agregó ninguna dependencia.
+- **Pie de página:** aviso "Mayores de 18 años" y "Proyecto académico: dinero de prueba, sin valor real".
+- **Pruebas de valores de apuesta** (`backend/test/betValues.test.js`): texto, NaN, cero, negativo, por debajo del mínimo, por encima del máximo y más de 2 decimales.
+
+### Auditoría y despliegue
+
+- **`docs/CHECKLIST_PROFE.md`** tiene el estado real de cada requisito con su evidencia. Azure, Key Vault y Cloudflare quedan en "No cumple" porque hoy no se desplegó nada; GitHub queda en "Parcial" porque el remoto existe pero las fases 3 a 6 no se han subido.
+- **`docs/DESPLIEGUE.md`** es el plan paso a paso y gratuito (Azure for Students, Key Vault, Container Apps, GitHub Actions con OIDC y Cloudflare Pages). Se recomienda que Cloudflare reenvíe `/api` al backend, para que la cookie de sesión siga siendo del mismo sitio y no dependa de cookies de terceros.
+- **Secretos:** no se encontró ninguno en el historial de Git. El `backend/.env` local es de una versión vieja; Git lo ignora y conviene borrarlo.
+
 ## Fase 5 · Datos reales de la Liga BetPlay con API-Football (12 de noviembre de 2026)
 
 ### Qué temporada se usó y por qué

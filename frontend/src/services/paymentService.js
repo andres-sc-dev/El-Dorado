@@ -27,8 +27,18 @@ export function loadWompiWidget() {
       const script = document.createElement('script');
       script.src = 'https://checkout.wompi.co/widget.js';
       script.async = true;
-      script.onload = () => (window.WidgetCheckout ? resolve(window.WidgetCheckout) : reject(new Error('El Widget de Wompi no cargó.')));
+      // Si el script no responde en 15 s se rechaza: el botón no se queda en "Preparando…".
+      const timer = setTimeout(() => {
+        widgetPromise = undefined;
+        reject(new Error('El Widget de Wompi tardó demasiado en cargar. Intenta de nuevo.'));
+      }, 15000);
+      script.onload = () => {
+        clearTimeout(timer);
+        if (window.WidgetCheckout) resolve(window.WidgetCheckout);
+        else reject(new Error('El Widget de Wompi no cargó.'));
+      };
       script.onerror = () => {
+        clearTimeout(timer);
         widgetPromise = undefined;
         reject(new Error('No se pudo cargar el Widget de Wompi. Revisa tu conexión.'));
       };

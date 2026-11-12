@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const wompiConfig = require('../config/wompi');
 const { badRequest, forbidden, notFound, unauthorized } = require('../utils/httpError');
+const { paymentLog } = require('../utils/paymentLog');
 
 // Recargas con Wompi Sandbox.
 // Flujo: prepare (firma y documento CREATED en Firestore) -> el usuario paga en el Widget ->
@@ -59,6 +60,7 @@ async function prepare(user, body, ip) {
   const signature = deps.wompi.integritySignature(reference, amountInCents, currency, config.integritySecret);
 
   await deps.store.createPayment({ reference, username: user.username, amountCop, amountInCents, currency });
+  paymentLog('prepare.created', { reference, amount_cop: amountCop, stored_status: 'CREATED' });
   deps.audit.log('RECHARGE_CREATED', user.username, { reference, amount_cop: amountCop }, ip);
 
   // Solo datos públicos: la firma no revela el secreto y la llave pública es pública.
@@ -84,24 +86,31 @@ function publicStatus(payment) {
 
 // Aplica el estado de una transacción de Wompi a un pago. Es el único lugar que acredita saldo.
 async function applyTransaction(payment, transaction, source, ip = null) {
-  if (FINAL.includes(payment.status)) return payment;
+  if (FINAL.includes(payment.status)) {
+    paymentLog('apply.already_final', { reference: payment.reference, source, stored_status: payment.status });
+    return payment;
+  }
 
   // La transacción debe ser exactamente la que se firmó: misma referencia, monto y moneda.
   if (transaction.reference !== payment.reference
       || Number(transaction.amount_in_cents) !== payment.amount_in_cents
       || transaction.currency !== payment.currency) {
-    console.error(`Pago ${payment.reference}: la transacción de Wompi no coincide con lo firmado (${source})`);
+    paymentLog('apply.mismatch', { reference: payment.reference, transaction_id: transaction.id, source, stored_status: 'ERROR' });
     return (await deps.store.updatePayment(payment.reference, { status: 'ERROR', wompi_status: 'MISMATCH' })) ?? payment;
   }
 
   const wompiStatus = transaction.status;
   const base = { wompi_status: wompiStatus, transaction_id: transaction.id ?? payment.transaction_id ?? null };
+  paymentLog('apply.start', { reference: payment.reference, transaction_id: base.transaction_id, source, wompi_status: wompiStatus });
 
   if (wompiStatus === 'APPROVED') {
     await deps.store.updatePayment(payment.reference, { ...base, status: 'APPROVED' });
     const result = await deps.accounts.deposit(payment.username, payment.amount_cop, payment.reference);
     const updated = await deps.store.updatePayment(payment.reference, {
       ...base, status: 'CREDITED', balance: Number(result.balance),
+    });
+    paymentLog('apply.credited', {
+      reference: payment.reference, source, amount_cop: payment.amount_cop, credited: Boolean(result.credited), stored_status: 'CREDITED',
     });
     if (result.credited) {
       deps.audit.log('RECHARGE_APPROVED', payment.username, {
@@ -113,6 +122,7 @@ async function applyTransaction(payment, transaction, source, ip = null) {
 
   if (DECLINED_STATUSES.includes(wompiStatus)) {
     const updated = await deps.store.updatePayment(payment.reference, { ...base, status: wompiStatus });
+    paymentLog('apply.declined', { reference: payment.reference, source, wompi_status: wompiStatus, stored_status: wompiStatus });
     deps.audit.log('RECHARGE_DECLINED', payment.username, {
       reference: payment.reference, amount_cop: payment.amount_cop, wompi_status: wompiStatus, source,
     }, ip);
@@ -120,6 +130,7 @@ async function applyTransaction(payment, transaction, source, ip = null) {
   }
 
   // PENDING: todavía no hay decisión; se guarda el id para la próxima consulta.
+  paymentLog('apply.pending', { reference: payment.reference, source, wompi_status: wompiStatus });
   return (await deps.store.updatePayment(payment.reference, base)) ?? payment;
 }
 
@@ -152,12 +163,22 @@ async function getStatus(user, reference, transactionId, ip) {
   }
 
   let payment = await deps.store.getPayment(reference);
-  if (!payment) throw notFound('La recarga no existe.', { errorCode: 'PAYMENT_NOT_FOUND' });
+  if (!payment) {
+    paymentLog('status.not_found', { reference });
+    throw notFound('La recarga no existe.', { errorCode: 'PAYMENT_NOT_FOUND' });
+  }
   assertOwner(user, payment);
-  if (FINAL.includes(payment.status)) return publicStatus(payment);
+  if (FINAL.includes(payment.status)) {
+    paymentLog('status.final', { reference, stored_status: payment.status });
+    return publicStatus(payment);
+  }
 
   const config = wompiConfig.requireSandbox(['privateKey']);
+  const started = Date.now();
   const transaction = await findTransactionFor(config, payment, transactionId);
+  paymentLog('status.wompi_lookup', {
+    reference, transaction_id: transactionId, found: Boolean(transaction), wompi_status: transaction?.status, ms: Date.now() - started,
+  });
   if (transaction) payment = await applyTransaction(payment, transaction, 'POLL', ip);
   return publicStatus(payment);
 }
@@ -170,6 +191,7 @@ async function verifyTransaction(user, transactionId, ip) {
   }
   const config = wompiConfig.requireSandbox(['privateKey']);
   const transaction = await deps.wompi.getTransaction(config, transactionId);
+  paymentLog('redirect.wompi_lookup', { transaction_id: transactionId, found: Boolean(transaction), reference: transaction?.reference });
   if (!transaction || !REFERENCE_PATTERN.test(transaction.reference || '')) {
     throw notFound('La transacción no existe o no es de El Dorado.', { errorCode: 'TRANSACTION_NOT_FOUND' });
   }
@@ -191,17 +213,23 @@ async function handleWebhook(rawBody, ip) {
     throw unauthorized('Evento inválido.', { errorCode: 'INVALID_EVENT' });
   }
   if (!deps.wompi.verifyEventChecksum(event, config.eventsSecret)) {
+    paymentLog('webhook.bad_checksum', {});
     throw unauthorized('Checksum inválido.', { errorCode: 'INVALID_CHECKSUM' });
   }
 
   // Desde aquí el evento es auténtico. Se responde 200 aunque se ignore, para que Wompi no reintente.
   const transaction = event.data?.transaction;
-  if (event.event !== 'transaction.updated' || !transaction) return { received: true, ignored: 'EVENT_TYPE' };
-  if (event.environment !== 'test') return { received: true, ignored: 'NOT_SANDBOX' };
-  if (!REFERENCE_PATTERN.test(transaction.reference || '')) return { received: true, ignored: 'FOREIGN_REFERENCE' };
+  const ignore = (reason) => {
+    paymentLog('webhook.ignored', { ignored: reason, reference: transaction?.reference });
+    return { received: true, ignored: reason };
+  };
+  if (event.event !== 'transaction.updated' || !transaction) return ignore('EVENT_TYPE');
+  if (event.environment !== 'test') return ignore('NOT_SANDBOX');
+  if (!REFERENCE_PATTERN.test(transaction.reference || '')) return ignore('FOREIGN_REFERENCE');
 
+  paymentLog('webhook.received', { reference: transaction.reference, transaction_id: transaction.id, wompi_status: transaction.status });
   const payment = await deps.store.getPayment(transaction.reference);
-  if (!payment) return { received: true, ignored: 'UNKNOWN_REFERENCE' };
+  if (!payment) return ignore('UNKNOWN_REFERENCE');
   const updated = await applyTransaction(payment, transaction, 'WEBHOOK', ip);
   return { received: true, reference: updated.reference, status: updated.status };
 }

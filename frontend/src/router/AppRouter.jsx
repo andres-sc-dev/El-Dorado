@@ -5,7 +5,6 @@ import RegisterPage from '../pages/RegisterPage';
 import ForgotPasswordPage from '../pages/ForgotPasswordPage';
 import MatchesPage from '../pages/MatchesPage';
 import MyBetsPage from '../pages/MyBetsPage';
-import PromotionsPage from '../pages/PromotionsPage';
 import ProfilePage from '../pages/ProfilePage';
 import WalletPage from '../pages/WalletPage';
 import AdminMatchesPage from '../pages/AdminMatchesPage';
@@ -22,7 +21,6 @@ function AppRouter() {
       {/* Registro con Google, paso 2: la protege la sesión de Google, no la de El Dorado. */}
       <Route path="/complete-profile" element={<CompleteProfilePage />} />
       <Route path="/matches" element={<MatchesPage />} />
-      <Route path="/promotions" element={<PromotionsPage />} />
 
       <Route element={<ProtectedRoute />}>
         <Route path="/profile" element={<ProfilePage />} />

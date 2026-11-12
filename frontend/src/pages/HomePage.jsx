@@ -10,12 +10,10 @@ import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusSta
 import { useApiData } from '../hooks/useApiData';
 import { getMatches } from '../services/matchService';
 import { formatCOP } from '../utils/format';
-import { getPromotions } from '../services/promotionService';
 
 function HomePage() {
   const { user, isAdmin } = useAuth();
   const { data, error, isLoading, reload } = useApiData(getMatches);
-  const promotions = useApiData(getPromotions);
 
   const featuredMatches = (data?.matches ?? []).filter((match) => match.is_betting_open).slice(0, 4);
 
@@ -74,29 +72,11 @@ function HomePage() {
               </div>
             </section>
 
-            <div className="xl:sticky xl:top-24 xl:self-start">
+            {/* En móvil el cupón se abre desde la barra inferior (MobileBetSlipBar). */}
+            <div className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
               <BetSlip limits={data?.limits} />
             </div>
           </div>
-
-          <section className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-white">Promociones</h2>
-              <Link to="/promotions" className="text-sm font-semibold text-brand-gold">Ver todas</Link>
-            </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {(promotions.data ?? []).map((promo) => (
-                <div key={promo.id} className="glass-panel overflow-hidden rounded-2xl">
-                  <img src={promo.imageUrl} alt={promo.title} className="h-36 w-full object-cover" />
-                  <div className="p-4">
-                    <h3 className="text-lg font-bold text-white">{promo.title}</h3>
-                    <p className="mt-2 text-sm text-slate-300">{promo.description}</p>
-                    <Button type="button" className="mt-4 w-full">Ver promoción</Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
         </main>
       </div>
       <Footer />

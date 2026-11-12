@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const { unavailable } = require('../utils/httpError');
+const { paymentLog } = require('../utils/paymentLog');
 
 // Integración con Wompi según docs.wompi.co (consultado el 12 de noviembre de 2026).
 
@@ -50,10 +51,12 @@ async function wompiGet(config, path) {
       signal: AbortSignal.timeout(5000),
     });
   } catch (error) {
+    paymentLog('wompi.unreachable', { error_code: error.name });
     throw unavailable('Wompi no responde. Intenta de nuevo en unos minutos.', { database: 'wompi', errorCode: 'WOMPI_UNAVAILABLE' });
   }
   if (response.status === 404) return null;
   if (!response.ok) {
+    paymentLog('wompi.http_error', { http_status: response.status });
     throw unavailable(`Wompi respondió ${response.status}.`, { database: 'wompi', errorCode: 'WOMPI_UNAVAILABLE' });
   }
   return response.json();

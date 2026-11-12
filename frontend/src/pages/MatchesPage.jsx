@@ -50,7 +50,8 @@ function MatchesPage() {
             {content}
             <MatchHistory />
           </div>
-          <div className="xl:sticky xl:top-24 xl:self-start">
+          {/* En móvil el cupón se abre desde la barra inferior (MobileBetSlipBar). */}
+          <div className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
             <BetSlip limits={data?.limits} />
           </div>
         </div>
