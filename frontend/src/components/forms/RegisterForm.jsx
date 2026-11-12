@@ -5,6 +5,7 @@ import Button from '../ui/Button';
 import { evaluatePassword } from '../../utils/passwordPolicy';
 import DocumentInput from './DocumentInput';
 import PasswordStrengthBar from './PasswordStrengthBar';
+import GoogleSignInButton from './GoogleSignInButton';
 
 function getAdultBirthDateLimit() {
   const today = new Date();
@@ -142,6 +143,11 @@ function RegisterForm() {
       {error && <p className="text-sm text-red-300">{error}</p>}
 
       <Button type="submit" className="w-full">Registrarme</Button>
+
+      <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-slate-500">
+        <span className="h-px flex-1 bg-white/10" /> o <span className="h-px flex-1 bg-white/10" />
+      </div>
+      <GoogleSignInButton />
 
       <p className="text-center text-sm text-slate-300">
         ¿Ya tienes cuenta?{' '}

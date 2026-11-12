@@ -1,10 +1,19 @@
 const { sql, withPool } = require('../../config/sqlserver');
 
-// Acceso a la identidad en SQL Server: users, customer, login_history, role.
+// Acceso a la identidad en SQL Server: users, customer, login_history, role, auth_provider.
 // Todas las consultas son parametrizadas.
 
 const USER_COLUMNS = `
-  u.id, u.username, u.email, u.password_hash, u.status, r.code AS role_code, c.full_name
+  u.id, u.username, u.email, u.password_hash, u.status, r.code AS role_code, c.full_name,
+  p.code AS auth_provider, u.google_uid
+`;
+
+// FROM común: usuario, rol, proveedor de autenticación y cliente.
+const USER_FROM = `
+  FROM dbo.users AS u
+  INNER JOIN dbo.role AS r ON r.id_role = u.role_id
+  INNER JOIN dbo.auth_provider AS p ON p.id_auth_provider = u.auth_provider_id
+  LEFT JOIN dbo.customer AS c ON c.user_id = u.id
 `;
 
 async function findByIdentifier(identifier) {
@@ -13,9 +22,7 @@ async function findByIdentifier(identifier) {
       .input('identifier', sql.NVarChar(150), identifier)
       .query(`
         SELECT ${USER_COLUMNS}
-        FROM dbo.users AS u
-        INNER JOIN dbo.role AS r ON r.id_role = u.role_id
-        LEFT JOIN dbo.customer AS c ON c.user_id = u.id
+        ${USER_FROM}
         WHERE u.username = @identifier OR u.email = @identifier
       `);
     return result.recordset[0] || null;
@@ -28,9 +35,7 @@ async function findById(userId) {
       .input('userId', sql.Int, userId)
       .query(`
         SELECT ${USER_COLUMNS}
-        FROM dbo.users AS u
-        INNER JOIN dbo.role AS r ON r.id_role = u.role_id
-        LEFT JOIN dbo.customer AS c ON c.user_id = u.id
+        ${USER_FROM}
         WHERE u.id = @userId
       `);
     return result.recordset[0] || null;
@@ -61,9 +66,11 @@ async function createUserWithCustomer({
         .input('email', sql.NVarChar(150), email)
         .input('passwordHash', sql.Char(60), passwordHash)
         .query(`
-          INSERT INTO dbo.users (username, email, password_hash, role_id)
+          INSERT INTO dbo.users (username, email, password_hash, role_id, auth_provider_id)
           OUTPUT INSERTED.id
-          SELECT @username, @email, @passwordHash, id_role FROM dbo.role WHERE code = 'USR'
+          SELECT @username, @email, @passwordHash, r.id_role, p.id_auth_provider
+          FROM dbo.role AS r CROSS JOIN dbo.auth_provider AS p
+          WHERE r.code = 'USR' AND p.code = 'LOCAL'
         `);
       const userId = userResult.recordset[0].id;
 
@@ -80,7 +87,100 @@ async function createUserWithCustomer({
         `);
 
       await transaction.commit();
-      return { id: userId, username, email, fullName, roleCode: 'USR' };
+      return { id: userId, username, email, fullName, roleCode: 'USR', authProvider: 'LOCAL' };
+    } catch (error) {
+      await transaction.rollback().catch(() => {});
+      throw error;
+    }
+  });
+}
+
+async function findByGoogleUid(googleUid) {
+  return withPool(async (pool) => {
+    const result = await pool.request()
+      .input('googleUid', sql.VarChar(128), googleUid)
+      .query(`SELECT ${USER_COLUMNS} ${USER_FROM} WHERE u.google_uid = @googleUid`);
+    return result.recordset[0] || null;
+  });
+}
+
+async function findByEmail(email) {
+  return withPool(async (pool) => {
+    const result = await pool.request()
+      .input('email', sql.NVarChar(150), email)
+      .query(`SELECT ${USER_COLUMNS} ${USER_FROM} WHERE u.email = @email`);
+    return result.recordset[0] || null;
+  });
+}
+
+async function usernameExists(username) {
+  return withPool(async (pool) => {
+    const result = await pool.request()
+      .input('username', sql.NVarChar(50), username)
+      .query('SELECT 1 AS found FROM dbo.users WHERE username = @username');
+    return result.recordset.length > 0;
+  });
+}
+
+// true si el documento ya está registrado (cualquier proveedor).
+async function documentExists(documentTypeCode, documentNumber) {
+  return withPool(async (pool) => {
+    const result = await pool.request()
+      .input('documentTypeCode', sql.VarChar(5), documentTypeCode)
+      .input('documentNumber', sql.VarChar(20), documentNumber)
+      .query(`
+        SELECT 1 AS found
+        FROM dbo.customer AS c
+        INNER JOIN dbo.document_type AS dt ON dt.id_document_type = c.document_type_id
+        WHERE dt.code = @documentTypeCode AND c.document_number = @documentNumber
+      `);
+    return result.recordset.length > 0;
+  });
+}
+
+async function listDocumentTypeCodes() {
+  return withPool(async (pool) => {
+    const result = await pool.request().query('SELECT code FROM dbo.document_type ORDER BY id_document_type');
+    return result.recordset.map((row) => row.code);
+  });
+}
+
+// Usuario de Google (rol USR, proveedor GOOGLE, sin contraseña) y su cliente, en una transacción.
+async function createGoogleUserWithCustomer({
+  username, email, googleUid, fullName, documentTypeCode, documentNumber, birthDate,
+}) {
+  return withPool(async (pool) => {
+    const transaction = new sql.Transaction(pool);
+    await transaction.begin();
+    try {
+      const userResult = await new sql.Request(transaction)
+        .input('username', sql.NVarChar(50), username)
+        .input('email', sql.NVarChar(150), email)
+        .input('googleUid', sql.VarChar(128), googleUid)
+        .query(`
+          INSERT INTO dbo.users (username, email, password_hash, role_id, auth_provider_id, google_uid)
+          OUTPUT INSERTED.id
+          SELECT @username, @email, NULL, r.id_role, p.id_auth_provider, @googleUid
+          FROM dbo.role AS r CROSS JOIN dbo.auth_provider AS p
+          WHERE r.code = 'USR' AND p.code = 'GOOGLE'
+        `);
+      const userId = userResult.recordset[0].id;
+
+      const customerResult = await new sql.Request(transaction)
+        .input('userId', sql.Int, userId)
+        .input('fullName', sql.NVarChar(150), fullName)
+        .input('documentTypeCode', sql.VarChar(5), documentTypeCode)
+        .input('documentNumber', sql.VarChar(20), documentNumber)
+        .input('birthDate', sql.Date, birthDate)
+        .query(`
+          INSERT INTO dbo.customer (user_id, full_name, document_type_id, document_number, birth_date)
+          SELECT @userId, @fullName, id_document_type, @documentNumber, @birthDate
+          FROM dbo.document_type WHERE code = @documentTypeCode
+        `);
+      if (customerResult.rowsAffected[0] !== 1) throw new Error('Tipo de documento desconocido');
+
+      await transaction.commit();
+      return { id: userId, username, email, fullName, roleCode: 'USR', authProvider: 'GOOGLE' };
     } catch (error) {
       await transaction.rollback().catch(() => {});
       throw error;
@@ -115,8 +215,8 @@ async function upsertUserWithCustomer({
           DECLARE @userId INT = (SELECT id FROM dbo.users WITH (UPDLOCK, HOLDLOCK) WHERE username = @username);
           IF @userId IS NULL
           BEGIN
-            INSERT INTO dbo.users (username, email, password_hash, status, role_id)
-            VALUES (@username, @email, @passwordHash, 1, @roleId);
+            INSERT INTO dbo.users (username, email, password_hash, status, role_id, auth_provider_id)
+            VALUES (@username, @email, @passwordHash, 1, @roleId, 1);
             SET @userId = SCOPE_IDENTITY();
           END
           ELSE
@@ -165,6 +265,12 @@ async function listLoginHistory(userId, limit = 20) {
 module.exports = {
   findByIdentifier,
   findById,
+  findByGoogleUid,
+  findByEmail,
+  usernameExists,
+  documentExists,
+  listDocumentTypeCodes,
+  createGoogleUserWithCustomer,
   insertLoginHistory,
   createUserWithCustomer,
   deleteUser,

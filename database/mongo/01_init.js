@@ -116,7 +116,7 @@ ensureCollection('audit_log', {
   properties: {
     // LOGIN, LOGIN_FAILED, REGISTER y DEPOSIT se conservan para los registros ya guardados.
     event: { enum: [
-      'LOGIN_OK', 'LOGIN_FAIL', 'USER_CREATED', 'LOGOUT', 'BET_PLACED', 'MATCH_FINISHED',
+      'LOGIN_OK', 'LOGIN_FAIL', 'USER_CREATED', 'GOOGLE_LOGIN', 'LOGOUT', 'BET_PLACED', 'MATCH_FINISHED',
       'RECHARGE_CREATED', 'RECHARGE_APPROVED', 'RECHARGE_DECLINED',
       'LOGIN', 'LOGIN_FAILED', 'REGISTER', 'DEPOSIT',
     ] },

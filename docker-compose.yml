@@ -197,6 +197,11 @@ services:
       VITE_USE_POLLING: "true"
       # Llave pública de Wompi Sandbox para el Widget (es pública: puede ir al navegador).
       VITE_WOMPI_PUBLIC_KEY: ${VITE_WOMPI_PUBLIC_KEY:-}
+      # Configuración web PÚBLICA de Firebase para "Continuar con Google" (no son secretos).
+      VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY:-}
+      VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN:-}
+      VITE_FIREBASE_PROJECT_ID: ${VITE_FIREBASE_PROJECT_ID:-}
+      VITE_FIREBASE_APP_ID: ${VITE_FIREBASE_APP_ID:-}
     ports:
       - "${FRONTEND_HOST_PORT:-5173}:5173"
     networks: [eldorado]

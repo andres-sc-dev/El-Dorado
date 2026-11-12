@@ -36,6 +36,8 @@ Lo normal es correrlo con `docker compose up -d` desde la raíz (ver el README p
 | `POST /api/auth/register` | No | SQL Server + PostgreSQL | Si falla la cuenta en PostgreSQL, se borra el usuario creado. |
 | `GET /api/auth/me` | Sí | SQL Server | El saldo llega como `null` si PostgreSQL está caído. |
 | `POST /api/auth/logout` | No | — | |
+| `POST /api/auth/google` | No (idToken de Firebase) | SQL Server | 200 con cookie si la cuenta existe; 202 `PROFILE_INCOMPLETE` si es nueva; 409 si el correo es de una cuenta LOCAL; 401 si el token no sirve. |
+| `POST /api/auth/google/complete` | No (idToken de Firebase) | SQL Server + PostgreSQL | `{idToken, document_type, document_number, birth_date, accepted_terms}`. 201 con cookie; 400 con `fields`; 409 si hay un duplicado; 503 compensado. |
 | `POST /api/auth/balance/withdraw` | Sí | — | **Deshabilitado (403):** retiros próximamente. El depósito directo se eliminó. |
 | `GET /api/payments/config` | Sí | — | Límites de recarga (`min_cop`, `max_cop`, `currency`) y `sandbox_ready`. |
 | `POST /api/payments/prepare` | Sí, rol **USR** | Firestore | `{amountCop}` entero. Devuelve `reference`, `amountInCents`, `currency`, `signature` y `publicKey`. 503 si las llaves no son de Sandbox. |

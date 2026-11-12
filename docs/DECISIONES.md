@@ -2,6 +2,42 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Fase 4 · Registro e inicio de sesión con Google (12 de noviembre de 2026)
+
+### Datos (SQL Server, `database/sqlserver/03_auth_provider.sql`)
+
+- **Catálogo `auth_provider`** con los valores LOCAL (1) y GOOGLE (2), y la columna `users.auth_provider_id`. Los usuarios que ya existían quedaron LOCAL gracias al `DEFAULT 1`.
+- **`password_hash` admite NULL** y hay un nuevo `google_uid VARCHAR(128)`. Es VARCHAR porque el UID de Firebase tiene longitud variable.
+- **`google_uid` es único con un índice filtrado** (`WHERE google_uid IS NOT NULL`): un UNIQUE normal de SQL Server solo admite un NULL.
+- **El CHECK `ck_users_auth_provider`** garantiza la coherencia en la base: LOCAL siempre tiene contraseña; GOOGLE siempre tiene UID y nunca contraseña.
+- **El script activa `QUOTED_IDENTIFIER`,** porque sqlcmd lo trae apagado y los índices filtrados lo exigen. El driver de Node lo trae activo.
+
+### Flujo
+
+1. El navegador abre el popup de Google con el SDK de Firebase (`signInWithPopup`) y obtiene un `idToken`.
+2. `POST /api/auth/google` lo verifica con `firebase-admin`, que revisa la firma, el proyecto, el vencimiento y la revocación. Además exige `email_verified` y que el proveedor sea `google.com`.
+   - **Si la cuenta existe**, por `google_uid` o por un correo de una cuenta GOOGLE, inicia sesión con el **mismo JWT en cookie HttpOnly** que el login local y registra `GOOGLE_LOGIN`.
+   - **Si el correo es de una cuenta LOCAL**, responde 409: "ya existe una cuenta con ese correo; entra con tu contraseña". **No se enlazan cuentas automáticamente:** alguien con acceso a un Gmail no debe poder tomar una cuenta creada con contraseña.
+   - **Si no existe**, responde `202 PROFILE_INCOMPLETE` y no crea nada.
+3. `/complete-profile` pide lo que Google no entrega: tipo y número de documento, fecha de nacimiento y la casilla de términos. `POST /api/auth/google/complete` vuelve a verificar el idToken, valida todo, devuelve 400 con la **lista de campos** inválidos y crea `users` (USR, GOOGLE, sin contraseña) y `customer` en una transacción y la cuenta en PostgreSQL con saldo 0. Si PostgreSQL falla, borra el usuario creado (la misma compensación del registro local) y responde 503.
+4. La sesión de Firebase en el navegador se cierra apenas termina el flujo: desde ahí manda la cookie de El Dorado.
+
+### Otras decisiones
+
+- **El usuario se genera a partir del correo:** `maria.perez@gmail.com` da `maria.perez`. Si ya existe, se agregan 4 dígitos al azar, y si dos registros chocan al mismo tiempo se reintenta.
+- **Formato del documento:**
+  - CC: 6 a 10 dígitos;
+  - CE: 6 a 12 dígitos;
+  - PEP: 6 a 15 dígitos;
+  - pasaporte: 5 a 20 letras o números.
+
+  Se aceptan con puntos y se guardan sin ellos. El documento duplicado se revisa antes de crear (409) y también lo detiene el UNIQUE de la base.
+- **Una cuenta GOOGLE no entra con contraseña:** el login local responde 401 `GOOGLE_ACCOUNT` con el mensaje "Esta cuenta se creó con Google: entra con el botón «Continuar con Google»", y lo audita como `LOGIN_FAIL` con el motivo `GOOGLE_ACCOUNT`.
+- **Errores:** 401 si el token es inválido, está vencido, no es de Google o el correo no está verificado; 400 para la validación; 409 para duplicados. Si Firebase no responde o faltan las credenciales, 503: es un problema del servidor, no del token.
+- **Una sola app de `firebase-admin`** (`config/firebase.js`) sirve a Firestore (pagos) y a Authentication.
+- **Los `VITE_FIREBASE_*` son la configuración web pública** del proyecto: van al navegador y no son secretos. Las protecciones son los dominios autorizados de Firebase y la verificación del idToken en el backend.
+- **Dominios autorizados:** se comprobó por la API de administración, en modo de solo lectura, que `localhost` está autorizado y el proveedor Google activo.
+
 ## Regresión · El Widget dejó de abrir con 403 (12 de noviembre de 2026)
 
 - **Causa:** el arreglo anterior agregó `redirectUrl: <origen>/wallet` al Widget, es decir, `http://localhost:5173/wallet`. Era el único parámetro que cambió: la firma, la referencia, el monto y la llave son iguales y `POST /api/payments/prepare` no cambió.

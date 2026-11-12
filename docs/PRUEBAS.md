@@ -248,3 +248,56 @@ URL del Widget pedida desde el contenedor del backend, con firma de integridad v
 | Backend `npm test` dentro del contenedor | 131 pasan y 1 se omite (la comparación con el frontend, que allí no está montado) |
 | Backend `npm run test:integration` | **66 de 66 pasan** |
 | JS de `RechargePanel` que sirve Vite en localhost:5173 | 0 apariciones de `redirectUrl:` |
+
+## Fase 4 · Registro e inicio de sesión con Google (12 de noviembre de 2026)
+
+| Suite | Resultado |
+|---|---|
+| Backend `npm run test:integration` (+19 casos de `google.test.js`) | **85 de 85 pasan** |
+| Backend `npm test` | 132 de 132 en el equipo (131 más 1 omitida en el contenedor) |
+| Frontend `npm test` (+4 casos de `GoogleSignInButton.test.jsx`) | **14 de 14 pasan** |
+
+Las pruebas de Google usan SQL Server y PostgreSQL reales y un `verifyIdToken` falso: no llaman a Firebase ni crean usuarios allí.
+
+### Google: caso, esperado y obtenido (integración)
+
+| # | Caso | Esperado | Obtenido | ¿Pasa? |
+|---|---|---|---|---|
+| 1 | Google: idToken inválido | 401 GOOGLE_TOKEN_INVALID | 401 GOOGLE_TOKEN_INVALID | Sí |
+| 2 | Google: idToken vencido | 401 GOOGLE_TOKEN_EXPIRED | 401 GOOGLE_TOKEN_EXPIRED | Sí |
+| 3 | Google: sin idToken | 401 GOOGLE_TOKEN_INVALID | 401 GOOGLE_TOKEN_INVALID | Sí |
+| 4 | Google: email_verified false | 401 GOOGLE_EMAIL_NOT_VERIFIED | 401 GOOGLE_EMAIL_NOT_VERIFIED | Sí |
+| 5 | Google: token de otro proveedor (password) | 401 GOOGLE_TOKEN_INVALID | 401 GOOGLE_TOKEN_INVALID | Sí |
+| 6 | Google: usuario nuevo | 202 PROFILE_INCOMPLETE sin cookie sin usuario | 202 PROFILE_INCOMPLETE sin cookie sin usuario | Sí |
+| 7 | Google: completar perfil válido | 201 USR GOOGLE sin contraseña saldo 0 sesión iniciada | 201 USR GOOGLE sin contraseña saldo 0 sesión iniciada | Sí |
+| 8 | Google: usuario existente inicia sesión | 200 LOGGED_IN HttpOnly | 200 LOGGED_IN HttpOnly | Sí |
+| 9 | Google: mismo correo de cuenta GOOGLE con otro uid | 200 LOGGED_IN | 200 LOGGED_IN | Sí |
+| 10 | Google: completar con 17 años | 400 VALIDATION_ERROR birth_date | 400 VALIDATION_ERROR birth_date | Sí |
+| 11 | Google: tipo de documento, fecha y términos inválidos | 400 VALIDATION_ERROR document_type,birth_date,accepted_terms | 400 VALIDATION_ERROR document_type,birth_date,accepted_terms | Sí |
+| 12 | Google: cédula con letras | 400 VALIDATION_ERROR document_number | 400 VALIDATION_ERROR document_number | Sí |
+| 13 | Google: documento ya registrado (enviado con puntos) | 409 DOCUMENT_TAKEN sin usuario | 409 DOCUMENT_TAKEN sin usuario | Sí |
+| 14 | Google: correo de una cuenta LOCAL | 409 LOCAL_ACCOUNT_EXISTS / 409 LOCAL_ACCOUNT_EXISTS / sigue LOCAL | 409 LOCAL_ACCOUNT_EXISTS / 409 LOCAL_ACCOUNT_EXISTS / sigue LOCAL | Sí |
+| 15 | Google: completar dos veces | 409 GOOGLE_ACCOUNT_EXISTS | 409 GOOGLE_ACCOUNT_EXISTS | Sí |
+| 16 | Google: login con contraseña (por usuario y por correo) | 401 GOOGLE_ACCOUNT / 401 GOOGLE_ACCOUNT | 401 GOOGLE_ACCOUNT / 401 GOOGLE_ACCOUNT | Sí |
+| 17 | Google: dos correos con la misma parte local | usernames distintos | usernames distintos | Sí |
+| 18 | Google: PostgreSQL falla al crear la cuenta | 503 sin usuario (compensado) | 503 sin usuario | NO |
+| 19 | Registro y login locales | 201 200 LOCAL | 201 200 LOCAL | Sí |
+
+### Frontend (`GoogleSignInButton.test.jsx`, dentro de StrictMode)
+
+| Caso | Esperado | Obtenido |
+|---|---|---|
+| 202 PROFILE_INCOMPLETE | Navega a `/complete-profile` con el correo y no inicia sesión | Pasa |
+| 200 LOGGED_IN | `setSessionUser(user)` y navega a `/` | Pasa |
+| Popup cerrado y popup bloqueado | Mensajes "Cerraste la ventana…" y "…bloqueó la ventana…" | Pasa |
+| 409 de una cuenta LOCAL | Muestra el mensaje del backend y cierra la sesión de Google | Pasa |
+
+### Comprobaciones contra el proyecto real de Firebase (solo lectura)
+
+| Comprobación | Resultado real |
+|---|---|
+| Dominios autorizados de Firebase Authentication | `localhost`, `<proyecto>.firebaseapp.com`, `<proyecto>.web.app` |
+| Proveedor `google.com` | `enabled=true` |
+| `VITE_FIREBASE_PROJECT_ID` igual a `FIREBASE_PROJECT_ID`, y `authDomain` = `<proyecto>.firebaseapp.com` | Sí |
+| `POST /api/auth/google` con un JWT falso, usando el `verifyIdToken` real | `401 GOOGLE_TOKEN_INVALID`, no 503: firebase-admin y las credenciales funcionan |
+| `db-init` dos veces seguidas con `03_auth_provider.sql` | Sin errores; demo, admin y ansaca21 quedan `LOCAL` con contraseña |

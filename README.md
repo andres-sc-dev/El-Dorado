@@ -91,7 +91,8 @@ Fase 3 (recargas con Wompi Sandbox) en la rama `feat/fase-3-wompi`, sobre la Fas
 - **Recargas con Wompi Sandbox** desde la billetera, entre 10.000 y 3.000.000 COP (`WOMPI_MIN_COP` y `WOMPI_MAX_COP`). Cada pago queda en Firestore (`payments`) y el saldo se acredita con `fn_recargar` en PostgreSQL. **Solo se aceptan llaves de Sandbox** (`pub_test_...`).
 - El webhook se prueba sin URL pública: `docker compose exec backend node scripts/simulate-wompi-webhook.js <reference> APPROVED --amount=<pesos>`.
 - Política de contraseñas con barra de fortaleza, cédula con puntos y auditoría en MongoDB.
-- Pendiente: retiros, login con Google, URL pública para el webhook real y despliegue.
+- **Registro e inicio de sesión con Google** (Firebase Authentication), en la rama `feat/fase-4-google`: botón «Continuar con Google» en Login y Registro y página `/complete-profile` para los datos que faltan.
+- Pendiente: retiros, URL pública para el webhook real y despliegue.
 
 ## Autor
 

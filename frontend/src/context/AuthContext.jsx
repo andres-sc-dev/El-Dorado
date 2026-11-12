@@ -50,6 +50,11 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
+  // Sesión iniciada por otro camino (Google): el backend ya puso la cookie y devolvió el usuario.
+  const setSessionUser = useCallback((sessionUser) => {
+    setUser(normalizeUser(sessionUser));
+  }, []);
+
   const setBalance = useCallback((balance) => {
     setUser((current) => (current ? { ...current, balance: Number(balance) } : current));
   }, []);
@@ -70,9 +75,10 @@ export function AuthProvider({ children }) {
     logout,
     register,
     refreshUser,
+    setSessionUser,
     setBalance,
     claimBonus,
-  }), [user, isLoading, login, logout, register, refreshUser, setBalance, claimBonus]);
+  }), [user, isLoading, login, logout, register, refreshUser, setSessionUser, setBalance, claimBonus]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

@@ -27,6 +27,7 @@ function toPublicUser(user, balance) {
     fullName: user.full_name ?? user.fullName ?? null,
     isActive: user.status === undefined ? true : user.status === ACTIVE_STATUS,
     role: user.role_code ?? user.roleCode,
+    authProvider: user.auth_provider ?? user.authProvider ?? 'LOCAL',
     balance,
     bonusBalance: 0,
   };
@@ -41,6 +42,12 @@ async function login({ identifier, password, ipAddress }) {
   if (!user) {
     auditService.log('LOGIN_FAIL', null, { reason: 'UNKNOWN_USER' }, ipAddress);
     throw unauthorized('Credenciales inválidas');
+  }
+
+  // Las cuentas de Google no tienen contraseña en El Dorado (password_hash es NULL).
+  if (user.auth_provider === 'GOOGLE' || !user.password_hash) {
+    auditService.log('LOGIN_FAIL', user.username, { reason: 'GOOGLE_ACCOUNT' }, ipAddress);
+    throw unauthorized('Esta cuenta se creó con Google: entra con el botón «Continuar con Google».', { errorCode: 'GOOGLE_ACCOUNT' });
   }
 
   const passwordMatches = await comparePassword(password, user.password_hash);
