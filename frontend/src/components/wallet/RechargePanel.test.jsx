@@ -69,7 +69,6 @@ describe('RechargePanel', () => {
   it('camino b: el id del callback del Widget se verifica con el backend y muestra "Pago aprobado"', async () => {
     payments.getPaymentStatus.mockResolvedValue(credited);
     await payWithWidget();
-    expect(widget.options.redirectUrl).toBe(`${window.location.origin}/wallet`);
     expect(widget.options.reference).toBe(REFERENCE);
 
     await act(async () => { widget.callback({ transaction: { id: 'tx-1' } }); });
@@ -81,20 +80,37 @@ describe('RechargePanel', () => {
     expect(sessionStorage.getItem('eldorado.pendingRecharge')).toBeNull();
   });
 
-  it('camino c: callback sin id consulta por referencia; PENDING sigue hasta APPROVED', async () => {
-    payments.getPaymentStatus
-      .mockResolvedValueOnce({ reference: REFERENCE, status: 'PENDING' })
-      .mockResolvedValueOnce({ reference: REFERENCE, status: 'PENDING' })
-      .mockResolvedValue(credited);
+  it('regresión 403: el Widget se abre SIN redirectUrl (con localhost, checkout.wompi.co responde 403)', async () => {
+    await payWithWidget();
+    expect(widget.options).not.toHaveProperty('redirectUrl');
+    expect(Object.keys(widget.options).sort()).toEqual(['amountInCents', 'currency', 'publicKey', 'reference', 'signature']);
+    expect(widget.options.signature).toEqual({ integrity: 'f'.repeat(64) });
+  });
+
+  it('callback sin id: una consulta por referencia y, si sigue PENDING, "Todavía no recibimos…" con "Verificar de nuevo"', async () => {
+    payments.getPaymentStatus.mockResolvedValueOnce({ reference: REFERENCE, status: 'PENDING' });
     await payWithWidget();
     await act(async () => { widget.callback({}); });
     await flush();
-    expect(screen.getByText(/Procesando… estamos confirmando/)).toBeTruthy();
-    await flush(3000);
-    await flush(3000);
 
-    expect(payments.getPaymentStatus).toHaveBeenCalledTimes(3);
+    expect(payments.getPaymentStatus).toHaveBeenCalledTimes(1);
     expect(payments.getPaymentStatus).toHaveBeenCalledWith(REFERENCE, undefined);
+    expect(screen.queryByText(/Procesando… estamos confirmando/)).toBeNull();
+    expect(screen.getByText('Todavía no recibimos la confirmación de Wompi')).toBeTruthy();
+
+    payments.getPaymentStatus.mockResolvedValue(credited);
+    fireEvent.click(screen.getByRole('button', { name: 'Verificar de nuevo' }));
+    await flush();
+    expect(payments.getPaymentStatus).toHaveBeenCalledTimes(2);
+    expect(screen.getByText('Pago aprobado')).toBeTruthy();
+  });
+
+  it('callback sin id que ya está aprobado en Wompi: "Pago aprobado" en la primera consulta', async () => {
+    payments.getPaymentStatus.mockResolvedValue(credited);
+    await payWithWidget();
+    await act(async () => { widget.callback(undefined); });
+    await flush();
+    expect(payments.getPaymentStatus).toHaveBeenCalledTimes(1);
     expect(screen.getByText('Pago aprobado')).toBeTruthy();
   });
 

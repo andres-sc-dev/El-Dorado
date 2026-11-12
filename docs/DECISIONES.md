@@ -2,6 +2,20 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Regresión · El Widget dejó de abrir con 403 (12 de noviembre de 2026)
+
+- **Causa:** el arreglo anterior agregó `redirectUrl: <origen>/wallet` al Widget, es decir, `http://localhost:5173/wallet`. Era el único parámetro que cambió: la firma, la referencia, el monto y la llave son iguales y `POST /api/payments/prepare` no cambió.
+- **Reproducción**, con una firma válida calculada en el servidor:
+  - `https://checkout.wompi.co/p/?mode=widget&...` responde **403** con la página de error de su CDN ("The request could not be satisfied") cuando lleva `redirect-url` hacia localhost, sea `http` o `https`;
+  - responde 200 sin `redirect-url`, o con la URL del ejemplo oficial.
+- **Lo que dice la documentación:** `redirectUrl` es opcional y debe "pertenecer a tu sitio web". No menciona localhost; el bloqueo lo mostró la prueba.
+- **Decisión:**
+  - Se quita `redirectUrl` y el resultado depende del callback del Widget.
+  - Con id de transacción, se consulta al backend hasta un estado final o hasta el tope.
+  - Sin id, se hace una consulta por referencia y, si aún no hay decisión, se muestra de inmediato "Todavía no recibimos la confirmación de Wompi" con "Verificar de nuevo".
+  - El manejo del `?id=` al volver a `/wallet` se conserva, por si algún día hay una URL pública.
+- **Prueba de regresión:** el Widget se crea solo con `currency`, `amountInCents`, `reference`, `publicKey` y `signature`.
+
 ## Arreglo · La recarga se quedaba en "Procesando…" (12 de noviembre de 2026)
 
 ### Causa real

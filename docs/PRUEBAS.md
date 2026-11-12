@@ -229,3 +229,22 @@ Casos nuevos del backend:
 | Firestore | `CREDITED`, `transaction_id 12240303-1794521672-86523`, `wompi_status APPROVED`, `balance 50000`, `credited_at` |
 | PostgreSQL | una fila `DEPOSIT 50000.00 -> 50000.00` para `ansaca21` |
 | `GET /api/payments/transactions/12240303-1794521672-86523` (camino a) | `200 CREDITED`; sigue habiendo **1** recarga y el saldo es 50.000 |
+
+## Regresión: el Widget no abría con 403 (12 de noviembre de 2026)
+
+URL del Widget pedida desde el contenedor del backend, con firma de integridad válida:
+
+| Parámetros | Respuesta de checkout.wompi.co |
+|---|---|
+| Sin `redirect-url` | **200** |
+| `redirect-url=http://localhost:5173/wallet` | **403** "The request could not be satisfied" |
+| `redirect-url=https://localhost:5173/wallet` | **403** |
+| `redirect-url=https://transaction-redirect.wompi.co/check` (ejemplo de la doc) | 200 |
+| Firma inválida, sin `redirect-url` (control) | 200 (la página carga; la firma se valida al pagar) |
+
+| Suite después del arreglo | Resultado |
+|---|---|
+| Frontend `npm test` (+2 casos: Widget sin `redirectUrl` y callback sin id) | **10 de 10 pasan** |
+| Backend `npm test` dentro del contenedor | 131 pasan y 1 se omite (la comparación con el frontend, que allí no está montado) |
+| Backend `npm run test:integration` | **66 de 66 pasan** |
+| JS de `RechargePanel` que sirve Vite en localhost:5173 | 0 apariciones de `redirectUrl:` |

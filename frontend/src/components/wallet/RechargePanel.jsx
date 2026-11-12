@@ -10,13 +10,15 @@ import Button from '../ui/Button';
 
 // Recarga con Wompi Sandbox:
 // 1. La API firma la recarga (POST /api/payments/prepare) y la guarda en Firestore como CREATED.
-// 2. Se abre el Widget oficial con esos datos firmados y una redirect-url a /wallet.
-// 3. El resultado se verifica SIEMPRE con el backend, por el primer camino disponible:
-//    a) ?id= que Wompi agrega a la redirect-url al presionar "Volver al comercio";
-//    b) el id que entrega el callback del Widget (result.transaction.id);
-//    c) solo la reference: el backend busca la transacción en Wompi por referencia.
-//    El backend responde PENDING mientras Wompi no decide; la consulta tiene tope y la pantalla
-//    termina siempre en "Pago aprobado", "Pago rechazado" o "Todavía no recibimos la confirmación".
+// 2. Se abre el Widget oficial con esos datos firmados, SIN redirect-url: con una redirect-url
+//    a localhost, checkout.wompi.co responde 403 y el Widget no abre (comprobado el 12-nov-2026).
+// 3. El resultado se verifica SIEMPRE con el backend:
+//    - con el id que entrega el callback del Widget (result.transaction.id): se consulta hasta
+//      un estado final o hasta el tope;
+//    - sin id: una consulta por reference; si aún no hay decisión, se muestra
+//      "Todavía no recibimos la confirmación de Wompi" con "Verificar de nuevo".
+//    Si algún día hay una redirect-url pública, el ?id= que agrega Wompi también se verifica al volver.
+//    La pantalla termina siempre en "Pago aprobado", "Pago rechazado" o "Todavía no recibimos la confirmación".
 
 const CHIPS = [10000, 50000, 100000, 500000];
 const POLL_INTERVAL_MS = 3000;
@@ -79,7 +81,9 @@ function RechargePanel({ highlighted, onCredited }) {
   }, [refreshUser, onCredited]);
 
   // check() consulta una vez al backend; se repite hasta un estado final o hasta el tope.
+  // Con id de transacción se insiste hasta POLL_MAX_TRIES; sin id, una sola consulta por reference.
   const verify = useCallback(async ({ reference, transactionId }) => {
+    const maxTries = transactionId ? POLL_MAX_TRIES : 1;
     const run = pollRun.current + 1;
     pollRun.current = run;
     setError(null);
@@ -90,7 +94,8 @@ function RechargePanel({ highlighted, onCredited }) {
       : verifyTransaction(transactionId));
 
     let last = { status: 'PENDING', reference };
-    for (let attempt = 0; attempt < POLL_MAX_TRIES; attempt += 1) {
+    for (let attempt = 0; attempt < maxTries; attempt += 1) {
+      if (attempt > 0) await sleep(POLL_INTERVAL_MS);
       if (!mounted.current || pollRun.current !== run) return;
       try {
         last = await check();
@@ -109,7 +114,6 @@ function RechargePanel({ highlighted, onCredited }) {
         }
         // 0 o 5xx (red, Wompi o una base caída): se reintenta hasta el tope.
       }
-      await sleep(POLL_INTERVAL_MS);
     }
     if (mounted.current && pollRun.current === run) {
       await finish({ ...last, status: 'TIMEOUT', reference: last.reference ?? reference, transactionId });
@@ -160,11 +164,10 @@ function RechargePanel({ highlighted, onCredited }) {
         reference: prepared.reference,
         publicKey: PUBLIC_KEY || prepared.publicKey,
         signature: { integrity: prepared.signature },
-        // (a) "Volver al comercio" lleva a /wallet?id=<transacción>.
-        redirectUrl: `${window.location.origin}/wallet`,
+        // Sin redirectUrl a propósito: con localhost, checkout.wompi.co responde 403.
       });
       setPhase('widget');
-      // (b) Wompi llama este callback cuando la transacción termina.
+      // Wompi llama este callback cuando la transacción termina.
       checkout.open((widgetResult) => {
         verify({ reference: prepared.reference, transactionId: widgetResult?.transaction?.id });
       });
