@@ -2,6 +2,38 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Arreglo · La recarga se quedaba en "Procesando…" (12 de noviembre de 2026)
+
+### Causa real
+
+**El frontend nunca consultó al backend.**
+
+- `RechargePanel` guardaba `active = useRef(true)` y lo apagaba en la limpieza de un efecto.
+- En desarrollo, `<StrictMode>` monta, desmonta y vuelve a montar cada componente. La limpieza dejaba `active.current = false` y nada lo volvía a encender.
+- Cuando el Widget llamaba el callback, el panel pasaba a "Procesando…". El bucle de consulta salía sin dar una sola vuelta, y el aviso de tope tampoco se mostraba, porque también miraba `active.current`.
+
+El documento de Firestore seguía `CREATED` con `updated_at` igual a `created_at`, mientras Wompi Sandbox ya tenía la transacción APPROVED. Una prueba con la versión anterior dentro de StrictMode lo reprodujo: 0 consultas tras 90 segundos simulados.
+
+Sin StrictMode (en un build de producción) el bug no se veía. Por eso las pruebas de componentes corren ahora dentro de `<StrictMode>`.
+
+### Qué cambió
+
+- **El ref de montaje se enciende en cada montaje** (`mounted.current = true` dentro del efecto). Cada verificación lleva un número: si empieza otra, la anterior se detiene, así no corren dos a la vez.
+- **Tres caminos para obtener el resultado, y todos terminan en el backend:**
+  - **(a) redirect-url.** El Widget se abre con `redirectUrl: <origen>/wallet`. Según docs.wompi.co, Wompi lleva al usuario allí con `?id=<id de transacción>` al presionar "Volver al comercio". La página lee ese id, lo verifica con `GET /api/payments/transactions/:id` y lo quita de la barra de direcciones. La doc dice que la redirección es solo informativa: por eso el id siempre se verifica con Wompi desde el backend, con la llave privada.
+  - **(b) callback del Widget,** con `result.transaction.id` si viene.
+  - **(c) solo la referencia.** El backend consulta `GET /v1/transactions?reference=…`. **Se verificó en vivo en Sandbox:** con la llave privada responde 200 con `{ data: [...] }` y con la pública responde 401.
+- **El backend responde `PENDING`** (y guarda `stored_status` y `wompi_status`) mientras Wompi no tiene decisión. Solo `CREDITED`, `DECLINED`, `ERROR` y `VOIDED` son finales.
+- **Un id que pertenece a otra referencia se descarta** y se busca por la referencia propia. Así un id equivocado no deja la recarga en `ERROR`. La transacción encontrada debe coincidir en referencia, monto y moneda con lo firmado. Todo acredita solo con `fn_recargar`, que es idempotente: los tres caminos y el webhook juntos acreditan una vez.
+- **La recarga pendiente se guarda en `sessionStorage`** de la pestaña. Si la persona vuelve a `/wallet` sin `?id=`, se verifica sola. Si el almacenamiento está bloqueado, el flujo sigue funcionando por los otros caminos.
+- **La pantalla siempre termina en un estado claro:**
+  - "Pago aprobado";
+  - "Pago rechazado";
+  - "Todavía no recibimos la confirmación de Wompi", con el botón "Verificar de nuevo", después de 20 consultas (unos 60 segundos). Un 4xx detiene la verificación y muestra el error.
+- **Recarga en caliente en Docker sobre Windows.** Durante el diagnóstico apareció un segundo problema: el contenedor seguía corriendo código viejo, porque en Windows los cambios de un volumen montado no generan eventos de archivo. Ahora nodemon corre con `--legacy-watch` y Vite con `VITE_USE_POLLING=true`.
+- **Pruebas de componentes con Vitest, Testing Library y jsdom** (gratis, solo para desarrollo), con `npm test` en `frontend/`.
+- **Una advertencia de lint que se acepta:** `set-state-in-effect` en el efecto que verifica al volver de Wompi. Ese efecto sincroniza con un sistema externo (la URL y el backend), que es el uso previsto de un efecto.
+
 ## Fase 3 · Recargas con Wompi Sandbox, contraseña y auditoría (12 de noviembre de 2026)
 
 ### Lo que dice la documentación oficial de Wompi (consultada hoy)

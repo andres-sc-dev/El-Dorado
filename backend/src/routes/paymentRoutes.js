@@ -9,7 +9,8 @@ const router = express.Router();
 
 router.get('/config', authenticate, payments.getConfig);
 router.post('/prepare', authenticate, requireRole('USR'), payments.prepare);
-// Puede acreditar saldo, así que necesita PostgreSQL.
+// Pueden acreditar saldo, así que necesitan PostgreSQL. /transactions/:id va antes que /:reference.
+router.get('/transactions/:transactionId', authenticate, requireDb('pg'), payments.verifyTransaction);
 router.get('/:reference', authenticate, requireDb('pg'), payments.getStatus);
 
 module.exports = router;

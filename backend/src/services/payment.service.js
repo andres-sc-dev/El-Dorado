@@ -4,9 +4,10 @@ const { badRequest, forbidden, notFound, unauthorized } = require('../utils/http
 
 // Recargas con Wompi Sandbox.
 // Flujo: prepare (firma y documento CREATED en Firestore) -> el usuario paga en el Widget ->
-// el estado llega por dos caminos que terminan en la misma función applyTransaction:
-//   a) GET /api/payments/:reference consulta a Wompi con la llave privada (hoy, sin URL pública);
-//   b) POST /api/payments/webhook con el evento firmado (cuando haya URL pública).
+// el estado llega por varios caminos que terminan en la misma función applyTransaction:
+//   a) GET /api/payments/:reference: consulta a Wompi con la llave privada (por id o por reference);
+//   b) GET /api/payments/transactions/:id: al volver de la redirect-url con ?id=;
+//   c) POST /api/payments/webhook con el evento firmado (cuando haya URL pública).
 // El saldo SOLO sube con fn_recargar(username, monto, reference), que es idempotente por reference:
 // si los dos caminos llegan a la vez, o el evento se repite, se acredita una sola vez.
 
@@ -64,10 +65,14 @@ async function prepare(user, body, ip) {
   return { reference, amountInCents, currency, signature, publicKey: config.publicKey };
 }
 
+// status para el cliente: PENDING mientras no haya decisión final (CREATED o APPROVED sin acreditar),
+// y el estado final tal cual (CREDITED, DECLINED, ERROR, VOIDED).
 function publicStatus(payment) {
   return {
     reference: payment.reference,
-    status: payment.status,
+    status: FINAL.includes(payment.status) ? payment.status : 'PENDING',
+    stored_status: payment.status,
+    wompi_status: payment.wompi_status ?? null,
     amount_cop: payment.amount_cop,
     currency: payment.currency,
     transaction_id: payment.transaction_id ?? null,
@@ -118,7 +123,26 @@ async function applyTransaction(payment, transaction, source, ip = null) {
   return (await deps.store.updatePayment(payment.reference, base)) ?? payment;
 }
 
-// GET /api/payments/:reference (dueño o ADM)
+function assertOwner(user, payment) {
+  if (payment.username !== user.username && user.role !== 'ADM') {
+    throw forbidden('No puedes consultar la recarga de otro usuario.');
+  }
+}
+
+// Busca la transacción en Wompi por tres caminos, en este orden:
+//   1. el id que trae el cliente (callback del Widget o ?id= de la redirect-url);
+//   2. el id guardado en Firestore de una consulta anterior;
+//   3. GET /v1/transactions?reference=... (llave privada; verificado en Sandbox el 12-nov-2026).
+// Un id cuya transacción pertenece a otra referencia se descarta (no se marca ERROR por eso).
+async function findTransactionFor(config, payment, transactionId) {
+  for (const id of [...new Set([transactionId, payment.transaction_id].filter(Boolean))]) {
+    const transaction = await deps.wompi.getTransaction(config, id);
+    if (transaction && transaction.reference === payment.reference) return transaction;
+  }
+  return deps.wompi.findTransactionByReference(config, payment.reference);
+}
+
+// GET /api/payments/:reference (dueño o ADM). Responde PENDING si Wompi aún no tiene decisión.
 async function getStatus(user, reference, transactionId, ip) {
   if (typeof reference !== 'string' || !REFERENCE_PATTERN.test(reference)) {
     throw notFound('La recarga no existe.', { errorCode: 'PAYMENT_NOT_FOUND' });
@@ -129,17 +153,30 @@ async function getStatus(user, reference, transactionId, ip) {
 
   let payment = await deps.store.getPayment(reference);
   if (!payment) throw notFound('La recarga no existe.', { errorCode: 'PAYMENT_NOT_FOUND' });
-  if (payment.username !== user.username && user.role !== 'ADM') {
-    throw forbidden('No puedes consultar la recarga de otro usuario.');
-  }
+  assertOwner(user, payment);
   if (FINAL.includes(payment.status)) return publicStatus(payment);
 
   const config = wompiConfig.requireSandbox(['privateKey']);
-  const id = transactionId || payment.transaction_id;
-  const transaction = id
-    ? await deps.wompi.getTransaction(config, id)
-    : await deps.wompi.findTransactionByReference(config, reference);
+  const transaction = await findTransactionFor(config, payment, transactionId);
   if (transaction) payment = await applyTransaction(payment, transaction, 'POLL', ip);
+  return publicStatus(payment);
+}
+
+// GET /api/payments/transactions/:transactionId: al volver de la redirect-url solo se tiene
+// el ?id= de Wompi. Se consulta la transacción, se toma su reference y se sigue el flujo normal.
+async function verifyTransaction(user, transactionId, ip) {
+  if (typeof transactionId !== 'string' || !TRANSACTION_ID_PATTERN.test(transactionId)) {
+    throw badRequest('El id de transacción no es válido.', { errorCode: 'INVALID_TRANSACTION_ID' });
+  }
+  const config = wompiConfig.requireSandbox(['privateKey']);
+  const transaction = await deps.wompi.getTransaction(config, transactionId);
+  if (!transaction || !REFERENCE_PATTERN.test(transaction.reference || '')) {
+    throw notFound('La transacción no existe o no es de El Dorado.', { errorCode: 'TRANSACTION_NOT_FOUND' });
+  }
+  let payment = await deps.store.getPayment(transaction.reference);
+  if (!payment) throw notFound('La recarga no existe.', { errorCode: 'PAYMENT_NOT_FOUND' });
+  assertOwner(user, payment);
+  if (!FINAL.includes(payment.status)) payment = await applyTransaction(payment, transaction, 'REDIRECT', ip);
   return publicStatus(payment);
 }
 
@@ -170,5 +207,5 @@ async function handleWebhook(rawBody, ip) {
 }
 
 module.exports = {
-  getConfig, parseAmount, prepare, getStatus, handleWebhook, applyTransaction, deps, REFERENCE_PATTERN,
+  getConfig, parseAmount, prepare, getStatus, verifyTransaction, handleWebhook, applyTransaction, deps, REFERENCE_PATTERN,
 };

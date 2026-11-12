@@ -27,6 +27,14 @@ async function getStatus(request, response, next) {
   }
 }
 
+async function verifyTransaction(request, response, next) {
+  try {
+    response.json(await paymentService.verifyTransaction(request.user, request.params.transactionId, getClientIp(request)));
+  } catch (error) {
+    next(error);
+  }
+}
+
 // request.body es un Buffer: express.raw() en server.js, antes de express.json().
 async function webhook(request, response, next) {
   try {
@@ -36,4 +44,4 @@ async function webhook(request, response, next) {
   }
 }
 
-module.exports = { getConfig, prepare, getStatus, webhook };
+module.exports = { getConfig, prepare, getStatus, verifyTransaction, webhook };

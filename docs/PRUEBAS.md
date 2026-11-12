@@ -134,6 +134,10 @@ Las de integración sí usan `fn_recargar` real en PostgreSQL y el registro real
 | 12 | pago DECLINED | 200 DECLINED saldo 0 | 200 DECLINED saldo 0 | Sí |
 | 13 | webhook APPROVED con otro monto (3.000.000 vs 50.000 firmado) | ERROR saldo 0 | ERROR saldo 0 | Sí |
 | 14 | registro con contraseña débil (contiene el usuario) | 400 WEAK_PASSWORD UPPERCASE,NO_USERNAME,NO_EMAIL | 400 WEAK_PASSWORD UPPERCASE,NO_USERNAME,NO_EMAIL | Sí |
+| 15 | camino c: consulta por referencia (sin id), primero sin transacción y luego APPROVED | 200 PENDING -> 200 CREDITED saldo 50000 | 200 PENDING -> 200 CREDITED saldo 50000 | Sí |
+| 16 | camino a: volver con ?id= (2 veces) | 200 CREDITED, 200 CREDITED saldo 50000 1 recarga | 200 CREDITED, 200 CREDITED saldo 50000 1 recarga | Sí |
+| 17 | camino a: ?id= de la recarga de otro usuario | 403 saldos 0 0 | 403 saldos 0 0 | Sí |
+| 18 | redirect + callback + referencia + webhook a la vez | 200,200,200,200 saldo 50000 1 recarga | 200,200,200,200 saldo 50000 1 recarga | Sí |
 
 ### Pagos y contraseña: pruebas unitarias (`npm test`)
 
@@ -174,3 +178,54 @@ Para la demostración se levantó una segunda instancia temporal del backend en 
 | PostgreSQL `balance_movement` con esa referencia | **una** fila `DEPOSIT 50000.00 -> 564250.00` |
 | MongoDB `audit_log` | `RECHARGE_CREATED` y `RECHARGE_APPROVED` (con `source: WEBHOOK`); también hay `LOGIN_OK`, `LOGIN_FAIL` y `USER_CREATED` |
 | Backend real con tus llaves de producción | `config.sandbox_ready: false` y `prepare` responde 503 sin mostrar ninguna llave |
+
+## Arreglo: la recarga se quedaba en "Procesando…" (12 de noviembre de 2026)
+
+### Evidencia del bug
+
+| Comprobación | Resultado real |
+|---|---|
+| Último documento de `payments` en Firestore (`ELD-548ecbe4-…`, usuario `ansaca21`, 50.000) | `status CREATED`, `transaction_id null`, `wompi_status null` y `updated_at` igual a `created_at`: **el backend nunca lo tocó** |
+| Logs del backend | Ninguna consulta registrada para esa referencia (la API no registra peticiones; tampoco hubo errores) |
+| `GET https://sandbox.wompi.co/v1/transactions?reference=ELD-548ecbe4-…` con la llave **privada** | `200`, transacción `12240303-1794521672-86523`, `APPROVED`, 5.000.000 centavos, COP, `redirect_url: null` |
+| La misma consulta con la llave **pública** | `401 INVALID_ACCESS_TOKEN` |
+| `getTransaction(id)` y `findTransactionByReference` del backend contra Sandbox | Las dos encuentran la transacción APPROVED |
+| La versión anterior de `RechargePanel` dentro de `<StrictMode>`, con 90 s simulados después del callback | **0 consultas al backend; sigue en "Procesando…"** |
+| La misma versión sin StrictMode | 1 consulta, estado final |
+| La versión corregida, con y sin StrictMode | 1 consulta, estado final |
+
+### Pruebas nuevas
+
+| Suite | Resultado |
+|---|---|
+| Frontend `npm test` (Vitest, `RechargePanel.test.jsx` dentro de `<StrictMode>`) | **8 de 8 pasan** |
+| Backend `npm test` (+9 casos en `payments.test.js`) | **132 de 132 pasan** |
+| Backend `npm run test:integration` (+4 casos de pagos, filas 15 a 18 de la tabla de arriba) | **66 de 66 pasan** |
+
+Casos del frontend:
+
+- **Camino b:** el id del callback se verifica y se muestra "Pago aprobado"; además se configura `redirectUrl` hacia `/wallet`.
+- **Camino c:** un callback sin id consulta por referencia y sigue mientras la respuesta sea PENDING.
+- **Camino a:** al volver con `?id=` se verifica una sola vez (aunque StrictMode ejecute el efecto dos veces), y también funciona sin una recarga pendiente en la pestaña.
+- **Tope:** sin confirmación, después de 20 consultas se muestra "Todavía no recibimos la confirmación de Wompi" y el botón "Verificar de nuevo".
+- **Errores:** un 5xx se reintenta hasta el tope; un 4xx se detiene y muestra el error.
+- **Recarga pendiente:** al volver a `/wallet`, la que quedó guardada en la pestaña se verifica sola.
+
+Casos nuevos del backend:
+
+- Sin id, se busca por referencia: si Wompi tiene la transacción, se acredita; si no, responde PENDING sin tocar Firestore.
+- Un id que pertenece a otra referencia se descarta y se busca por la referencia propia, sin marcar ERROR.
+- `verifyTransaction` (`?id=` de la redirect-url):
+  - acredita una sola vez;
+  - con una recarga de otro usuario responde 403, con una transacción inexistente o ajena 404, y con un id inválido 400;
+  - con otra moneda marca ERROR; con DECLINED no acredita.
+- Los tres caminos a la vez acreditan una sola vez.
+
+### Verificación de punta a punta con el pago real atascado (Wompi Sandbox real, Firestore y PostgreSQL reales)
+
+| Paso | Resultado real |
+|---|---|
+| `GET /api/payments/ELD-548ecbe4-…` sin id (camino c), como ADM | `200 CREDITED`; el backend encontró la transacción por referencia en Wompi |
+| Firestore | `CREDITED`, `transaction_id 12240303-1794521672-86523`, `wompi_status APPROVED`, `balance 50000`, `credited_at` |
+| PostgreSQL | una fila `DEPOSIT 50000.00 -> 50000.00` para `ansaca21` |
+| `GET /api/payments/transactions/12240303-1794521672-86523` (camino a) | `200 CREDITED`; sigue habiendo **1** recarga y el saldo es 50.000 |

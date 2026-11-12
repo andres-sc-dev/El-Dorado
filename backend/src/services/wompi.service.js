@@ -65,9 +65,9 @@ async function getTransaction(config, transactionId) {
   return body?.data ?? null;
 }
 
-// GET /v1/transactions?reference=...: respaldo cuando aún no se conoce el id.
-// No aparece en las guías oficiales que se leyeron (solo en la referencia "Buscar transacciones"
-// citada por terceros); por eso se usa solo como último recurso.
+// GET /v1/transactions?reference=...: cuando aún no se conoce el id.
+// No aparece en las guías oficiales que se leyeron, pero se verificó en vivo contra Sandbox
+// (12-nov-2026): con la llave privada responde 200 con { data: [transacciones] }; con la pública, 401.
 async function findTransactionByReference(config, reference) {
   const body = await wompiGet(config, `/transactions?reference=${encodeURIComponent(reference)}`);
   const list = Array.isArray(body?.data) ? body.data : [];

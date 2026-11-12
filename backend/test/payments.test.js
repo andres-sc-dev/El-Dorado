@@ -30,12 +30,14 @@ let payments;
 let balances;
 let movements;
 let wompiTransactions;
+let wompiCalls;
 
 beforeEach(() => {
   payments = new Map();
   balances = new Map([['cliente', 0], ['otro', 0]]);
   movements = new Map();
   wompiTransactions = new Map();
+  wompiCalls = [];
   paymentService.deps.store = {
     async createPayment(payment) {
       if (payments.has(payment.reference)) throw new Error('ALREADY_EXISTS');
@@ -64,8 +66,14 @@ beforeEach(() => {
   };
   paymentService.deps.wompi = {
     ...wompiService,
-    async getTransaction(config, id) { return wompiTransactions.get(id) ?? null; },
-    async findTransactionByReference() { return null; },
+    async getTransaction(config, id) {
+      wompiCalls.push(`id:${id}`);
+      return wompiTransactions.get(id) ?? null;
+    },
+    async findTransactionByReference(config, reference) {
+      wompiCalls.push(`ref:${reference}`);
+      return [...wompiTransactions.values()].find((transaction) => transaction.reference === reference) ?? null;
+    },
   };
   paymentService.deps.audit = { log: async () => true };
 });
@@ -247,11 +255,12 @@ test('consulta: APPROVED en Wompi acredita una vez aunque se consulte varias vec
   assert.equal(balances.get('cliente'), 20000);
 });
 
-test('consulta: PENDING deja la recarga en CREATED', async () => {
+test('consulta: PENDING en Wompi responde PENDING y deja la recarga en CREATED', async () => {
   const reference = await createdPayment(20000);
   wompiTransactions.set('tx-9', { id: 'tx-9', reference, amount_in_cents: 2000000, currency: 'COP', status: 'PENDING' });
   const result = await paymentService.getStatus({ username: 'cliente', role: 'USR' }, reference, 'tx-9');
-  assert.equal(result.status, 'CREATED');
+  assert.equal(result.status, 'PENDING');
+  assert.equal(result.stored_status, 'CREATED');
   assert.equal(payments.get(reference).transaction_id, 'tx-9');
 });
 
@@ -298,4 +307,95 @@ test('FIREBASE_PRIVATE_KEY acepta \\n escritos y saltos de línea reales', () =>
 test('el depósito directo ya no existe (no suma saldo sin pago)', async () => {
   const response = await request(app).post('/api/auth/balance/deposit').set('Cookie', userCookie).send({ amount: 1000000 });
   assert.ok([403, 404].includes(response.status), `respondió ${response.status}`);
+});
+
+// ---------- Caminos nuevos (bug "Procesando…" del 12 de noviembre) ----------
+const cliente = { username: 'cliente', role: 'USR' };
+
+test('camino c: sin id, el backend busca por reference y acredita si está APPROVED', async () => {
+  const reference = await createdPayment(50000);
+  wompiTransactions.set('tx-20', { id: 'tx-20', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const result = await paymentService.getStatus(cliente, reference);
+  assert.equal(result.status, 'CREDITED');
+  assert.deepEqual(wompiCalls, [`ref:${reference}`]);
+  assert.equal(payments.get(reference).transaction_id, 'tx-20');
+  assert.equal(balances.get('cliente'), 50000);
+});
+
+test('camino c: sin id y Wompi aún sin transacción responde PENDING sin tocar Firestore', async () => {
+  const reference = await createdPayment(50000);
+  const result = await paymentService.getStatus(cliente, reference);
+  assert.equal(result.status, 'PENDING');
+  assert.equal(payments.get(reference).status, 'CREATED');
+  assert.equal(balances.get('cliente'), 0);
+});
+
+test('camino b: un id de otra referencia se descarta y se busca por reference (no marca ERROR)', async () => {
+  const mine = await createdPayment(50000);
+  const other = await createdPayment(10000);
+  wompiTransactions.set('tx-21', { id: 'tx-21', reference: other, amount_in_cents: 1000000, currency: 'COP', status: 'APPROVED' });
+  wompiTransactions.set('tx-22', { id: 'tx-22', reference: mine, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const result = await paymentService.getStatus(cliente, mine, 'tx-21');
+  assert.equal(result.status, 'CREDITED');
+  assert.equal(payments.get(mine).transaction_id, 'tx-22');
+  assert.equal(payments.get(other).status, 'CREATED');
+  assert.equal(balances.get('cliente'), 50000);
+});
+
+test('camino a: verificar por el id de la redirect-url acredita una sola vez', async () => {
+  const reference = await createdPayment(50000);
+  wompiTransactions.set('tx-23', { id: 'tx-23', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const first = await paymentService.verifyTransaction(cliente, 'tx-23');
+  const again = await paymentService.verifyTransaction(cliente, 'tx-23');
+  assert.equal(first.status, 'CREDITED');
+  assert.equal(again.status, 'CREDITED');
+  assert.equal(first.reference, reference);
+  assert.equal(balances.get('cliente'), 50000);
+  assert.equal(movements.size, 1);
+});
+
+test('camino a: la ruta GET /api/payments/transactions/:id exige sesión', async () => {
+  const response = await request(app).get('/api/payments/transactions/tx-23');
+  assert.equal(response.status, 401);
+});
+
+test('camino a: transacción de otro usuario 403; inexistente o ajena a El Dorado 404; id inválido 400', async () => {
+  const reference = await createdPayment(50000);
+  wompiTransactions.set('tx-24', { id: 'tx-24', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  wompiTransactions.set('tx-25', { id: 'tx-25', reference: 'PEDIDO-123', amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  await assert.rejects(paymentService.verifyTransaction({ username: 'otro', role: 'USR' }, 'tx-24'), { statusCode: 403 });
+  await assert.rejects(paymentService.verifyTransaction(cliente, 'tx-no-existe'), { statusCode: 404 });
+  await assert.rejects(paymentService.verifyTransaction(cliente, 'tx-25'), { statusCode: 404 });
+  await assert.rejects(paymentService.verifyTransaction(cliente, '../../etc'), { statusCode: 400 });
+  assert.equal(balances.get('otro'), 0);
+  assert.equal(payments.get(reference).status, 'CREATED');
+});
+
+test('camino a: moneda distinta a la firmada marca ERROR y no acredita', async () => {
+  const reference = await createdPayment(50000);
+  wompiTransactions.set('tx-26', { id: 'tx-26', reference, amount_in_cents: 5000000, currency: 'USD', status: 'APPROVED' });
+  const result = await paymentService.verifyTransaction(cliente, 'tx-26');
+  assert.equal(result.status, 'ERROR');
+  assert.equal(balances.get('cliente'), 0);
+});
+
+test('camino a: DECLINED responde DECLINED y no acredita', async () => {
+  const reference = await createdPayment(50000);
+  wompiTransactions.set('tx-27', { id: 'tx-27', reference, amount_in_cents: 5000000, currency: 'COP', status: 'DECLINED' });
+  const result = await paymentService.verifyTransaction(cliente, 'tx-27');
+  assert.equal(result.status, 'DECLINED');
+  assert.equal(balances.get('cliente'), 0);
+});
+
+test('los tres caminos a la vez (redirect, callback y referencia) acreditan una sola vez', async () => {
+  const reference = await createdPayment(50000);
+  wompiTransactions.set('tx-28', { id: 'tx-28', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const results = await Promise.all([
+    paymentService.verifyTransaction(cliente, 'tx-28'),
+    paymentService.getStatus(cliente, reference, 'tx-28'),
+    paymentService.getStatus(cliente, reference),
+  ]);
+  assert.deepEqual(results.map((item) => item.status), ['CREDITED', 'CREDITED', 'CREDITED']);
+  assert.equal(balances.get('cliente'), 50000);
+  assert.equal(movements.size, 1);
 });

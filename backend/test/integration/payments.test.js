@@ -35,6 +35,16 @@ paymentService.deps.store = {
   },
 };
 
+// Wompi falso: transacciones por id y búsqueda por referencia (los caminos a, b y c).
+const wompiTransactions = new Map();
+paymentService.deps.wompi = {
+  ...wompiService,
+  async getTransaction(config, id) { return wompiTransactions.get(id) ?? null; },
+  async findTransactionByReference(config, reference) {
+    return [...wompiTransactions.values()].find((transaction) => transaction.reference === reference) ?? null;
+  },
+};
+
 function signedEvent(transaction) {
   const event = {
     event: 'transaction.updated', data: { transaction }, environment: 'test',
@@ -150,4 +160,67 @@ test('registro con contraseña débil: 400 WEAK_PASSWORD con las reglas incumpli
   h.record('registro con contraseña débil (contiene el usuario)', '400 WEAK_PASSWORD UPPERCASE,NO_USERNAME,NO_EMAIL',
     `${summary(response)} ${ids}`);
   assert.equal(`${summary(response)} ${ids}`, '400 WEAK_PASSWORD UPPERCASE,NO_USERNAME,NO_EMAIL');
+});
+
+// ---------- Caminos de verificación (bug "Procesando…") ----------
+async function preparedFor(user, amountCop = 50000) {
+  const response = await request(app).post('/api/payments/prepare').set('Cookie', user.cookie).send({ amountCop });
+  return response.body.reference;
+}
+
+test('camino c: sin id, Wompi todavía sin transacción -> PENDING; luego APPROVED -> CREDITED', async () => {
+  const user = await h.createUser();
+  const reference = await preparedFor(user);
+  const pending = await request(app).get(`/api/payments/${reference}`).set('Cookie', user.cookie);
+  wompiTransactions.set('it-c1', { id: 'it-c1', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const approved = await request(app).get(`/api/payments/${reference}`).set('Cookie', user.cookie);
+  const balance = await h.getBalance(user.username);
+  h.record('camino c: consulta por referencia (sin id), primero sin transacción y luego APPROVED',
+    '200 PENDING -> 200 CREDITED saldo 50000', `${pending.status} ${pending.body.status} -> ${approved.status} ${approved.body.status} saldo ${balance}`);
+  assert.equal(approved.body.status, 'CREDITED');
+  assert.equal(balance, 50000);
+});
+
+test('camino a: redirect-url ?id= -> GET /api/payments/transactions/:id acredita una vez', async () => {
+  const user = await h.createUser();
+  const reference = await preparedFor(user);
+  wompiTransactions.set('it-a1', { id: 'it-a1', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const first = await request(app).get('/api/payments/transactions/it-a1').set('Cookie', user.cookie);
+  const second = await request(app).get('/api/payments/transactions/it-a1').set('Cookie', user.cookie);
+  const balance = await h.getBalance(user.username);
+  const deposits = await depositMovements(user.username);
+  h.record('camino a: volver con ?id= (2 veces)', '200 CREDITED, 200 CREDITED saldo 50000 1 recarga',
+    `${first.status} ${first.body.status}, ${second.status} ${second.body.status} saldo ${balance} ${deposits} recarga`);
+  assert.equal(balance, 50000);
+  assert.equal(deposits, 1);
+});
+
+test('camino a: el ?id= de una recarga de otro usuario responde 403 y no acredita', async () => {
+  const owner = await h.createUser();
+  const intruder = await h.createUser();
+  const reference = await preparedFor(owner);
+  wompiTransactions.set('it-a2', { id: 'it-a2', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' });
+  const response = await request(app).get('/api/payments/transactions/it-a2').set('Cookie', intruder.cookie);
+  const balances = [await h.getBalance(owner.username), await h.getBalance(intruder.username)];
+  h.record('camino a: ?id= de la recarga de otro usuario', '403 saldos 0 0', `${response.status} saldos ${balances.join(' ')}`);
+  assert.equal(response.status, 403);
+});
+
+test('caminos a + b + c + webhook a la vez: una sola recarga en PostgreSQL', async () => {
+  const user = await h.createUser();
+  const reference = await preparedFor(user);
+  const transaction = { id: 'it-all', reference, amount_in_cents: 5000000, currency: 'COP', status: 'APPROVED' };
+  wompiTransactions.set('it-all', transaction);
+  const responses = await Promise.all([
+    request(app).get('/api/payments/transactions/it-all').set('Cookie', user.cookie),
+    request(app).get(`/api/payments/${reference}?transaction_id=it-all`).set('Cookie', user.cookie),
+    request(app).get(`/api/payments/${reference}`).set('Cookie', user.cookie),
+    send(signedEvent(transaction)),
+  ]);
+  const balance = await h.getBalance(user.username);
+  const deposits = await depositMovements(user.username);
+  h.record('redirect + callback + referencia + webhook a la vez', '200,200,200,200 saldo 50000 1 recarga',
+    `${responses.map((response) => response.status).join(',')} saldo ${balance} ${deposits} recarga`);
+  assert.equal(balance, 50000);
+  assert.equal(deposits, 1);
 });

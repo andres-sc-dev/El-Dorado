@@ -13,6 +13,11 @@ export async function getPaymentStatus(reference, transactionId) {
   return apiClient.get(`/api/payments/${encodeURIComponent(reference)}${query}`);
 }
 
+// Al volver de la redirect-url de Wompi solo se tiene el ?id= de la transacción.
+export async function verifyTransaction(transactionId) {
+  return apiClient.get(`/api/payments/transactions/${encodeURIComponent(transactionId)}`);
+}
+
 // Carga una sola vez el Widget oficial (docs.wompi.co: "Widget & Checkout Web").
 let widgetPromise;
 export function loadWompiWidget() {
