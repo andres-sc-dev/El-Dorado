@@ -1,84 +1,157 @@
 import { Link } from 'react-router-dom';
 import BetSlip from '../components/betting/BetSlip';
 import MatchCard from '../components/betting/MatchCard';
+import OddButton from '../components/betting/OddButton';
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
-import Sidebar from '../components/layout/Sidebar';
-import Button from '../components/ui/Button';
+import Panel from '../components/ui/Panel';
+import TeamShield from '../components/ui/TeamShield';
 import { useAuth } from '../context/AuthContext';
+import { useBetSlip } from '../context/BetSlipContext';
 import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusStates';
 import { useApiData } from '../hooks/useApiData';
 import { getMatches } from '../services/matchService';
-import { formatCOP } from '../utils/format';
+import { formatDateTime } from '../utils/format';
 
-function HomePage() {
-  const { user, isAdmin } = useAuth();
-  const { data, error, isLoading, reload } = useApiData(getMatches);
+// Encabezado de cada grupo de partidos: "viernes, 13 de noviembre".
+function dayLabel(value) {
+  return new Date(value).toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long' });
+}
 
-  const featuredMatches = (data?.matches ?? []).filter((match) => match.is_betting_open).slice(0, 4);
+// Agrupa por día los partidos que ya llegaron (la API los entrega ordenados por fecha).
+function groupByDay(matches) {
+  const groups = [];
+  matches.forEach((match) => {
+    const label = dayLabel(match.match_date);
+    const last = groups[groups.length - 1];
+    if (last && last.label === label) last.matches.push(match);
+    else groups.push({ label, matches: [match] });
+  });
+  return groups;
+}
+
+// Próximo partido destacado con sus 3 cuotas 1 X 2. Usa la misma selección del cupón que MatchCard.
+function FeaturedMatch({ match }) {
+  const { isAdmin } = useAuth();
+  const { selection, select } = useBetSlip();
+  const market = match.markets[0];
+
+  const isSelected = (outcome) => selection
+    && selection.matchCode === match.match_code
+    && selection.marketCode === market.market_code
+    && selection.outcomeCode === outcome.outcome_code
+    && selection.line === outcome.line;
+
+  const choose = (outcome) => select({
+    matchCode: match.match_code,
+    matchLabel: `${match.home_team.short_name} vs ${match.away_team.short_name}`,
+    homeTeam: match.home_team,
+    awayTeam: match.away_team,
+    marketCode: market.market_code,
+    marketName: market.name,
+    outcomeCode: outcome.outcome_code,
+    outcomeName: outcome.name,
+    line: outcome.line,
+    oddValue: outcome.odd_value,
+  });
 
   return (
-    <div className="page-shell mockup-shell">
+    <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
+      <div>
+        <p className="eyebrow text-steel">Próximo partido · Jornada {match.matchday}</p>
+        <p className="mt-1 font-mono text-xs text-ink-muted sm:hidden">{formatDateTime(match.match_date)}</p>
+        <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
+          <div className="flex min-w-0 flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
+            <TeamShield team={match.home_team} size="lg" />
+            <span className="max-w-full font-display text-xs font-bold uppercase tracking-[0.06em] text-ink [overflow-wrap:anywhere] sm:text-lg">{match.home_team.name}</span>
+          </div>
+          <div className="text-center">
+            <p className="font-display text-lg font-bold text-gold">VS</p>
+            <p className="hidden font-mono text-xs text-ink-muted sm:block">{formatDateTime(match.match_date)}</p>
+          </div>
+          <div className="flex min-w-0 flex-col items-center gap-2 text-center sm:flex-row-reverse sm:text-right">
+            <TeamShield team={match.away_team} size="lg" />
+            <span className="max-w-full font-display text-xs font-bold uppercase tracking-[0.06em] text-ink [overflow-wrap:anywhere] sm:text-lg">{match.away_team.name}</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p className="eyebrow mb-2 text-ink-muted">{market.name}</p>
+        <div className="grid grid-cols-3 gap-2">
+          {market.outcomes.map((outcome) => (
+            <OddButton
+              key={outcome.outcome_code}
+              label={outcome.name}
+              value={outcome.odd_value}
+              active={isSelected(outcome)}
+              disabled={isAdmin}
+              onClick={() => choose(outcome)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function HomePage() {
+  const { data, error, isLoading, reload } = useApiData(getMatches);
+
+  const openMatches = (data?.matches ?? []).filter((match) => match.is_betting_open);
+  const nextMatch = openMatches.find((match) => match.markets.length > 0);
+  const featuredMatches = openMatches.slice(0, 8);
+  const groups = groupByDay(featuredMatches);
+
+  return (
+    <div className="page-shell">
       <Navbar />
-      <div className="mx-auto flex max-w-7xl gap-6 px-4 py-6 lg:px-6">
-        <Sidebar />
+      <main className="mx-auto w-full max-w-7xl flex-1 space-y-6 px-4 py-6 lg:px-6">
+        <Panel as="section" tone="strong" aria-labelledby="hero-title" innerClassName="hero-glow p-5 sm:p-8">
+          <p className="eyebrow text-gold">Liga BetPlay</p>
+          <h1 id="hero-title" className="mt-2 font-display text-3xl font-bold uppercase leading-tight tracking-[0.06em] text-ink sm:text-5xl">
+            Vuelve la época <span className="text-gold">dorada</span>
+          </h1>
+          {nextMatch ? <FeaturedMatch match={nextMatch} /> : null}
+        </Panel>
 
-        <main className="flex-1 space-y-8">
-          <section className="overflow-hidden rounded-3xl border border-white/10 bg-[#091a2c] shadow-soft">
-            <div
-              className="stadium-hero flex flex-col gap-8 bg-cover bg-center p-8 lg:flex-row lg:items-end lg:justify-between"
-              style={{
-                backgroundImage: "linear-gradient(110deg, rgba(10, 22, 40, 0.8), rgba(10, 22, 40, 0.45)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1600&q=80')",
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            >
-              <div className="max-w-xl">
-                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold">Vuelve la época dorada</p>
-                <h1 className="text-4xl font-black leading-tight text-white md:text-5xl">La pasión del fútbol colombiano, en cada jornada</h1>
-                <p className="mt-4 max-w-lg text-slate-200">Apuesta en los partidos de la Primera División de Colombia y vive la intensidad de los clásicos, los derbies y el torneo más competitivo del país.</p>
-                <div className="mt-6">
-                  <Link to="/matches">
-                    <Button type="button">Apuesta ahora</Button>
-                  </Link>
-                </div>
-              </div>
-
-              {user && !isAdmin ? (
-                <div className="rounded-2xl border border-white/10 bg-slate-900/35 p-4 backdrop-blur-sm">
-                  <p className="text-sm text-slate-300">Saldo disponible</p>
-                  <p className="mt-2 text-3xl font-black text-brand-gold">{formatCOP(user.balance)}</p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.2em] text-slate-400">Saldo de prueba · proyecto académico</p>
-                </div>
-              ) : null}
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <section className="space-y-4" aria-labelledby="featured-title">
+            <div className="flex items-center justify-between gap-3">
+              <h2 id="featured-title" className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.12em] text-ink">Partidos destacados</h2>
+              <Link to="/matches" className="flex min-h-[44px] shrink-0 items-center whitespace-nowrap font-display text-xs font-bold uppercase tracking-[0.16em] text-gold hover:text-ink">
+                Ver todos
+              </Link>
             </div>
+
+            {isLoading ? <LoadingState message="Cargando partidos…" /> : null}
+            {error ? <ErrorState message={error.message} onRetry={reload} /> : null}
+            {!isLoading && !error && featuredMatches.length === 0 ? (
+              <EmptyState title="No hay partidos abiertos" message="Vuelve pronto." />
+            ) : null}
+
+            {groups.length > 0 ? (
+              <Panel innerClassName="divide-y divide-line">
+                {groups.map((group) => (
+                  <div key={group.label} className="divide-y divide-line/60">
+                    <div className="grid grid-cols-[minmax(0,1fr)] items-center gap-x-3 bg-surface-2/70 px-3 py-2 md:grid-cols-[minmax(0,1fr)_264px] md:px-4">
+                      <h3 className="eyebrow text-steel">{group.label}</h3>
+                      <div className="hidden grid-cols-3 gap-2 text-center font-mono text-xs font-bold text-ink-muted md:grid" aria-hidden="true">
+                        <span>1</span><span>X</span><span>2</span>
+                      </div>
+                    </div>
+                    {group.matches.map((match) => <MatchCard key={match.match_code} match={match} compact />)}
+                  </div>
+                ))}
+              </Panel>
+            ) : null}
           </section>
 
-
-          <div className="grid gap-6 xl:grid-cols-[1fr_360px]">
-            <section className="space-y-6">
-              <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-white">Partidos destacados</h2>
-                <Link to="/matches" className="text-sm font-semibold text-brand-gold">Ver todos</Link>
-              </div>
-
-              <div className="space-y-4">
-                {isLoading ? <LoadingState message="Cargando partidos…" /> : null}
-                {error ? <ErrorState message={error.message} onRetry={reload} /> : null}
-                {!isLoading && !error && featuredMatches.length === 0 ? (
-                  <EmptyState title="No hay partidos abiertos" message="Vuelve pronto." />
-                ) : null}
-                {featuredMatches.map((match) => <MatchCard key={match.match_code} match={match} compact />)}
-              </div>
-            </section>
-
-            {/* En móvil el cupón se abre desde la barra inferior (MobileBetSlipBar). */}
-            <div className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
-              <BetSlip limits={data?.limits} />
-            </div>
+          {/* En móvil el cupón se abre desde la barra inferior (MobileBetSlipBar). */}
+          <div className="hidden xl:sticky xl:top-28 xl:block xl:self-start">
+            <BetSlip limits={data?.limits} />
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
       <Footer />
     </div>
   );

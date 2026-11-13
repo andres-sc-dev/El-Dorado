@@ -1,5 +1,6 @@
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
+import Panel from '../components/ui/Panel';
 import { ErrorState, LoadingState } from '../components/ui/StatusStates';
 import { useAuth } from '../context/AuthContext';
 import { useApiData } from '../hooks/useApiData';
@@ -10,9 +11,9 @@ const ROLE_LABELS = { USR: 'Usuario', ADM: 'Administrador' };
 
 function Field({ label, value }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-slate-900/20 p-4">
-      <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{label}</p>
-      <p className="mt-2 text-lg font-semibold text-white">{value}</p>
+    <div className="cut-s bg-surface-2 p-4">
+      <p className="eyebrow text-ink-muted">{label}</p>
+      <p className="mt-2 text-lg font-semibold text-ink [overflow-wrap:anywhere]">{value}</p>
     </div>
   );
 }
@@ -24,16 +25,16 @@ function ProfilePage() {
   return (
     <div className="page-shell">
       <Navbar />
-      <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6">
-        <h1 className="mb-6 text-3xl font-black text-white">Perfil</h1>
-        <div className="glass-panel rounded-2xl p-6">
+      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 lg:px-6">
+        <h1 className="mb-6 font-display text-3xl font-bold uppercase tracking-[0.08em] text-ink">Perfil</h1>
+        <Panel innerClassName="p-5 sm:p-6">
           <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-brand-gold to-brand-goldDeep text-2xl font-black text-slate-900">
+            <div className="cut-s flex h-16 w-16 shrink-0 items-center justify-center bg-gold font-display text-2xl font-bold text-night">
               {user?.username?.slice(0, 1).toUpperCase()}
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-white">{customer?.full_name ?? user?.fullName}</h2>
-              <p className="text-slate-300">@{user?.username} · {ROLE_LABELS[user?.role] ?? user?.role}</p>
+            <div className="min-w-0">
+              <h2 className="font-display text-2xl font-bold uppercase tracking-[0.06em] text-ink [overflow-wrap:anywhere]">{customer?.full_name ?? user?.fullName}</h2>
+              <p className="text-ink-muted">@{user?.username} · {ROLE_LABELS[user?.role] ?? user?.role}</p>
             </div>
           </div>
 
@@ -50,8 +51,8 @@ function ProfilePage() {
               </>
             ) : null}
           </div>
-        </div>
-      </div>
+        </Panel>
+      </main>
       <Footer />
     </div>
   );

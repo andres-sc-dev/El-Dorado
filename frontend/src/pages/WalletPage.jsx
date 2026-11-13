@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
+import Panel from '../components/ui/Panel';
 import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusStates';
 import RechargePanel from '../components/wallet/RechargePanel';
 import { useApiData } from '../hooks/useApiData';
@@ -17,56 +18,58 @@ function WalletPage() {
   return (
     <div className="page-shell">
       <Navbar />
-      <div className="mx-auto max-w-4xl px-4 py-8 lg:px-6">
-        <h1 className="mb-8 text-3xl font-black text-white">Billetera</h1>
+      <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 lg:px-6">
+        <h1 className="mb-8 font-display text-3xl font-bold uppercase tracking-[0.08em] text-ink">Billetera</h1>
 
         {isLoading ? <LoadingState message="Cargando tu billetera…" /> : null}
         {error ? <ErrorState message={error.message} onRetry={reload} /> : null}
 
         {wallet ? (
-          <div className="glass-panel mb-6 rounded-2xl p-5">
-            <p className="text-sm text-slate-300">Saldo disponible · cuenta {wallet.account_number}</p>
-            <p className="mt-1 text-3xl font-black text-white">{formatCOP(wallet.balance)}</p>
-          </div>
+          <Panel tone="strong" className="mb-6" innerClassName="hero-glow p-5">
+            <p className="eyebrow text-ink-muted">Saldo disponible · cuenta <span className="font-mono tracking-normal text-steel">{wallet.account_number}</span></p>
+            <p className="mt-2 font-mono text-3xl font-bold text-gold [overflow-wrap:anywhere]">{formatCOP(wallet.balance)}</p>
+          </Panel>
         ) : null}
 
         <div className="mb-6 grid items-start gap-6 md:grid-cols-2">
           <RechargePanel highlighted={hasDepositTab} onCredited={reload} />
 
-          <section aria-labelledby="withdraw-title" className="glass-panel rounded-2xl p-5">
-            <h2 id="withdraw-title" className="text-xl font-bold text-white">Retirar</h2>
-            <p role="status" className="mt-4 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-slate-200">
+          <Panel as="section" aria-labelledby="withdraw-title" innerClassName="p-5">
+            <h2 id="withdraw-title" className="font-display text-xl font-bold uppercase tracking-[0.1em] text-ink">Retirar</h2>
+            <p role="status" className="cut-s mt-4 bg-surface-2 px-4 py-3 text-sm text-ink">
               Retiros próximamente.
             </p>
-          </section>
+          </Panel>
         </div>
 
         {wallet ? (
           <section aria-labelledby="movements-title">
-            <h2 id="movements-title" className="mb-3 text-xl font-bold text-white">Movimientos</h2>
+            <h2 id="movements-title" className="mb-3 font-display text-xl font-bold uppercase tracking-[0.1em] text-ink">Movimientos</h2>
             {wallet.movements.length === 0 ? (
               <EmptyState title="Sin movimientos" message="Aquí verás apuestas, premios y recargas." />
             ) : (
-              <ul className="glass-panel divide-y divide-white/10 rounded-2xl">
+              <Panel>
+              <ul className="divide-y divide-line">
                 {wallet.movements.map((movement) => (
                   <li key={movement.reference} className="flex flex-wrap items-center justify-between gap-2 px-4 py-3 text-sm">
                     <div>
-                      <p className="font-semibold text-white">{movement.type_name}</p>
-                      <p className="text-xs text-slate-400">{formatDateTime(movement.created_at)}</p>
+                      <p className="font-semibold text-ink">{movement.type_name}</p>
+                      <p className="font-mono text-xs text-ink-muted">{formatDateTime(movement.created_at)}</p>
                     </div>
                     <div className="text-right">
-                      <p className={movement.direction > 0 ? 'font-bold text-emerald-300' : 'font-bold text-red-300'}>
+                      <p className={movement.direction > 0 ? 'font-mono font-bold text-emerald-300' : 'font-mono font-bold text-red-300'}>
                         {movement.direction > 0 ? '+' : '−'} {formatCOP(movement.amount)}
                       </p>
-                      <p className="text-xs text-slate-400">Saldo {formatCOP(movement.resulting_balance)}</p>
+                      <p className="font-mono text-xs text-ink-muted">Saldo {formatCOP(movement.resulting_balance)}</p>
                     </div>
                   </li>
                 ))}
               </ul>
+              </Panel>
             )}
           </section>
         ) : null}
-      </div>
+      </main>
       <Footer />
     </div>
   );

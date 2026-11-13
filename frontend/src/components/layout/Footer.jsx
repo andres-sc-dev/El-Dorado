@@ -1,17 +1,19 @@
 function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-brand-navyAlt/70 py-6 text-sm text-slate-400">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 text-center lg:flex-row lg:text-left">
+    <footer className="mt-auto border-t border-line bg-surface/80 py-6 text-sm text-ink-muted">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center lg:flex-row lg:px-6 lg:text-left">
         <div>
-          <p className="font-semibold text-white">El Dorado © 2026</p>
+          <p className="font-display font-bold uppercase tracking-[0.2em] text-ink">El <span className="text-gold">Dorado</span> © 2026</p>
           <p>Vuelve la época dorada</p>
-          <p className="mt-2 inline-block rounded-md border border-red-400/50 px-2 py-0.5 text-xs font-bold text-red-200">Mayores de 18 años</p>
-          <p className="mt-1 text-xs text-slate-400">Proyecto académico: dinero de prueba, sin valor real.</p>
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+            <p className="cut-s bg-red-500/15 px-2.5 py-1 font-display text-xs font-bold uppercase tracking-[0.16em] text-red-200">Mayores de 18 años</p>
+            <p className="text-xs">Proyecto académico: dinero de prueba, sin valor real.</p>
+          </div>
         </div>
-        <nav className="flex flex-wrap items-center justify-center gap-4 lg:justify-end">
-          <a href="#ayuda" className="transition hover:text-white">Ayuda</a>
-          <a href="#contacto" className="transition hover:text-white">Contacto</a>
-          <a href="#terminos" className="transition hover:text-white">Términos y condiciones</a>
+        <nav aria-label="Enlaces del pie" className="flex flex-wrap items-center justify-center gap-x-2 lg:justify-end">
+          <a href="#ayuda" className="flex min-h-[44px] items-center px-2 transition hover:text-ink">Ayuda</a>
+          <a href="#contacto" className="flex min-h-[44px] items-center px-2 transition hover:text-ink">Contacto</a>
+          <a href="#terminos" className="flex min-h-[44px] items-center px-2 transition hover:text-ink">Términos y condiciones</a>
         </nav>
       </div>
     </footer>

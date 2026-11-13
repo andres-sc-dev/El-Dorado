@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import DocumentInput from '../components/forms/DocumentInput';
 import BrandMark from '../components/ui/BrandMark';
+import Panel from '../components/ui/Panel';
 import Button from '../components/ui/Button';
 import { LoadingState } from '../components/ui/StatusStates';
 import { useAuth } from '../context/AuthContext';
@@ -99,21 +100,21 @@ function CompleteProfilePage() {
     content = <LoadingState message="Verificando tu sesión de Google…" />;
   } else if (!profile) {
     content = (
-      <div className="text-center text-slate-300">
+      <div className="text-center text-ink-muted">
         <p>No encontramos una sesión de Google activa.</p>
-        <Link to="/login" className="mt-3 inline-block font-semibold text-brand-gold">Volver a iniciar sesión</Link>
+        <Link to="/login" className="mt-3 inline-flex min-h-[44px] items-center font-semibold text-gold hover:underline">Volver a iniciar sesión</Link>
       </div>
     );
   } else {
     content = (
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-        <p className="rounded-lg border border-white/10 bg-slate-900/30 px-3 py-2 text-sm text-slate-300">
-          Cuenta de Google: <span className="font-semibold text-white">{profile.email}</span>
-          {profile.name ? <><br />Nombre: <span className="text-white">{profile.name}</span></> : null}
+        <p className="cut-s bg-surface-2 px-3 py-2 text-sm text-ink-muted [overflow-wrap:anywhere]">
+          Cuenta de Google: <span className="font-semibold text-ink">{profile.email}</span>
+          {profile.name ? <><br />Nombre: <span className="text-ink">{profile.name}</span></> : null}
         </p>
 
         <div>
-          <label htmlFor="documentType" className="mb-1 block text-sm text-slate-300">Tipo de documento</label>
+          <label htmlFor="documentType" className="eyebrow mb-1 block text-ink-muted">Tipo de documento</label>
           <select
             id="documentType"
             className="form-input"
@@ -125,7 +126,7 @@ function CompleteProfilePage() {
         </div>
 
         <div>
-          <label htmlFor="documentNumber" className="mb-1 block text-sm text-slate-300">Número de documento</label>
+          <label htmlFor="documentNumber" className="eyebrow mb-1 block text-ink-muted">Número de documento</label>
           {documentType.numeric ? (
             <DocumentInput
               value={form.documentNumber}
@@ -149,24 +150,24 @@ function CompleteProfilePage() {
         </div>
 
         <div>
-          <label htmlFor="birthDate" className="mb-1 block text-sm text-slate-300">Fecha de nacimiento</label>
+          <label htmlFor="birthDate" className="eyebrow mb-1 block text-ink-muted">Fecha de nacimiento</label>
           <input id="birthDate" type="date" className="form-input" max={maxBirthDate} value={form.birthDate} onChange={(event) => update('birthDate', event.target.value)} />
-          <p className="mt-1 text-xs text-slate-400">Debes tener al menos 18 años.</p>
+          <p className="mt-1 text-xs text-ink-muted">Debes tener al menos 18 años.</p>
           {fieldErrors.birthDate ? <p className="mt-1 text-xs text-red-300">{fieldErrors.birthDate}</p> : null}
         </div>
 
-        <label className="flex items-start gap-2 text-sm text-slate-300">
-          <input type="checkbox" className="mt-1" checked={form.acceptedTerms} onChange={(event) => update('acceptedTerms', event.target.checked)} />
+        <label className="flex items-start gap-2 text-sm text-ink-muted">
+          <input type="checkbox" className="mt-1 h-4 w-4 accent-gold" checked={form.acceptedTerms} onChange={(event) => update('acceptedTerms', event.target.checked)} />
           Acepto los términos y condiciones y confirmo que soy mayor de 18 años.
         </label>
         {fieldErrors.acceptedTerms ? <p className="text-xs text-red-300">{fieldErrors.acceptedTerms}</p> : null}
 
         {error ? <p role="alert" className="text-sm text-red-300">{error}</p> : null}
 
-        <Button type="submit" className="w-full disabled:opacity-60" disabled={isSubmitting}>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? 'Creando tu cuenta…' : 'Terminar registro'}
         </Button>
-        <button type="button" className="w-full text-sm text-slate-400" onClick={async () => { await signOutGoogle(); navigate('/login'); }}>
+        <button type="button" className="min-h-[44px] w-full text-sm text-ink-muted hover:text-ink" onClick={async () => { await signOutGoogle(); navigate('/login'); }}>
           Cancelar
         </button>
       </form>
@@ -174,13 +175,13 @@ function CompleteProfilePage() {
   }
 
   return (
-    <div className="page-shell mockup-shell flex min-h-screen items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md rounded-3xl border border-white/10 bg-[#071822] p-8 shadow-soft">
+    <div className="page-shell items-center justify-center px-4 py-10">
+      <Panel tone="strong" className="w-full max-w-md" innerClassName="p-6 sm:p-8">
         <div className="mb-6 flex justify-center"><BrandMark /></div>
-        <h1 className="mb-2 text-center text-2xl font-black text-white">COMPLETA TU PERFIL</h1>
-        <p className="mb-6 text-center text-sm text-slate-400">Solo falta esto para crear tu cuenta de El Dorado.</p>
+        <h1 className="mb-2 text-center font-display text-2xl font-bold uppercase tracking-[0.1em] text-ink">Completa tu perfil</h1>
+        <p className="mb-6 text-center text-sm text-ink-muted">Solo falta esto para crear tu cuenta de El Dorado.</p>
         {content}
-      </div>
+      </Panel>
     </div>
   );
 }

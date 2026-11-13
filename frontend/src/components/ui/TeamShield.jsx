@@ -16,7 +16,7 @@ function TeamShield({ team, size = 'md', className = '' }) {
       <span
         role="img"
         aria-label={`Escudo de ${team?.name ?? code}`}
-        className={`${box} inline-flex items-center justify-center rounded-full border border-brand-gold/40 bg-slate-800 text-[10px] font-bold text-brand-gold`}
+        className={`${box} inline-flex items-center justify-center rounded-full border border-gold/40 bg-surface-2 font-mono text-[10px] font-bold text-gold`}
       >
         {code}
       </span>

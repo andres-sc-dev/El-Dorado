@@ -2,6 +2,20 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Fase 7 · Rediseño visual (12 de noviembre de 2026)
+
+Solo se tocó la capa visual del frontend. No cambiaron el backend, las bases, los servicios, los contextos, los hooks ni las rutas.
+
+- **Colores como tokens de Tailwind** (`night`, `surface`, `surface-2`, `line`, `gold`, `steel`, `ink`, `ink-muted`) en `tailwind.config.js`. Los componentes no llevan hexadecimales sueltos, así cambiar la paleta es tocar un solo archivo. La única excepción son los colores oficiales del logo de Google en su botón.
+- **Fuentes gratuitas de Google Fonts:** Chakra Petch para títulos y etiquetas, Inter para el texto y JetBrains Mono para cuotas, horas y montos (las cifras quedan alineadas).
+- **Esquinas cortadas con `clip-path`** (`.cut` de 16 px y `.cut-s` de 8 px). El borde fino se hace con dos capas (componente `Panel`): la externa tiene el color del borde y 1 px de padding, la interna el fondo. Así el borde también se ve en las diagonales.
+- **El `clip-path` recorta el contorno de foco y las sombras.** Por eso el foco de teclado en piezas recortadas se dibuja por dentro (dos anillos, oscuro y claro, visibles sobre dorado y sobre oscuro) y el resplandor de la cuota elegida es un `drop-shadow` en un contenedor externo.
+- **La etiqueta "demo (réplica de 2024-II)" y el código del partido solo se ocultan en pantalla.** La API los sigue enviando igual; las tarjetas muestran "Liga BetPlay · Jornada N".
+- **Sin barra lateral.** El menú está en la barra superior; por debajo de 1280 px pasa a una segunda fila desplazable para que la barra quepa desde 360 px. El perfil se abre desde el avatar con iniciales.
+- **Inicio:** hero con el próximo partido abierto que ya trae `GET /api/matches` (sin llamadas nuevas) y lista agrupada por día con 8 partidos en lugar de 4, para que la agrupación se note. El cupón de escritorio sigue fijo al hacer scroll; en móvil sigue la barra inferior con la hoja.
+- **No se agregaron** los filtros "Más populares / Hoy / Mañana", el enlace "+12" de mercados, la cinta "Próximos" (repetía la lista) ni la tira de jornadas (no existe filtro por jornada).
+- **Accesibilidad:** contraste de texto de 6.5:1 o más (el texto atenuado `#8FA6C6` sobre la superficie 2), zonas táctiles de 44 px y foco visible. Se quitaron el emoji del candado y los símbolos de la barra de contraseña, que ahora son íconos SVG.
+
 ## Verificación de los 5 motores para la entrega (12 de noviembre de 2026)
 
 ### Qué se decidió

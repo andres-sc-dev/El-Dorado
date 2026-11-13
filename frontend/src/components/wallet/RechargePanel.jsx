@@ -7,6 +7,7 @@ import {
 } from '../../services/paymentService';
 import { formatCOP } from '../../utils/format';
 import Button from '../ui/Button';
+import Panel from '../ui/Panel';
 
 // Recarga con Wompi Sandbox:
 // 1. La API firma la recarga (POST /api/payments/prepare) y la guarda en Firestore como CREATED.
@@ -181,25 +182,25 @@ function RechargePanel({ highlighted, onCredited }) {
   const disabled = Boolean(amountError || keyProblem || notReady || configError) || busy;
 
   return (
-    <section aria-labelledby="deposit-title" className={`glass-panel rounded-2xl p-5 ${highlighted ? 'ring-2 ring-brand-gold/60' : ''}`}>
-      <h2 id="deposit-title" className="text-xl font-bold text-white">Recargar con Wompi</h2>
+    <Panel as="section" aria-labelledby="deposit-title" tone={highlighted ? 'gold' : 'line'} innerClassName="p-5">
+      <h2 id="deposit-title" className="font-display text-xl font-bold uppercase tracking-[0.1em] text-ink">Recargar con Wompi</h2>
 
-      <p className="mt-3 rounded-lg border border-brand-gold/50 bg-brand-gold/10 px-3 py-2 text-sm font-semibold text-amber-100">
+      <p className="cut-s mt-3 bg-gold/10 px-3 py-2 font-mono text-sm font-semibold text-amber-100">
         {limitsText}
       </p>
 
-      <div className="mt-3 rounded-lg border border-sky-400/40 bg-sky-400/10 px-3 py-2 text-xs text-sky-100">
+      <div className="mt-3 border-l-2 border-steel bg-steel/10 px-3 py-2 text-xs text-ink">
         <p className="font-semibold">Modo Sandbox: no se cobra dinero real.</p>
         <p>Tarjeta aprobada: <span className="font-mono">4242 4242 4242 4242</span></p>
         <p>Tarjeta declinada: <span className="font-mono">4111 1111 1111 1111</span></p>
         <p>Cualquier fecha futura y cualquier CVC de 3 dígitos.</p>
       </div>
 
-      <label htmlFor="recharge-amount" className="mt-4 block text-xs uppercase tracking-[0.2em] text-slate-400">Monto (COP)</label>
+      <label htmlFor="recharge-amount" className="eyebrow mt-4 block text-ink-muted">Monto (COP)</label>
       <input
         id="recharge-amount"
         inputMode="numeric"
-        className="form-input mt-1"
+        className="form-input mt-1 font-mono"
         value={amount}
         onChange={(event) => setAmount(event.target.value.trim())}
         aria-invalid={Boolean(amountError)}
@@ -213,7 +214,7 @@ function RechargePanel({ highlighted, onCredited }) {
             type="button"
             disabled={busy}
             onClick={() => setAmount(String(chip))}
-            className={`rounded-full border px-3 py-1 text-sm ${Number(amount) === chip ? 'border-brand-gold bg-brand-gold/20 text-brand-gold' : 'border-white/15 text-slate-200 hover:border-brand-gold/60'}`}
+            className={`cut-s min-h-[44px] px-3 font-mono text-sm font-semibold transition disabled:opacity-50 ${Number(amount) === chip ? 'bg-gold text-night' : 'bg-surface-2 text-gold hover:bg-line-strong'}`}
           >
             {formatCOP(chip)}
           </button>
@@ -227,14 +228,14 @@ function RechargePanel({ highlighted, onCredited }) {
         <p role="alert" className="mt-2 text-sm text-red-300">{keyProblem || notReady || configError.message}</p>
       ) : null}
 
-      <Button type="button" className="mt-2 w-full disabled:cursor-not-allowed disabled:opacity-50" disabled={disabled} onClick={startPayment}>
+      <Button type="button" className="mt-2 w-full" disabled={disabled} onClick={startPayment}>
         {phase === 'preparing' ? 'Preparando…' : phase === 'processing' ? 'Procesando…' : `Recargar ${amountError ? '' : formatCOP(Number(amount))}`}
       </Button>
 
       {phase === 'widget' ? (
-        <div className="mt-3 text-sm text-slate-300">
+        <div className="mt-3 text-sm text-ink-muted">
           <p>Completa el pago en la ventana de Wompi.</p>
-          <button type="button" className="mt-1 font-semibold text-brand-gold" onClick={() => verify({ reference: pendingReference.current })}>
+          <button type="button" className="mt-1 min-h-[44px] font-display text-xs font-bold uppercase tracking-[0.14em] text-gold hover:text-ink" onClick={() => verify({ reference: pendingReference.current })}>
             Ya pagué, verificar estado
           </button>
         </div>
@@ -247,11 +248,11 @@ function RechargePanel({ highlighted, onCredited }) {
       {phase === 'done' && result ? (
         <div
           role="status"
-          className={`mt-3 rounded-lg border px-3 py-2 text-sm ${result.status === 'CREDITED'
-            ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-100'
+          className={`mt-3 border-l-2 px-3 py-2 text-sm ${result.status === 'CREDITED'
+            ? 'border-emerald-400 bg-emerald-500/10 text-emerald-100'
             : result.status === 'TIMEOUT'
-              ? 'border-amber-400/40 bg-amber-400/10 text-amber-100'
-              : 'border-red-500/40 bg-red-500/10 text-red-100'}`}
+              ? 'border-amber-400 bg-amber-400/10 text-amber-100'
+              : 'border-red-400 bg-red-500/10 text-red-100'}`}
         >
           {result.status === 'CREDITED' ? (
             <>
@@ -271,7 +272,7 @@ function RechargePanel({ highlighted, onCredited }) {
               <p>Si ya pagaste, el saldo se acreditará en cuanto Wompi confirme.</p>
               <button
                 type="button"
-                className="mt-2 rounded-md border border-amber-300/50 px-3 py-1 font-semibold hover:bg-amber-400/20"
+                className="cut-s mt-2 min-h-[44px] bg-amber-400/15 px-3 font-display text-xs font-bold uppercase tracking-[0.14em] hover:bg-amber-400/25"
                 onClick={() => verify({ reference: result.reference, transactionId: result.transactionId })}
               >
                 Verificar de nuevo
@@ -282,7 +283,7 @@ function RechargePanel({ highlighted, onCredited }) {
       ) : null}
 
       {error ? <p role="alert" className="mt-3 text-sm text-red-300">{error}</p> : null}
-    </section>
+    </Panel>
   );
 }
 

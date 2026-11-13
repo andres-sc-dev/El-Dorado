@@ -1,35 +1,31 @@
 import BrandMark from '../components/ui/BrandMark';
+import Panel from '../components/ui/Panel';
 import LoginForm from '../components/forms/LoginForm';
 
 function LoginPage() {
   return (
-    <div className="page-shell mockup-shell flex min-h-screen items-center justify-center px-4 py-10">
-      <div className="grid w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#091b2d]/80 shadow-soft lg:grid-cols-2">
-        <div className="flex items-center justify-center bg-[#071822] p-8">
+    <div className="page-shell items-center justify-center px-4 py-10">
+      <Panel tone="strong" className="w-full max-w-5xl" innerClassName="grid lg:grid-cols-2">
+        <div className="flex items-center justify-center p-6 sm:p-8">
           <div className="w-full max-w-md">
             <div className="mb-8 flex items-center justify-center">
               <BrandMark />
             </div>
 
             <div className="mb-6 text-center">
-              <h1 className="text-3xl font-black text-white">INICIA SESIÓN</h1>
+              <h1 className="font-display text-3xl font-bold uppercase tracking-[0.1em] text-ink">Inicia sesión</h1>
             </div>
 
             <LoginForm />
           </div>
         </div>
 
-        <div
-          className="stadium-side-panel relative hidden min-h-[620px] bg-cover bg-center lg:block"
-          style={{
-            backgroundImage: "linear-gradient(135deg, rgba(8, 15, 29, 0.7), rgba(7, 18, 32, 0.5)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-navy/35 via-brand-navy/20 to-brand-navy/70" />
+        <div className="auth-art relative hidden min-h-[620px] border-l border-line lg:flex lg:items-end lg:p-8" aria-hidden="true">
+          <p className="font-display text-2xl font-bold uppercase tracking-[0.12em] text-ink">
+            Vuelve la época <span className="text-gold">dorada</span>
+          </p>
         </div>
-      </div>
+      </Panel>
     </div>
   );
 }

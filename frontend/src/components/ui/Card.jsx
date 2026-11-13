@@ -1,5 +1,7 @@
+import Panel from './Panel';
+
 function Card({ children, className = '' }) {
-  return <div className={`glass-panel rounded-2xl p-4 ${className}`.trim()}>{children}</div>;
+  return <Panel innerClassName={`p-4 ${className}`.trim()}>{children}</Panel>;
 }
 
 export default Card;
