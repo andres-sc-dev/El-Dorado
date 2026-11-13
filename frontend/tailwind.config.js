@@ -6,10 +6,6 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      screens: {
-        // Teléfonos de 400 px o más: ahí cabe el nombre "EL DORADO" junto al logo.
-        xs: '400px',
-      },
       colors: {
         night: '#050B16', // fondo de página
         surface: {

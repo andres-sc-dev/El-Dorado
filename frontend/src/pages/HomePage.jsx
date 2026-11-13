@@ -3,7 +3,6 @@ import BetSlip from '../components/betting/BetSlip';
 import MatchCard from '../components/betting/MatchCard';
 import Footer from '../components/layout/Footer';
 import Navbar from '../components/layout/Navbar';
-import Sidebar from '../components/layout/Sidebar';
 import Button from '../components/ui/Button';
 import { useAuth } from '../context/AuthContext';
 import { EmptyState, ErrorState, LoadingState } from '../components/ui/StatusStates';
@@ -21,7 +20,6 @@ function HomePage() {
     <div className="page-shell mockup-shell">
       <Navbar />
       <div className="mx-auto flex max-w-7xl gap-6 px-4 py-6 lg:px-6">
-        <Sidebar />
 
         <main className="flex-1 space-y-8">
           <section className="overflow-hidden rounded-3xl border border-white/10 bg-[#091a2c] shadow-soft">
