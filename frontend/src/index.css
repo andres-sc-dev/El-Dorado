@@ -2,101 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #ffffff;
-  background: #040d18;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Fase 7: estilo "Futurista". Colores y fuentes salen de tailwind.config.js (theme()). */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Fondo: color noche con una cuadrícula dorada al 4,5 % cada 56 px. */
+  body {
+    @apply m-0 min-h-screen bg-night font-sans text-ink antialiased;
+    min-width: 320px;
+    line-height: 1.5;
+    background-image:
+      linear-gradient(to right, theme('colors.gold / 4.5%') 1px, transparent 1px),
+      linear-gradient(to bottom, theme('colors.gold / 4.5%') 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  input,
+  button,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  /* Foco visible con teclado en todo lo que no tenga uno propio. */
+  :focus-visible {
+    outline: 2px solid theme('colors.steel');
+    outline-offset: 2px;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer components {
+  /* Esquinas cortadas en diagonal (arriba a la izquierda y abajo a la derecha).
+     .cut: paneles grandes (16 px). .cut-s: botones y piezas pequeñas (8 px). */
+  .cut {
+    clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+  }
+
+  .cut-s {
+    clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  }
+
+  /* Etiqueta en Chakra Petch, mayúsculas y espaciado amplio. */
+  .eyebrow {
+    @apply font-display text-xs font-semibold uppercase tracking-[0.2em];
+  }
+
+  .form-input {
+    @apply min-h-[44px] w-full rounded-none border border-line-strong bg-night px-3 py-2.5 text-ink placeholder:text-ink-muted focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold disabled:opacity-60;
+  }
+
+  .page-shell {
+    @apply flex min-h-screen flex-col text-ink;
+  }
+
+  /* Brillo dorado tenue detrás del título del inicio. */
+  .hero-glow {
+    background-image:
+      radial-gradient(circle at 85% 15%, theme('colors.gold / 14%'), transparent 55%),
+      radial-gradient(circle at 0% 100%, theme('colors.steel / 12%'), transparent 50%);
+  }
+
+  /* Panel decorativo de Login y Registro: foto de estadio teñida con la paleta. */
+  .auth-art {
+    background-image:
+      linear-gradient(160deg, theme('colors.night / 55%'), theme('colors.night / 92%')),
+      url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+  }
 }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background: #020b16;
-  color: #edf1f7;
-}
-
-#root {
-  min-height: 100vh;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-input,
-button,
-select,
-textarea {
-  font: inherit;
-}
-
-.custom-scroll::-webkit-scrollbar {
-  width: 8px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background: rgba(245, 185, 66, 0.6);
-  border-radius: 9999px;
-}
-
-.glass-panel {
-  background: rgba(18, 39, 61, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
-}
-
-.primary-btn {
-  @apply inline-flex items-center justify-center rounded-md bg-gradient-to-r from-brand-gold to-brand-goldDeep px-4 py-2 font-semibold text-slate-900 transition hover:brightness-110;
-}
-
-.secondary-btn {
-  @apply inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 px-4 py-2 font-medium text-white transition hover:bg-white/10;
-}
-
-.form-input {
-  @apply w-full rounded-md border border-white/10 bg-brand-input px-3 py-2.5 text-white placeholder:text-slate-400 focus:border-brand-gold focus:outline-none;
-}
-
-.page-shell {
-  @apply min-h-screen bg-brand-navy text-white;
-}
-
-.mockup-shell {
-  background: radial-gradient(circle at top, rgba(89, 148, 255, 0.18), transparent 24%), #040d18;
-}
-
-.stadium-hero {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background-color: #071b2d;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 18px 40px rgba(5, 11, 20, 0.45);
-}
-
-.stadium-side-panel {
-  position: relative;
-  overflow: hidden;
-  background-color: #071827;
-}
-
-.bet-table td,
-.bet-table th {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+/* El clip-path recorta el outline: en piezas recortadas el foco se dibuja por dentro, con dos
+   anillos (oscuro y claro) para que se vea igual sobre fondo dorado o sobre fondo oscuro.
+   Va fuera de las capas para ganarle a las sombras de las utilidades. */
+.cut:focus-visible,
+.cut-s:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px theme('colors.night'), inset 0 0 0 4px theme('colors.ink.DEFAULT');
 }
 
 /* Hoja deslizable del cupón en móvil. */
@@ -107,4 +108,14 @@ textarea {
 
 .sheet-up {
   animation: sheet-up 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .sheet-up {
+    animation: none;
+  }
 }

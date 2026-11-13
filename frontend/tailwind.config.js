@@ -1,29 +1,43 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
+// Fase 7: paleta "Futurista". Los componentes usan solo estos tokens, nunca hexadecimales sueltos.
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      screens: {
+        // Teléfonos de 400 px o más: ahí cabe el nombre "EL DORADO" junto al logo.
+        xs: '400px',
+      },
       colors: {
-        brand: {
-          navy: '#0A1628',
-          navyAlt: '#0B1C2E',
-          gold: '#F5B942',
-          goldDeep: '#E8A317',
-          panel: '#11243b',
-          card: '#12273d',
-          input: '#091a2b',
-          muted: '#88A0B8',
-          cyan: '#6EE7F9',
+        night: '#050B16', // fondo de página
+        surface: {
+          DEFAULT: '#0A1424', // superficie de paneles
+          2: '#12203A', // superficie 2: cuotas, campos y bloques internos
+        },
+        line: {
+          DEFAULT: '#1E3354', // líneas y bordes finos
+          strong: '#2A4065', // bordes que deben resaltar un poco más
+        },
+        gold: '#F5B942', // color principal
+        steel: '#7FA6D4', // acento secundario apagado (azul acero, no neón)
+        ink: {
+          DEFAULT: '#E6EEFA', // texto
+          muted: '#8FA6C6', // texto atenuado (contraste mayor a 4.5:1 sobre el fondo y la superficie 2)
         },
       },
-      boxShadow: {
-        soft: '0 10px 30px rgba(15, 23, 42, 0.28)',
+      fontFamily: {
+        display: ['"Chakra Petch"', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
       },
-      backgroundImage: {
-        hero: "linear-gradient(110deg, rgba(10, 22, 40, 0.82), rgba(10, 22, 40, 0.5)), url('https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=1200&q=80')",
+      dropShadow: {
+        // Resplandor dorado de la cuota seleccionada. Es un filtro en un contenedor externo
+        // porque una sombra normal quedaría recortada por el clip-path de la esquina.
+        glow: '0 0 10px rgb(245 185 66 / 0.45)',
       },
     },
   },
   plugins: [],
-}
-
+};
