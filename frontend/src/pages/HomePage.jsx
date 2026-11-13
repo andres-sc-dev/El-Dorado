@@ -59,18 +59,19 @@ function FeaturedMatch({ match }) {
     <div className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
       <div>
         <p className="eyebrow text-steel">Próximo partido · Jornada {match.matchday}</p>
+        <p className="mt-1 font-mono text-xs text-ink-muted sm:hidden">{formatDateTime(match.match_date)}</p>
         <div className="mt-3 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-3">
           <div className="flex min-w-0 flex-col items-center gap-2 text-center sm:flex-row sm:text-left">
             <TeamShield team={match.home_team} size="lg" />
-            <span className="font-display text-sm font-bold uppercase tracking-[0.08em] text-ink sm:text-lg">{match.home_team.name}</span>
+            <span className="max-w-full font-display text-xs font-bold uppercase tracking-[0.06em] text-ink [overflow-wrap:anywhere] sm:text-lg">{match.home_team.name}</span>
           </div>
           <div className="text-center">
             <p className="font-display text-lg font-bold text-gold">VS</p>
-            <p className="font-mono text-xs text-ink-muted">{formatDateTime(match.match_date)}</p>
+            <p className="hidden font-mono text-xs text-ink-muted sm:block">{formatDateTime(match.match_date)}</p>
           </div>
           <div className="flex min-w-0 flex-col items-center gap-2 text-center sm:flex-row-reverse sm:text-right">
             <TeamShield team={match.away_team} size="lg" />
-            <span className="font-display text-sm font-bold uppercase tracking-[0.08em] text-ink sm:text-lg">{match.away_team.name}</span>
+            <span className="max-w-full font-display text-xs font-bold uppercase tracking-[0.06em] text-ink [overflow-wrap:anywhere] sm:text-lg">{match.away_team.name}</span>
           </div>
         </div>
       </div>
@@ -115,9 +116,9 @@ function HomePage() {
 
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
           <section className="space-y-4" aria-labelledby="featured-title">
-            <div className="flex items-center justify-between">
-              <h2 id="featured-title" className="font-display text-xl font-bold uppercase tracking-[0.12em] text-ink">Partidos destacados</h2>
-              <Link to="/matches" className="flex min-h-[44px] items-center font-display text-xs font-bold uppercase tracking-[0.16em] text-gold hover:text-ink">
+            <div className="flex items-center justify-between gap-3">
+              <h2 id="featured-title" className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.12em] text-ink">Partidos destacados</h2>
+              <Link to="/matches" className="flex min-h-[44px] shrink-0 items-center whitespace-nowrap font-display text-xs font-bold uppercase tracking-[0.16em] text-gold hover:text-ink">
                 Ver todos
               </Link>
             </div>
