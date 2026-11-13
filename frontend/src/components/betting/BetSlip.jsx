@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useBetSlip } from '../../context/BetSlipContext';
 import { formatCOP, formatOdds } from '../../utils/format';
 import Button from '../ui/Button';
+import Panel from '../ui/Panel';
 import TeamShield from '../ui/TeamShield';
 
 const DEFAULT_LIMITS = { min_stake: 1000, max_stake: 500000 };
@@ -63,39 +64,46 @@ function BetSlip({ limits: limitsProp, idPrefix = 'slip' }) {
 
   if (isAdmin) {
     return (
-      <aside className="glass-panel rounded-2xl p-4 text-sm text-slate-300">
-        Los administradores no apuestan. Usa el <Link to="/admin" className="text-brand-gold">panel de administración</Link>.
-      </aside>
+      <Panel as="aside" tone="steel" innerClassName="p-4 text-sm text-ink-muted">
+        Los administradores no apuestan. Usa el <Link to="/admin" className="font-semibold text-gold underline-offset-2 hover:underline">panel de administración</Link>.
+      </Panel>
     );
   }
 
   return (
-    <aside className="glass-panel rounded-2xl p-4" aria-labelledby="betslip-title">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 id="betslip-title" className="text-xl font-bold text-white">Cupón · apuesta simple</h3>
-        {selection ? <button type="button" className="text-sm text-brand-gold" onClick={clear}>Quitar</button> : null}
+    <Panel as="aside" tone="steel" aria-labelledby="betslip-title" innerClassName="p-4">
+      <div className="-mx-4 -mt-4 mb-4 flex min-h-[52px] items-center justify-between border-b border-line bg-surface-2/60 px-4">
+        <h3 id="betslip-title" className="font-display text-sm font-bold">
+          <span className="uppercase tracking-[0.24em] text-gold">Cupón</span>{' '}
+          <span className="font-sans font-medium text-ink-muted">· Apuesta simple</span>
+        </h3>
+        {selection ? (
+          <button type="button" className="min-h-[44px] px-2 font-display text-xs font-bold uppercase tracking-[0.16em] text-gold hover:text-ink" onClick={clear}>
+            Quitar
+          </button>
+        ) : null}
       </div>
 
       {!selection ? (
-        <div className="rounded-xl border border-dashed border-white/10 bg-slate-900/20 p-4 text-sm text-slate-400">
+        <div className="border border-dashed border-line-strong bg-night/60 p-4 text-sm text-ink-muted">
           Elige una cuota para armar tu apuesta. Solo se permite una selección por tiquete.
         </div>
       ) : (
-        <div className="rounded-xl border border-white/10 bg-slate-900/30 p-3">
+        <div className="cut-s bg-surface-2 p-3">
           {selection.homeTeam && selection.awayTeam ? (
             <div className="mb-2 flex items-center gap-2" aria-hidden="true">
               <TeamShield team={selection.homeTeam} size="sm" />
-              <span className="text-xs text-slate-500">vs</span>
+              <span className="font-display text-xs font-bold text-ink-muted">VS</span>
               <TeamShield team={selection.awayTeam} size="sm" />
             </div>
           ) : null}
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-400">{selection.matchLabel} · {selection.matchCode}</p>
-          <p className="mt-1 text-sm text-slate-300">{selection.marketName}</p>
-          <p className="font-semibold text-white">
+          <p className="eyebrow text-steel">{selection.matchLabel}</p>
+          <p className="mt-1 text-sm text-ink-muted">{selection.marketName}</p>
+          <p className="font-semibold text-ink">
             {selection.outcomeName} ·{' '}
             <span
               data-testid="slip-odds"
-              className={feedback?.type === 'odds' ? 'rounded bg-amber-400/25 px-1.5 text-amber-200 ring-1 ring-amber-300' : ''}
+              className={`font-mono ${feedback?.type === 'odds' ? 'bg-amber-400/25 px-1.5 text-amber-200 ring-1 ring-amber-300' : 'text-gold'}`}
             >
               {formatOdds(selection.oddValue)}
             </span>
@@ -105,7 +113,7 @@ function BetSlip({ limits: limitsProp, idPrefix = 'slip' }) {
 
       <div className="mt-5 space-y-3">
         <div>
-          <label htmlFor={`${idPrefix}-stake`} className="mb-1 block text-xs uppercase tracking-[0.2em] text-slate-400">Monto a apostar (COP)</label>
+          <label htmlFor={`${idPrefix}-stake`} className="eyebrow mb-1 block text-ink-muted">Monto a apostar (COP)</label>
           <input
             id={`${idPrefix}-stake`}
             type="number"
@@ -115,26 +123,26 @@ function BetSlip({ limits: limitsProp, idPrefix = 'slip' }) {
             max={limits.max_stake}
             step={1000}
             onChange={(event) => setStake(event.target.value)}
-            className="form-input"
+            className="form-input font-mono"
           />
-          <p className="mt-1 text-xs text-slate-400">
+          <p className="mt-1 font-mono text-xs text-ink-muted">
             Mínimo {formatCOP(limits.min_stake)} · máximo {formatCOP(limits.max_stake)}
             {user?.balance !== null && user?.balance !== undefined ? ` · saldo ${formatCOP(user.balance)}` : ''}
           </p>
           {stakeError ? <p className="mt-1 text-xs text-red-300">{stakeError}</p> : null}
         </div>
 
-        <div className="rounded-xl bg-brand-gold/10 p-3">
-          <div className="flex items-center justify-between text-sm text-slate-300">
-            <span>Pago posible</span>
-            <span className="text-xl font-bold text-brand-gold">{formatCOP(potentialPayout)}</span>
+        <div className="cut-s bg-gold/10 p-3">
+          <div className="flex items-center justify-between gap-2 text-sm text-ink-muted">
+            <span className="eyebrow">Pago posible</span>
+            <span className="font-mono text-xl font-bold text-gold">{formatCOP(potentialPayout)}</span>
           </div>
         </div>
 
         {user ? (
           <Button
             type="button"
-            className="w-full disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full"
             onClick={() => handleSubmit()}
             disabled={!selection || Boolean(stakeError) || isSubmitting || feedback?.type === 'odds'}
           >
@@ -147,23 +155,22 @@ function BetSlip({ limits: limitsProp, idPrefix = 'slip' }) {
         )}
 
         {feedback?.type === 'odds' ? (
-          <div role="alert" className="rounded-lg border border-amber-400/40 bg-amber-400/10 px-3 py-2 text-sm text-amber-100">
-            <p className="font-bold">Las cuotas cambiaron</p>
+          <div role="alert" className="border-l-2 border-amber-400 bg-amber-400/10 px-3 py-2 text-sm text-amber-100">
+            <p className="font-display font-bold uppercase tracking-[0.12em]">Las cuotas cambiaron</p>
             <p>
               {feedback.previousOdds ? <>Antes {formatOdds(feedback.previousOdds)}, </> : null}
-              ahora <span className="font-bold text-amber-200">{formatOdds(feedback.currentOdds)}</span>.
+              ahora <span className="font-mono font-bold text-amber-200">{formatOdds(feedback.currentOdds)}</span>.
               Pago posible {formatCOP(potentialPayout)}.
             </p>
             <div className="mt-2 flex flex-wrap items-center gap-3">
               <Button
                 type="button"
-                className="disabled:opacity-50"
                 disabled={isSubmitting || Boolean(stakeError)}
                 onClick={() => handleSubmit({ oddValue: feedback.currentOdds })}
               >
                 {isSubmitting ? 'Registrando…' : 'Aceptar y apostar'}
               </Button>
-              <button type="button" className="text-sm text-slate-300 underline" onClick={() => { clear(); setFeedback(null); }}>
+              <button type="button" className="min-h-[44px] px-2 text-sm text-ink-muted underline hover:text-ink" onClick={() => { clear(); setFeedback(null); }}>
                 Cancelar
               </button>
             </div>
@@ -173,17 +180,17 @@ function BetSlip({ limits: limitsProp, idPrefix = 'slip' }) {
         {feedback && feedback.type !== 'odds' ? (
           <div
             role={feedback.type === 'error' ? 'alert' : 'status'}
-            className={`rounded-lg border px-3 py-2 text-sm ${
+            className={`border-l-2 px-3 py-2 text-sm ${
               feedback.type === 'success'
-                ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
-                : 'border-red-500/40 bg-red-500/10 text-red-200'
+                ? 'border-emerald-400 bg-emerald-500/10 text-emerald-200'
+                : 'border-red-400 bg-red-500/10 text-red-200'
             }`}
           >
             {feedback.message}
           </div>
         ) : null}
       </div>
-    </aside>
+    </Panel>
   );
 }
 
