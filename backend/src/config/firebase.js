@@ -54,4 +54,12 @@ async function withFirestore(fn) {
   }
 }
 
-module.exports = { getApp, getDb, getAuthClient, withFirestore, normalizePrivateKey };
+// Comprobación mínima para GET /api/health: leer como máximo un documento de payments.
+async function ping() {
+  await getDb().collection('payments').limit(1).get();
+}
+
+// La app de firebase-admin se reutiliza; no hay conexión que cerrar.
+async function close() {}
+
+module.exports = { getApp, getDb, getAuthClient, withFirestore, normalizePrivateKey, ping, close };

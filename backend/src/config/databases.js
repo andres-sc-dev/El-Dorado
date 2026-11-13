@@ -2,10 +2,12 @@ const sqlserver = require('./sqlserver');
 const mysql = require('./mysql');
 const postgres = require('./postgres');
 const mongo = require('./mongo');
+const firestore = require('./firebase');
 
-// Registro de los cuatro motores. 'pg' es un alias corto de 'postgres'.
-const engines = { sqlserver, mysql, postgres, mongo };
-const aliases = { pg: 'postgres', mssql: 'sqlserver', mongodb: 'mongo' };
+// Registro de los cinco motores. 'pg' es un alias corto de 'postgres'.
+// Firestore (pagos de Wompi) se comprueba igual que los otros cuatro.
+const engines = { sqlserver, mysql, postgres, mongo, firestore };
+const aliases = { pg: 'postgres', mssql: 'sqlserver', mongodb: 'mongo', firebase: 'firestore' };
 
 const PING_TIMEOUT_MS = 3000;
 const CACHE_MS = 3000;

@@ -179,10 +179,10 @@ test('GET /api/match con MySQL caído responde 503', async () => {
   assert.equal(result.body.database, 'mysql');
 });
 
-test('GET /api/health responde 200 con el estado de los 4 motores', async () => {
+test('GET /api/health responde 200 con el estado de los 5 motores', async () => {
   const result = await call('GET', '/api/health');
   assert.equal(result.status, 200);
   assert.equal(result.body.status, 'degraded');
-  assert.deepEqual(Object.keys(result.body.databases).sort(), ['mongo', 'mysql', 'postgres', 'sqlserver']);
+  assert.deepEqual(Object.keys(result.body.databases).sort(), ['firestore', 'mongo', 'mysql', 'postgres', 'sqlserver']);
   for (const engine of Object.values(result.body.databases)) assert.equal(engine.status, 'down');
 });

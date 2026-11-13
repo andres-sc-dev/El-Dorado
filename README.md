@@ -16,7 +16,7 @@ El Dorado es una plataforma web de apuestas deportivas sobre la Liga BetPlay Dim
 
 ## Arquitectura
 
-Frontend en React + Vite y una API en Node.js + Express que reparte los datos en cinco motores, sin claves foráneas entre ellos. Se referencian por claves naturales (`username`, `match_code`, `team_code`, `market_code`) y la API combina los datos.
+Frontend en React + Vite y una API en Node.js + Express que reparte los datos en cinco motores (los cinco aparecen en `GET /api/health`), sin claves foráneas entre ellos. Se referencian por claves naturales (`username`, `match_code`, `team_code`, `market_code`) y la API combina los datos.
 
 | Motor | Datos |
 |---|---|
@@ -90,6 +90,9 @@ cd backend && npm test
 # Backend contra las bases reales (necesita docker compose up)
 docker compose exec backend npm run test:integration
 
+# Verificación de los 5 motores (conteos, restricciones, referencias cruzadas)
+docker compose exec backend npm run check:db
+
 # Frontend: componentes (cupón, recarga, Google), lint y build
 cd frontend && npm test && npm run lint && npm run build
 ```
@@ -119,6 +122,22 @@ docker compose stop postgres          # simular una base caída: solo sus rutas 
 docker compose start postgres
 docker compose down                   # detener todo y conservar los datos
 ```
+
+## Problemas comunes
+
+**Antes de cada `docker compose up`, revisa la terminal.** Docker Compose da prioridad a las variables de entorno de la terminal sobre el `.env`. Si una terminal de VS Code trae `MSSQL_SA_PASSWORD` o `SQLSERVER_PASSWORD` con otro valor, los contenedores reciben otra contraseña. El script compara por hash y solo muestra nombres:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scriptscheck-env.ps1
+```
+
+Si avisa de alguna variable, quítala con `Remove-Item Env:NOMBRE` (o abre una terminal nueva) y vuelve a ejecutarlo. Sale con código 0 cuando todo está bien.
+
+**SQL Server queda `unhealthy` y su log dice `Login failed for user 'sa'. Reason: Password did not match`.** Es el caso anterior. Ejecuta el script, quita las variables que señale y luego `docker compose up -d --force-recreate --no-deps sqlserver` y `docker compose up -d`. No borres el volumen: los datos siguen ahí. Detalle en `docs/DECISIONES.md` ("Incidente").
+
+**`db-init` termina con "Database cannot be autostarted during server shutdown or startup".** SQL Server ya respondía, pero la base aún se estaba recuperando. `db-init` ahora reintenta cada script hasta 12 veces; si aun así falla, vuelve a ejecutar `docker compose up -d`.
+
+**Verificar las 5 bases:** `docker compose exec backend npm run check:db` (conteos, escritura y lectura, restricciones y referencias cruzadas). Detalle y respaldos en `docs/ESTADO_BASES_DE_DATOS.md`.
 
 ## Reiniciar con bases limpias
 

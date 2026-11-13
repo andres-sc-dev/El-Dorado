@@ -11,3 +11,6 @@ backend/smoke-cookies.txt
 serviceAccount*.json
 *.pem
 backend/test/integration/report*.md
+
+# Respaldos locales de las bases: jamás en Git.
+backups/

@@ -2,6 +2,40 @@
 
 Registro en lenguaje simple de qué se decidió y por qué. Lo más reciente va primero.
 
+## Verificación de los 5 motores para la entrega (12 de noviembre de 2026)
+
+### Qué se decidió
+
+- **Respaldo antes de verificar.** Hay un respaldo por motor en `backups/` (Git lo ignora), generado dentro de cada contenedor con sus propias variables. El detalle y cómo restaurar están en `docs/ESTADO_BASES_DE_DATOS.md`. Firestore no se respalda en local porque su exportación administrada es de pago.
+- **`npm run check:db`** (`backend/scripts/check-databases.js`) comprueba los 5 motores: conteos, una escritura y lectura que se deshace sola (ROLLBACK o borrado), las funciones PL/pgSQL, los CHECK y el UNIQUE de `balance_movement`, los validadores e índices únicos de MongoDB, y que cada clave natural apunte a algo que existe en su motor dueño. Si un conteo es mayor al esperado por uso normal, sale OK con aviso: nunca falla por datos de pruebas anteriores. No imprime secretos.
+- **Firestore entra en `GET /api/health`** como quinto motor (`ping` que lee un documento de `payments`). Antes solo se veían los 4 de Docker, y una falla de credenciales de Firebase pasaba desapercibida hasta la primera recarga.
+- **`db-init` reintenta cada script** hasta 12 veces, con 5 segundos de pausa. Al reabrir Docker Desktop, SQL Server ya respondía al healthcheck pero la base `el_dorado` seguía recuperándose ("Database cannot be autostarted during server shutdown or startup") y `db-init` fallaba en el primer intento. Los scripts son idempotentes, así que repetirlos es seguro.
+- **`scripts/check-env.ps1`** avisa, solo con nombres, si una variable de la terminal tiene un valor distinto al del `.env`. Compara por hash. Quita las comillas que envuelven el valor y convierte `\n` literal en salto de línea; en `FIREBASE_PRIVATE_KEY` compara sin saltos de línea, porque Docker Compose deja `\n` literal y salto real a la vez y eso daba falsos positivos.
+- **Ningún servicio usa una contraseña distinta a la del `.env`.** Se compararon por hash las 43 variables de los 7 contenedores contra el `.env`. Todas coinciden; `FIREBASE_PRIVATE_KEY` coincide una vez normalizada, igual que la resuelve Docker Compose. Los healthchecks usan las variables del propio contenedor (`$$MSSQL_SA_PASSWORD`, `$$MYSQL_PASSWORD`, `$$POSTGRES_USER`, `$$MONGO_INITDB_ROOT_*`).
+- **Origen probable de las variables inyectadas:** `.vscode/settings.json` tiene `"python.terminal.useEnvFile": true`, así que la extensión de Python carga el `.env` en las terminales de VS Code (y en lo que se abre desde ellas). Las dos contraseñas de SQL Server tienen un `#`, que ese lector seguramente toma como inicio de comentario, y la llave de Firebase lleva comillas y `\n`. No se tocó esa configuración: si quieres evitarlo, ponla en `false`.
+
+## Incidente · SQL Server "unhealthy" por una contraseña de sa distinta (12 de noviembre de 2026, 19:21)
+
+### Qué pasó
+
+- Después de `docker compose up -d`, `eldorado-sqlserver` quedó `unhealthy` y su registro repetía `Login failed for user 'sa'. Reason: Password did not match` desde 172.18.0.3. Esa IP es el propio contenedor de SQL Server: quien fallaba era su **healthcheck**. Como el servicio nunca quedaba sano, `db-init` y el backend no arrancaban.
+- **El `.env` no cambió.** Su fecha de modificación es 18:18, no lo reescribe ningún script del proyecto, y SQL Server **sí acepta** la contraseña de `sa` que tiene el `.env`.
+- **El contenedor se recreó a las 19:21 con otros valores.** Se compararon hashes, nunca los valores: `MSSQL_SA_PASSWORD` y `SQLSERVER_PASSWORD` de `eldorado-sqlserver`, `eldorado-db-init` y `eldorado-backend` eran distintos de los del `.env`. El resto de variables (`SQLSERVER_USER`, `JWT_SECRET`, Postgres, MySQL) sí coincidían. La carpeta y el `docker-compose.yml` eran los de siempre.
+- **Causa:** `docker compose up` se ejecutó desde una terminal que tenía `MSSQL_SA_PASSWORD` y `SQLSERVER_PASSWORD` definidas como variables de entorno. Docker Compose les da prioridad sobre el `.env`, así que el contenedor nuevo recibió otra contraseña. SQL Server solo usa `MSSQL_SA_PASSWORD` la primera vez, cuando crea el volumen; después la contraseña real de `sa` es la que quedó guardada en el volumen. El healthcheck usaba la contraseña nueva y el servidor la rechazaba.
+- No era una variable de Windows (usuario ni máquina) ni algo de `.vscode/`: quedó solo en esa terminal.
+
+### Cómo se arregló, sin perder datos
+
+- Desde una terminal sin esas variables: `docker compose up -d --force-recreate --no-deps sqlserver` y luego `docker compose up -d`. Compose recreó `sqlserver`, `db-init` y `backend` con los valores del `.env`.
+- **No se tocó ningún volumen.** La tabla `users` sigue con sus 6 filas.
+- Verificado: las 4 bases y el backend `healthy`, `GET /api/health` con los 4 motores en `ok`, cero `Login failed` después de recrear, y login del demo y del admin con `200`.
+
+### Cómo evitarlo
+
+- **Nunca definir en la terminal** (`$env:MSSQL_SA_PASSWORD=...` en PowerShell, `export` en bash) variables que ya están en el `.env`. Si hace falta probar algo, abrir una terminal nueva para `docker compose`.
+- **Para revisar sin mostrar valores:** en PowerShell, `Get-ChildItem env: | Where-Object Name -match 'MSSQL|SQLSERVER|POSTGRES|MYSQL|MONGO'` solo debe listar nombres si alguna está definida. Si aparece algo, cerrar esa terminal.
+- **La contraseña de `sa` del `.env` no se cambia** mientras exista el volumen `eldorado_sqlserver_data`: SQL Server no la aplica a un volumen que ya existe. Para cambiarla hay que hacer `ALTER LOGIN sa` dentro del servidor o recrear solo ese volumen (se pierden usuarios, clientes e historial de acceso; la semilla recrea demo y admin).
+
 ## Fase 6 · Cierre: experiencia mínima, auditoría y documentación (12 de noviembre de 2026)
 
 ### Cupón
