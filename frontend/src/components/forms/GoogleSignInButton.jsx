@@ -41,7 +41,7 @@ function GoogleSignInButton() {
         type="button"
         onClick={handleClick}
         disabled={isLoading}
-        className="flex w-full items-center justify-center gap-3 rounded-md border border-white/20 bg-white px-4 py-2 font-semibold text-slate-800 transition hover:bg-slate-100 disabled:cursor-wait disabled:opacity-70"
+        className="cut-s flex min-h-[44px] w-full items-center justify-center gap-3 bg-white px-4 py-2 font-semibold text-slate-800 transition hover:bg-slate-100 disabled:cursor-wait disabled:opacity-70"
       >
         <svg aria-hidden="true" width="18" height="18" viewBox="0 0 48 48">
           <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.3-.4-3.5z" />

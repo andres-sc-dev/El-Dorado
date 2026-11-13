@@ -92,11 +92,11 @@ function RegisterForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Nombre completo</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Nombre completo</label>
         <input name="fullName" value={formData.fullName} onChange={handleChange} className="form-input" placeholder="Tu nombre completo" required />
       </div>
       <div>
-        <label htmlFor="documentNumber" className="mb-1 block text-sm text-slate-300">Cédula de ciudadanía</label>
+        <label htmlFor="documentNumber" className="eyebrow mb-1 block text-ink-muted">Cédula de ciudadanía</label>
         <DocumentInput
           value={formData.documentNumber}
           onChange={(digits) => setFormData((current) => ({ ...current, documentNumber: digits }))}
@@ -105,7 +105,7 @@ function RegisterForm() {
         />
       </div>
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Fecha de nacimiento</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Fecha de nacimiento</label>
         <input
           name="birthDate"
           type="date"
@@ -115,28 +115,28 @@ function RegisterForm() {
           max={adultBirthDateLimit}
           required
         />
-        <p className="mt-1 text-xs text-slate-400">Debes tener al menos 18 años.</p>
+        <p className="mt-1 text-xs text-ink-muted">Debes tener al menos 18 años.</p>
       </div>
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Correo electrónico</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Correo electrónico</label>
         <input name="email" type="email" value={formData.email} onChange={handleChange} className="form-input" placeholder="usuario@email.com" required />
       </div>
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Usuario</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Usuario</label>
         <input name="username" value={formData.username} onChange={handleChange} className="form-input" placeholder="tuusuario" required />
       </div>
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Contraseña</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Contraseña</label>
         <input name="password" type="password" value={formData.password} onChange={handleChange} className="form-input" placeholder="••••••••" autoComplete="new-password" required />
         <PasswordStrengthBar password={formData.password} username={formData.username} email={formData.email} />
       </div>
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Confirmar contraseña</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Confirmar contraseña</label>
         <input name="confirmPassword" type="password" value={formData.confirmPassword} onChange={handleChange} className="form-input" placeholder="••••••••" required />
       </div>
 
-      <label className="flex items-start gap-2 text-sm text-slate-300">
-        <input type="checkbox" checked={acceptedTerms} onChange={(event) => setAcceptedTerms(event.target.checked)} className="mt-1 rounded border-white/10 bg-brand-input" />
+      <label className="flex items-start gap-2 text-sm text-ink-muted">
+        <input type="checkbox" checked={acceptedTerms} onChange={(event) => setAcceptedTerms(event.target.checked)} className="mt-1 h-4 w-4 accent-gold" />
         Acepto los términos y condiciones.
       </label>
 
@@ -144,14 +144,14 @@ function RegisterForm() {
 
       <Button type="submit" className="w-full">Registrarme</Button>
 
-      <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-slate-500">
-        <span className="h-px flex-1 bg-white/10" /> o <span className="h-px flex-1 bg-white/10" />
+      <div className="eyebrow flex items-center gap-3 text-ink-muted">
+        <span className="h-px flex-1 bg-line" /> o <span className="h-px flex-1 bg-line" />
       </div>
       <GoogleSignInButton />
 
-      <p className="text-center text-sm text-slate-300">
+      <p className="text-center text-sm text-ink-muted">
         ¿Ya tienes cuenta?{' '}
-        <Link to="/login" className="font-semibold text-brand-gold">Inicia sesión</Link>
+        <Link to="/login" className="font-semibold text-gold hover:underline">Inicia sesión</Link>
       </p>
     </form>
   );

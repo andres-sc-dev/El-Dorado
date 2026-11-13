@@ -14,7 +14,7 @@ function ForgotPasswordForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label className="mb-1 block text-sm text-slate-300">Correo electrónico</label>
+        <label className="eyebrow mb-1 block text-ink-muted">Correo electrónico</label>
         <input
           type="email"
           value={email}
@@ -25,15 +25,15 @@ function ForgotPasswordForm() {
       </div>
 
       {submitted && (
-        <div className="rounded-lg border border-emerald-400/20 bg-emerald-500/10 p-3 text-sm text-emerald-300">
+        <div className="border-l-2 border-emerald-400 bg-emerald-500/10 p-3 text-sm text-emerald-300">
           Revisa tu correo para recuperar tu contraseña.
         </div>
       )}
 
       <Button type="submit" className="w-full">Enviar instrucciones</Button>
 
-      <p className="text-center text-sm text-slate-300">
-        <Link to="/login" className="font-semibold text-brand-gold">Volver al inicio de sesión</Link>
+      <p className="text-center text-sm text-ink-muted">
+        <Link to="/login" className="font-semibold text-gold hover:underline">Volver al inicio de sesión</Link>
       </p>
     </form>
   );

@@ -1,13 +1,19 @@
 import BrandMark from '../components/ui/BrandMark';
+import Panel from '../components/ui/Panel';
 import ForgotPasswordForm from '../components/forms/ForgotPasswordForm';
 
 function ForgotPasswordPage() {
   return (
-    <div className="page-shell mockup-shell flex min-h-screen items-center justify-center px-4 py-10">
-      <div className="w-full max-w-lg rounded-3xl border border-white/10 bg-[#091b2d]/80 p-8 shadow-soft">
+    <div className="page-shell items-center justify-center px-4 py-10">
+      <Panel tone="strong" className="w-full max-w-lg" innerClassName="p-6 sm:p-8">
         <div className="mb-6 flex items-center justify-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-brand-gold/50 bg-white/5 text-4xl text-brand-gold shadow-[0_0_25px_rgba(245,185,66,0.3)]">
-            🔒
+          {/* Candado dibujado en SVG (sin emojis). */}
+          <div className="cut flex h-20 w-20 items-center justify-center bg-gold/10 text-gold">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="4.5" y="10.5" width="15" height="10" rx="1.5" />
+              <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+              <path d="M12 14.5v2.5" />
+            </svg>
           </div>
         </div>
 
@@ -15,13 +21,13 @@ function ForgotPasswordPage() {
           <div className="mb-3 flex items-center justify-center">
             <BrandMark compact />
           </div>
-          <h1 className="text-3xl font-black text-white">RECUPERAR CONTRASEÑA</h1>
+          <h1 className="font-display text-2xl font-bold uppercase tracking-[0.1em] text-ink sm:text-3xl">Recuperar contraseña</h1>
         </div>
 
-        <p className="mb-6 text-center text-slate-300">Ingresa tu correo electrónico para recibir instrucciones de recuperación.</p>
+        <p className="mb-6 text-center text-ink-muted">Ingresa tu correo electrónico para recibir instrucciones de recuperación.</p>
 
         <ForgotPasswordForm />
-      </div>
+      </Panel>
     </div>
   );
 }
