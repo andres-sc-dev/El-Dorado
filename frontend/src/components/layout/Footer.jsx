@@ -1,10 +1,12 @@
+import BrandMark from '../ui/BrandMark';
+
 function Footer() {
   return (
     <footer className="mt-auto border-t border-line bg-surface/80 py-6 text-sm text-ink-muted">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 text-center lg:flex-row lg:px-6 lg:text-left">
         <div>
-          <p className="font-display font-bold uppercase tracking-[0.2em] text-ink">El <span className="text-gold">Dorado</span> © 2026</p>
-          <p>Vuelve la época dorada</p>
+          <div className="flex justify-center lg:justify-start"><BrandMark compact /></div>
+          <p className="mt-2">© 2026 · Vuelve la época dorada</p>
           <div className="mt-3 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
             <p className="cut-s bg-red-500/15 px-2.5 py-1 font-display text-xs font-bold uppercase tracking-[0.16em] text-red-200">Mayores de 18 años</p>
             <p className="text-xs">Proyecto académico: dinero de prueba, sin valor real.</p>

@@ -38,8 +38,8 @@ function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-night/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 xl:gap-8 lg:px-6">
-        <Link to="/" aria-label="El Dorado, ir al inicio" className="flex min-h-[56px] items-center">
+      <div className="mx-auto flex max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-4 xl:gap-8 lg:px-6">
+        <Link to="/" title="Ir al inicio" className="flex min-h-[56px] shrink-0 items-center">
           <BrandMark compact />
         </Link>
 
@@ -47,7 +47,7 @@ function Navbar() {
           {links}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
           {user && !isAdmin ? (
             <span className="cut-s hidden min-h-[44px] items-center gap-2 bg-surface-2 px-3 md:flex">
               <span className="font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-muted">Saldo</span>
@@ -61,7 +61,7 @@ function Navbar() {
           ) : null}
 
           {!isAdmin ? (
-            <Button type="button" onClick={() => navigate(user ? '/wallet?tab=deposit' : '/login')} className="px-3 sm:px-4">
+            <Button type="button" onClick={() => navigate(user ? '/wallet?tab=deposit' : '/login')} className={`px-2.5 text-xs tracking-[0.1em] sm:px-4 sm:text-sm sm:tracking-[0.14em] ${user ? '' : 'hidden sm:inline-flex'}`}>
               Recargar
             </Button>
           ) : null}
@@ -76,11 +76,11 @@ function Navbar() {
               >
                 {initialsOf(user)}
               </Link>
-              <Button type="button" variant="secondary" onClick={handleLogout} className="px-3">Salir</Button>
+              <Button type="button" variant="secondary" onClick={handleLogout} className="px-2.5 text-xs tracking-[0.1em] sm:px-4 sm:text-sm sm:tracking-[0.14em]">Salir</Button>
             </>
           ) : (
             <Link to="/login">
-              <Button type="button" variant="secondary" className="px-3 sm:px-4">Iniciar sesión</Button>
+              <Button type="button" variant="secondary" className="whitespace-nowrap px-2.5 text-xs tracking-[0.1em] sm:px-4 sm:text-sm sm:tracking-[0.14em]">Iniciar sesión</Button>
             </Link>
           )}
         </div>
